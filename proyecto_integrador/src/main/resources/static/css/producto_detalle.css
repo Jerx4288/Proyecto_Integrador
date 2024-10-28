@@ -1,0 +1,315 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    scroll-behavior: smooth;
+    user-select: none;
+    animation: fadeIn 1s forwards;
+    opacity: 0;
+}
+header
+{
+    position: relative;
+    
+    font-family:"Didact Gothic", sans-serif;    
+    height: auto;
+    font-size: 25px;
+    text-align: center;
+    align-items: center;
+    color: #333;
+    background-color: #f8d3dc;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1.4fr 1.2fr 0.8fr 1fr;
+    grid-template-areas: 
+    "uno dos tres cuatro cinco seis siete";
+}
+#subbarra
+{
+    font-family:"Didact Gothic", sans-serif;
+    padding-top:10px;
+    padding-bottom: 10px;
+    text-align: center;
+    background-color: white;
+    font-size: 15px;
+}
+#principal
+{
+    grid-area: uno;
+}
+.text_barra
+{
+    text-decoration: none;
+    color: black !important;
+}
+.text_barra:hover
+{
+    color: white !important;
+}
+#Imagen img
+{
+  
+    width: auto;
+    height: 120px;
+}
+#Ped_Esp
+{
+    grid-area: cinco;
+    margin-left: 18px;
+}
+#Blog
+{
+    grid-area: seis;
+}
+#Contactanos
+{
+    grid-area: siete;
+}
+#barrabajo
+{
+    height: 50px;
+    /*border: 1px solid black;*/
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "primero segundo tercero cuarto";
+    text-align: center;
+    align-items: center;
+    font-family:"Didact Gothic", sans-serif;    
+    font-size: 15px;
+}
+#ini-ses
+{
+    grid-area: cuarto;
+    
+    
+}
+#ini-ses a i
+{
+    margin-right: 15px;
+    
+}
+
+#iconos a i{
+    margin-right: 50px;
+    font-size: 25px !important;
+    cursor: pointer;
+}
+#ini-ses a:hover, #carrito a:hover
+{
+    color: #e85e7c !important;
+}
+#iconos a i:hover, #ini-ses a i:hover{
+    color: #e85e7c;
+}
+
+#carrito
+{
+    grid-area: tercero;
+    margin-left: 150px;
+}
+#carrito a i{
+    margin-right: 15px;
+}
+body
+{
+    background-color: #f8f0f0;
+}
+#ultima_seccion
+{
+    height: 380px;
+    width: auto;
+    background-color: #f8d3dc;
+    font-family:"Didact Gothic", sans-serif !important; 
+}
+
+#pri_secc_foo
+{
+    margin-left: 0%;
+    padding-top: 1%;
+    display: grid;
+    grid-template-columns: 25vw 25vw 25vw 24vw;
+}
+#logos_foo
+{
+    display: flex;
+    text-align: left !important;
+    flex-direction: column;
+    align-items: center;
+}
+
+#logos_foo img
+{
+    width: 160px;
+    height: 140px;
+}
+#logo2
+{
+    margin-bottom: 20px;
+}
+
+#libro_reclamaciones
+{
+    height: 100px !important;
+    width: 140px !important;
+    border-radius: 20px;
+}
+
+#contenido_footer
+{
+    margin-left: -60px;
+}
+
+#contenido_footer, #redes_sociales, #Telefonos
+{
+    text-align: left;
+    color: #333;
+}
+#redes_sociales
+{
+    margin-left: -90px;
+}
+#Telefonos
+{
+    margin-left: -108px;
+}
+
+#contenido_footer h2, #redes_sociales h2, #Telefonos h2{
+    font-family:"Didact Gothic", sans-serif;  
+    font-size: 25px !important;
+    
+}
+
+#contenido_footer ul li, #redes_sociales ul li, #Telefonos ul li
+{
+    font-size: 18px;
+    list-style-type: none;
+    line-height: 36px;
+    margin-left: -37px;
+}
+
+#contenido_footer ul li:hover, #redes_sociales ul li:hover, #Telefonos ul li:hover
+{
+    color: #f8f0f0;
+}
+#cv
+{
+    text-decoration: none; color: #333 !important; font-size: 18px;
+}
+
+#seg_secc_foo
+{
+    margin-left: 13.5%;
+}
+
+#seg_secc_foo h2{
+    font-size: 15px;
+    font-weight: none !important;
+    
+}
+main
+{
+    background-image: url('../img/fondo_mas_pedidos.jpg');
+}
+#contenido
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    padding-top: 3vw;
+    
+}
+#imagen
+{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 3vw;
+}
+#imagen img
+{
+    border: 40px #f8d3dc double;
+    width: auto;
+    height: 70vh;
+}
+#des-form
+{
+    text-align: center;
+    margin-right: 4vw;
+   
+}
+#des-form h1
+{
+    font-family: "Lobster Two", sans-serif;
+    font-size: 5vh;
+}
+#des-form p
+{
+    font-family:"Didact Gothic", sans-serif;  
+    font-size: 2.5vh;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+form
+{
+    display: flex;
+    flex-direction: column;
+    
+    padding: 20px;
+}
+form h2
+{
+    font-family: "Lobster Two", sans-serif;
+    font-size: 4vh;
+    margin-bottom: 0px;
+}
+form label
+{
+    font-family:"Didact Gothic", sans-serif;
+    font-size: 2.5vh;
+    margin-bottom: 1vw;
+    margin-top: 1vw;
+}
+form select
+{
+    width: 80%;
+    height: auto;
+    border: transparent;
+    border-radius: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 10px;
+}
+form textarea
+{
+    width: 78%;
+    height: auto;
+    border: transparent;
+    border-radius: 20px;
+    margin-left: 10%;
+    margin-right: 17%;
+    padding: 10px;
+}
+
+form button
+{
+    margin-top: 3vh;
+    height: auto;
+    padding: 10px;
+    width: 76%;
+    font-size: 1.8vh;
+    margin-left: 12%;
+    margin-right: 9%;
+    background-color: #f8d3dc;
+    color: #333;
+    border: transparent;
+    border-radius: 20px;
+}
+form button:hover
+{
+    background-color: #e85e7c;
+    color: #f8f0f0;
+}

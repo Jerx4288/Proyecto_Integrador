@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <th:block th:include="layouts/fragmentos :: cabecera"></th:block>   
+        <link th:href="@{/css/novias.css}" rel="stylesheet">
+        <title>Novias | Pabluki's Bakery  </title>
+    </head>
+<body>
+    <div th:replace="layouts/fragmentos :: subbarra">
+    </div>
+    <div id="barrabajo" th:replace="layouts/fragmentos :: barrabajo"> 
+    </div>
+    <header th:replace = "layouts/fragmentos :: header">
+    </header>
+    <main>
+        <div id="titulo">
+            <h1>Novias</h1>
+            <h2>
+                Haz que tu boda sea aún más especial con una torta única de Pabluki's Bakery. 
+                Diseños personalizados, sabores exquisitos y una presentación impecable que sorprenderá a 
+                todos tus invitados. El toque dulce perfecto para un día inolvidable.
+            </h2>
+        </div>
+        <div id="primer_espacio">
+            <div class="descripcion">
+                <div class="titulo">
+                    <h1>La torta ideal para tu boda</h1>
+                </div>
+                <p>
+                    En Pabluki's Bakery, creamos tortas de boda que destacan por su belleza y sabor inolvidable. 
+                    Nuestros pasteleros trabajan contigo para diseñar la torta perfecta, adaptada a tu estilo y 
+                    hecha con ingredientes de la mejor calidad. Ya sea clásica o moderna, garantizamos que tu torta 
+                    será el centro de atención y un final dulce para tu gran día. Confía en nosotros para hacer tu boda 
+                    aún más especial.
+                </p>
+            </div>
+            <div class="imagen_1">
+                <img th:src="@{/img/novia_1.jpg}" alt="imagen_1">
+            </div>
+            <div class="imagen_2">
+                <img th:src="@{/img/novia_2.jpg}" alt="imagen_2">
+            </div> 
+        </div>  
+        
+        <div id="segundo_espacio">
+            <div id="cont_2">
+                <div id="imagen_form">
+                    <img th:src="@{/img/novias_1.jpg}" alt="imagen_form">
+                </div>
+                <div id="formulario">
+                    <form action="/enviar" method="post">
+                        <h1>¿Estás a punto de vivir el día más especial de tu vida?</h1>
+                        <p>En Pabluki's Bakery, tenemos las tortas perfectas para que tu día especial esté lleno de sabor 
+                            y elegancia. ¿Estás planificando tu boda? ¡Nosotros nos encargamos del pastel de tus sueños! 
+                            Completa la información y nos podremos en contacto con usted a la brevedad posible.
+                        </p>
+                        <label for="nombre">Nombre y Apellidos completos:</label>
+                        <input type="text" id="nombre" name="nombre" required placeholder="Escriba Aqui">
+                        <label for="correo">Correo Electronico:</label>
+                        <input type="text" id="correo" name="correo" required placeholder="Escriba Aqui">
+                        <label for="celular">Celular:</label>
+                        <input type="text" id="celular" name="celular" required placeholder="Escriba Aqui">
+                        <div class="form_int">
+                            <div> 
+                                <label for="fecha">Fecha de tu reserva:</label>
+                                <input type="date" id="fecha" name="fecha" required placeholder="Escriba Aqui">
+                            </div>
+                            <div class="citaa">
+                                <label for="cita">Selecciona tu cita:</label> <br>
+                                <select id="cita" name="cita" required>
+                                <option value="08:00-10:00">8:00 AM - 10:00 AM</option>
+                                <option value="10:00-12:00">10:00 AM - 12:00 PM</option>
+                                <option value="12:00-14:00">12:00 PM - 2:00 PM</option>
+                                <option value="14:00-16:00">2:00 PM - 4:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit">Enviar</button>
+                    </form> 
+                </div>
+            </div>
+        </div>
+        <div id="tercer_espacio">
+            <div class="wrapper">
+                <div class="container">
+                    <div class="card card-1">
+                    </div>
+                    <div class="card card-2">
+                    </div>
+                    <div class="card card-3">
+                    </div>
+                    <div class="card card-4">
+                    </div>
+                    <div class="card card-5">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <a href="#top" id="arriba">Ir al Inicio</a>
+    <footer id="ultima_seccion" th:replace="/layouts/fragmentos :: footer">
+    </footer>
+    <script th:src="@{/js/fecha_calendario.js}"></script>
+</body>
+</html>

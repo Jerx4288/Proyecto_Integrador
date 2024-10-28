@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <th:block th:include="layouts/fragmentos :: cabecera"></th:block>   
+    <link rel="stylesheet" th:href="@{/css/estilos_login.css}">
+    <title>Pabluki's Bakery | Iniciar Sesión</title>
+
+</head>
+
+<body>
+    
+    <div class="container" id="container">
+        
+        <div class="form-container sign-up">
+            
+            <form id="formulario_register" th:action="@{/login/guardar}" th:object="${cliente}" method="post">
+                <h1>Crea una Cuenta</h1>
+                <div class="input-container">
+                    <i class="fa-solid fa-user-pen"></i>
+                    <input th:field="*{nombre}" type="text" placeholder="Nombre" required>
+                </div>
+                <div class="input-container">
+                    <i class="fa-solid fa-user-pen"></i>
+                    <input th:field="*{apellido}" type="text" placeholder="Apellido" required>
+                </div>
+                <div class="input-container">
+                    <i class="fa-solid fa-id-card"></i>
+                    <input th:field="*{dni}" type="text" placeholder="Número de DNI" required pattern="\d{8}" title="El DNI debe contener 8 dígitos">
+                </div>
+                <div class="input-container">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input th:field="*{correo}" type="email" id="correo_registro" placeholder="Correo" required>
+                </div>
+                <div class="input-container">
+                    <i class="fa-solid fa-phone"></i>
+                    <input th:field="*{telefono}" type="text" placeholder="Número de celular" required pattern="\d{9}" title="El número debe contener 9 dígitos">
+                </div>
+                <div class="select-add">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <select th:field="*{distrito}" class="custom-select" plarequired>
+                        <option value="" disabled selected>Seleccione su distrito: </option>                            
+                        <option value="ancón">Ancón</option>
+                        <option value="ate">Ate</option>
+                        <option value="barranco">Barranco</option>
+                        <option value="bellavista">Bellavista</option>
+                        <option value="breña">Breña</option>
+                        <option value="callao">Callao</option>
+                        <option value="carabayllo">Carabayllo</option>
+                        <option value="carmen-de-la-legua-reynoso">Carmen de la Legua Reynoso</option>
+                        <option value="chaclacayo">Chaclacayo</option>
+                        <option value="chorrillos">Chorrillos</option>
+                        <option value="cieneguilla">Cieneguilla</option>
+                        <option value="comas">Comas</option>
+                        <option value="el-agustino">El Agustino</option>
+                        <option value="independencia">Independencia</option>
+                        <option value="jesús-maría">Jesús María</option>
+                        <option value="la-molina">La Molina</option>
+                        <option value="la-perla">La Perla</option>
+                        <option value="la-punta">La Punta</option>
+                        <option value="la-victoria">La Victoria</option>
+                        <option value="lima">Lima</option>
+                        <option value="lince">Lince</option>
+                        <option value="los-olivos">Los Olivos</option>
+                        <option value="lurigancho">Lurigancho</option>
+                        <option value="lurín">Lurín</option>
+                        <option value="magdalena-del-mar">Magdalena del Mar</option>
+                        <option value="miraflores">Miraflores</option>
+                        <option value="pachacámac">Pachacámac</option>
+                        <option value="pucusana">Pucusana</option>
+                        <option value="pueblo-libre">Pueblo Libre</option>
+                        <option value="puente-piedra">Puente Piedra</option>
+                        <option value="punta-hermosa">Punta Hermosa</option>
+                        <option value="punta-negra">Punta Negra</option>
+                        <option value="rímac">Rímac</option>
+                        <option value="san-bartolo">San Bartolo</option>
+                        <option value="san-borja">San Borja</option>
+                        <option value="san-isidro">San Isidro</option>
+                        <option value="san-juan-de-lurigancho">San Juan de Lurigancho</option>
+                        <option value="san-juan-de-miraflores">San Juan de Miraflores</option>
+                        <option value="san-luis">San Luis</option>
+                        <option value="san-martín-de-porres">San Martín de Porres</option>
+                        <option value="san-miguel">San Miguel</option>
+                        <option value="santa-anita">Santa Anita</option>
+                        <option value="santa-maría-del-mar">Santa María del Mar</option>
+                        <option value="santa-rosa">Santa Rosa</option>
+                        <option value="santiago-de-surco">Santiago de Surco</option>
+                        <option value="surquillo">Surquillo</option>
+                        <option value="ventanilla">Ventanilla</option>
+                        <option value="villa-el-salvador">Villa El Salvador</option>
+                        <option value="villa-maría-del-triunfo">Villa María del Triunfo</option>                         
+                    </select>
+                </div>
+                <div class="input-container">
+                    <i class="fa-solid fa-map-location-dot"></i> 
+                    <input th:field="*{direccion}" type="text" placeholder="Dirección" required> 
+                </div>
+                <div class="input-container">
+                    <i class="fa-solid fa-lock"></i>
+                    <input th:field="*{password}" type="password" id="password_registro" placeholder="Contraseña" required>
+                </div>
+                <div class="check">
+                    <input type="checkbox" id="showPassword">
+                    <label for="showPassword">Mostrar contraseña</label>
+                </div>
+                <button type="submit">Registrate</button>
+                <br>
+            </form>
+        </div>
+        
+        <div class="form-container sign-in">
+            <form id="formulario_login" th:action="@{/login/iniciar}" th:object="${cliente}" method="post">
+                <a th:href="@{/Pagina_principal}" class="back-button">
+                    <i class="fa-solid fa-circle-left"></i> Regresar a la página principal
+                </a>
+                <h2>Iniciar Sesión</h2>
+            
+                <div class="input-container">
+                    <i class="fa-solid fa-user"></i>
+                    <input th:field="*{dni}" type="text" id="dni_login" placeholder="DNI" required>
+                </div>
+            
+                <div class="input-container">
+                    <i class="fa-solid fa-lock"></i>
+                    <input th:field="*{password}" type="password" id="password_login" placeholder="Contraseña" required>
+                </div>
+            
+                <!-- Select para indicar si es Administrador o Usuario -->
+                <div class="input-container">
+                    <label for="rol_login">Rol</label>
+                    <select th:field="*{rol}" id="rol_login" required>
+                        <option value="usuario">Usuario</option>
+                        <option value="admin">Administrador</option>
+                    </select>
+                </div>
+                <p id="login-message" th:text="${mensaje}" th:if="${mensaje}"></p> <!-- Muestra el mensaje -->
+                <button type="submit">Ingresar</button>
+            </form>
+            
+            
+            
+        </div>
+
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Bienvenido otra vez a </h1>
+                    <img th:src="@{/img/logoP.webp}" class="logo">
+                    <p><i class="fa-solid fa-circle-exclamation"></i> Si ya tienes una cuenta, inicia sesión con tu correo y contraseña. </p>
+                    <button type="submit" class="hidden" id="login">Regresar</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Bienvenido a </h1>
+                    <img th:src="@{/img/logoP.webp}" class="logo">
+                    <p>¡Únete a la experiencia de compra en línea! Ingresa tu correo y contraseña </p>
+                    <button type="submit" class="hidden" id="register">Registrate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <script th:src="@{/js/Logica_login.js}"></script>
+</body>
+
+</html>

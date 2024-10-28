@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <th:block th:include="layouts/fragmentos :: cabecera"></th:block>    
+        <link th:href="@{/css/personalizada.css}" rel="stylesheet">
+        <title>Tortas Especiales | Pabluki's Bakery  </title>
+    </head>
+<body>
+    <div th:replace="layouts/fragmentos :: subbarra">
+    </div>
+    <div id="barrabajo" th:replace="layouts/fragmentos :: barrabajo"> 
+    </div>
+    <header th:replace = "layouts/fragmentos :: header">
+    </header>
+    <main>
+        <div id="titulo">
+            <h1>Pedidos Especiales</h1>
+            <h2>
+                ¡Haz de tu celebración un momento mágico con una torta única de Pabluki's Bakery!
+                Diseños coloridos, sabores irresistibles y una presentación encantadora que hará sonreír a todos. 
+                Nuestras tortas personalizadas son el dulce toque que transformará cualquier evento en una fiesta inolvidable. 
+                <b>¡Celebra con nosotros y crea recuerdos especiales!</b>
+            </h2>
+        </div>
+        <div id="primer_espacio">
+            <div class="imagen_1">
+                <img id="imagen_cambiar" th:src="@{/img/perso_1.jpg}" alt="imagen_1">
+            </div>
+            <div class="imagen_2">
+                <img th:src="@{/img/perso_2.jpg}" alt="imagen_2">
+            </div>
+            <div class="descripcion">
+                <div class="titulo">
+                    <h1>La torta perfecta para cada celebración especial.</h1>
+                </div>
+                <p>
+                    En Pabluki's Bakery, creamos tortas que deslumbran por su creatividad y sabor excepcional.
+                    Nuestro talentoso equipo de pasteleros colabora contigo para diseñar la torta ideal, adaptada 
+                    a la temática de tu evento y elaborada con ingredientes de la más alta calidad. Ya sea un cumpleaños, 
+                    un bautizo o cualquier celebración especial, garantizamos que tu torta será el centro de atención y un
+                     dulce recuerdo para todos. Confía en nosotros para hacer de tu evento un momento inolvidable.
+                </p>
+                </div> 
+        </div>  
+        <div id="segundo_espacio">
+            <div id="cont_2">
+                <div id="formulario">
+                    <form action="/enviar" method="post">
+                        <h1>¡Prepárate para celebrar momentos inolvidables!</h1>
+                        <p>En Pabluki's Bakery, creamos tortas irresistibles que transforman fiestas en experiencias 
+                            inolvidables. Desde cumpleaños vibrantes hasta bautizos encantadores, diseñamos el pastel 
+                            de tus sueños con sabores exquisitos y presentaciones deslumbrantes. Completa la información
+                             y nuestro apasionado equipo te contactará rápidamente para hacer realidad tu visión y 
+                             endulzar tu evento.
+                        </p>
+                        <label for="nombre">Nombre y Apellidos completos:</label>
+                        <input type="text" id="nombre" name="nombre" required placeholder="Escriba Aqui">
+                        <label for="correo">Correo Electronico:</label>
+                        <input type="text" id="correo" name="correo" required placeholder="Escriba Aqui">
+                        <label for="celular">Celular:</label>
+                        <input type="text" id="celular" name="celular" required placeholder="Escriba Aqui">
+                        <div class="form_int">
+                            <div> 
+                                <label for="fecha">Fecha de tu reserva:</label>
+                                <input type="date" id="fecha" name="fecha" required placeholder="Escriba Aqui">
+                            </div>
+                            <div class="citaa">
+                                <label for="cita">Selecciona tu cita:</label> <br>
+                                <select id="cita" name="cita" required>
+                                <option value="08:00-10:00">8:00 AM - 10:00 AM</option>
+                                <option value="10:00-12:00">10:00 AM - 12:00 PM</option>
+                                <option value="12:00-14:00">12:00 PM - 2:00 PM</option>
+                                <option value="14:00-16:00">2:00 PM - 4:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit">Enviar</button>
+                    </form> 
+                </div>
+                <div id="imagen_form">
+                    <img th:src="@{/img/perso_3.jpg}" alt="imagen_form">
+                </div>
+            </div>
+        </div>
+        <div id="tercer_espacio">
+            <div class="wrapper">
+                <div class="container">
+                    <div class="card card-1">
+                    </div>
+                    <div class="card card-2">
+                    </div>
+                    <div class="card card-3">
+                    </div>
+                    <div class="card card-4">
+                    </div>
+                    <div class="card card-5">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <a href="#top" id="arriba">Ir al Inicio</a>
+    <footer id="ultima_seccion" th:replace="/layouts/fragmentos :: footer">
+    </footer>
+    <script th:src="@{/js/fecha_calendario.js}"></script>
+</body>
+</html>

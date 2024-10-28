@@ -1,0 +1,1321 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    scroll-behavior: smooth;
+    user-select: none;
+}
+header
+{
+    position: relative;
+    
+    font-family:"Didact Gothic", sans-serif;    
+    height: auto;
+    font-size: 25px;
+    text-align: center;
+    align-items: center;
+    color: #333;
+    background-color: #f8d3dc;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1.4fr 1.2fr 0.8fr 1fr;
+    grid-template-areas: 
+    "uno dos tres cuatro cinco seis siete";
+}
+#subbarra
+{
+    font-family:"Didact Gothic", sans-serif;
+    padding-top:10px;
+    padding-bottom: 10px;
+    text-align: center;
+    background-color: white;
+    font-size: 15px;
+}
+#principal
+{
+    grid-area: uno;
+}
+.text_barra
+{
+    text-decoration: none;
+    color: black !important;
+}
+.text_barra:hover
+{
+    color: white !important;
+}
+#Imagen img
+{
+  
+    width: auto;
+    height: 120px;
+}
+#Ped_Esp
+{
+    grid-area: cinco;
+    margin-left: 18px;
+}
+#Blog
+{
+    grid-area: seis;
+}
+#Contactanos
+{
+    grid-area: siete;
+}
+#barrabajo
+{
+    height: 50px;
+    /*border: 1px solid black;*/
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "primero segundo tercero cuarto";
+    text-align: center;
+    align-items: center;
+    font-family:"Didact Gothic", sans-serif;    
+    font-size: 15px;
+}
+#ini-ses
+{
+    grid-area: cuarto;
+    
+    
+}
+#ini-ses a i
+{
+    margin-right: 15px;
+    
+}
+
+#iconos a i{
+    margin-right: 50px;
+    font-size: 25px !important;
+    cursor: pointer;
+}
+#ini-ses a:hover, #carrito a:hover
+{
+    color: #e85e7c !important;
+}
+#iconos a i:hover, #ini-ses a i:hover{
+    color: #e85e7c;
+}
+
+#carrito
+{
+    grid-area: tercero;
+    margin-left: 150px;
+}
+#carrito a i{
+    margin-right: 15px;
+}
+body
+{
+    background-color: #f8f0f0;
+}
+#ultima_seccion
+{
+    height: 420px;
+    width: auto;
+    background-color: #f8d3dc;
+    font-family:"Didact Gothic", sans-serif !important; 
+}
+
+#pri_secc_foo
+{
+    margin-left: 0%;
+    padding-top: 1%;
+    display: grid;
+    grid-template-columns: 25vw 25vw 25vw 24vw;
+}
+#logos_foo
+{
+    display: flex;
+    text-align: left !important;
+    flex-direction: column;
+    align-items: center;
+}
+
+#logos_foo img
+{
+    width: 160px;
+    height: 140px;
+}
+#logo2
+{
+    margin-bottom: 20px;
+}
+
+#libro_reclamaciones
+{
+    height: 100px !important;
+    width: 140px !important;
+    border-radius: 20px;
+}
+
+#contenido_footer
+{
+    margin-left: -60px;
+}
+
+#contenido_footer, #redes_sociales, #Telefonos
+{
+    text-align: left;
+    color: #333;
+}
+#redes_sociales
+{
+    margin-left: -90px;
+}
+#Telefonos
+{
+    margin-left: -108px;
+}
+
+#contenido_footer h2, #redes_sociales h2, #Telefonos h2{
+    font-family:"Didact Gothic", sans-serif;  
+    font-size: 25px !important;
+    
+}
+
+#contenido_footer ul li, #redes_sociales ul li, #Telefonos ul li
+{
+    font-size: 18px;
+    list-style-type: none;
+    line-height: 36px;
+    margin-left: -37px;
+}
+
+#contenido_footer ul li:hover, #redes_sociales ul li:hover, #Telefonos ul li:hover
+{
+    color: #f8f0f0;
+}
+#cv
+{
+    text-decoration: none; color: #333 !important; font-size: 18px;
+}
+
+#seg_secc_foo
+{
+    margin-left: 13.5%;
+}
+
+#seg_secc_foo h2{
+    font-size: 15px;
+    font-weight: none !important;
+    
+}
+
+#titulo
+{
+    align-items: center;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 10px;
+}
+#titulo h1{
+    font-family: "Lobster Two", sans-serif;
+    font-size: 2.5vw;
+    opacity: 0;
+    animation: fadeIn 4s forwards;
+}
+#titulo h2{
+    font-family:"Didact Gothic", sans-serif; 
+    font-size: 1.35vw;
+    font-weight: normal;
+    background-color: #f8d3dc;
+    padding: 25px 25px;
+    border-radius: 100px;
+    animation: fadeIn 4s forwards;
+    opacity: 0;
+}
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+#titulo h1:hover
+{
+    color: #e85e7c;
+}
+.titulo
+{
+    font-family: "Lobster Two", sans-serif;
+}
+
+#primer_espacio
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2vw;   
+    opacity: 0;
+    animation: fadeIn 4s forwards;
+}
+.descripcion
+{
+    margin-left: 40%;
+    margin-bottom: 90px;
+    padding-top: 10%;
+}
+.titulo h1
+{
+    font-size: 2vw;
+    
+}
+.titulo h1:hover
+{
+    color: #e85e7c
+}
+.descripcion p{
+    font-family:"Didact Gothic", sans-serif; 
+    font-size: 1.3vw;
+}
+.imagen_1
+{
+    text-align: center;
+}
+.imagen_1 img, .imagen_2 img
+{
+    width: auto;
+    height: 30vw;
+    
+}
+.imagen_1 img
+{
+    margin-top: 8%;
+    box-shadow: 20px 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+    border: 20px double #f8d3dc;
+}
+.imagen_2 img
+{
+    margin-top: 20%;
+    box-shadow: 20px 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+    border: 20px double #f8d3dc;
+}
+
+.imagen_1 img:hover, .imagen_2 img:hover
+{
+    transform: scale(1.1);
+}
+#segundo_espacio
+{
+    margin-top: 5%;
+    background-color: #f8d3dc;
+    height: auto;
+    margin-bottom: 10%;
+    opacity: 0;
+    animation: fadeIn 4s forwards;
+}
+#cont_2
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-left: 12.1%;
+    margin-right: 10%;
+    padding-top: 20px;
+    padding-bottom: 45px;
+}
+#imagen_form
+{
+    padding: 55px 10px;
+}
+#imagen_form img
+{
+    width: auto;
+    height: 35vw;
+    box-shadow: 20px 8px 20px rgba(0, 0, 0, 0.1);
+    border: 20px outset #f8f0f0;
+    transition: transform 0.5s ease;
+}
+#imagen_form img:hover
+{
+    transform: translateX(70px); 
+}
+
+#formulario form
+{
+    display: flex;
+    flex-direction: column;
+   
+}
+#formulario form input,select
+{
+    width: 96%;
+    padding: 10px;
+    margin-bottom: 15px ;
+    margin-top: 15px;
+    background-color: #f8f0f0;
+    border: transparent;
+    border-radius: 2px;
+}
+
+#formulario form h1
+{
+    font-family: "Lobster Two", sans-serif;
+    text-align: center;
+    font-size: 2.5vw;
+    margin-bottom: 10px;
+    width: 100%;
+}
+#formulario form h1:hover
+{
+    color: #f8f0f0
+}
+#formulario form p
+{
+    font-family:"Didact Gothic", sans-serif; 
+    font-size: 1vw;
+    text-align: justify;
+}
+label, input,select
+{
+    position: relative;
+    font-size: 1vw;
+    font-family:"Didact Gothic", sans-serif; 
+}
+#formulario form label::after 
+{
+    content: " *";
+    color: red;
+    position: absolute;
+}
+input[type="date"],select {
+    padding: 10px;
+    margin-bottom: 50px !important ;
+    margin-top: 15px;
+    border: transparent;
+    border-radius: 2px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+    width: 43vh;
+}
+.form_int
+{
+    display: flex;
+    margin-top: 10px;
+}
+.citaa
+{
+    margin-left: 9%;
+}
+.citaa select
+{
+    width: 43vh;
+}
+#formulario form button
+{
+    padding: 15px 40px;
+    background-color: #f8f0f0;
+    font-family:"Didact Gothic", sans-serif; 
+    border: transparent;
+    border-radius: 100px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    align-content: center;
+    margin-left: 15%;
+    margin-right: 25%;
+    width: 500px;
+    font-size: 1vw;
+}
+#formulario form button:hover
+{
+    background-color: #e85e7c;
+    color: #f8f0f0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.wrapper{
+    width: 100%;
+    height: 20vh;
+    padding-top: 5%;
+    display: grid;
+    place-content: center;
+    padding-bottom: 15%;
+    opacity: 0;
+    animation: fadeIn 4s forwards;
+}
+
+.container{
+    position: relative;
+    width: 1000px;
+    height: 500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    transition: all .3s ease-in-out;
+}
+
+.card{
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.card-1{
+    background: url(../img/novia_3.jpg) center center no-repeat;
+    background-size: cover;
+    filter: grayscale(1);
+    transition: all .3s ease-in-out;
+}
+
+.card-2{
+    background: url(../img/novia_4.jpg) center center no-repeat;
+    background-size: cover;
+    filter: grayscale(1);
+    transition: all .3s ease-in-out;
+}
+
+.card-3{
+    background: url(../img/novia_5.jpg) center center no-repeat;
+    background-size: cover;
+    filter: grayscale(1);
+    transition: all .3s ease-in-out;
+}
+
+.card-4{
+    background: url(../img/novia_6.jpg) center center no-repeat;
+    background-size: cover;
+    filter: grayscale(1);
+    transition: all .3s ease-in-out;
+}
+
+.card-5{
+    background: url(../img/novia_7.jpg) center center no-repeat;
+    background-size: cover;
+    filter: grayscale(1);
+    transition: all .3s ease-in-out;
+}
+
+.card:nth-child(odd){
+    transform: translateY(10px);
+}
+
+.card:nth-child(even){
+    transform: translateY(-10px);
+}
+
+.card::after{
+    content: "";
+    background-color: #f8d3dc2d;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all .3s ease-in-out;
+}
+
+
+
+
+.container:has(.card-1:hover){
+    grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+}
+
+.container:has(.card-2:hover){
+    grid-template-columns: 1fr 3fr 1fr 1fr 1fr;
+}
+
+.container:has(.card-3:hover){
+    grid-template-columns: 1fr 1fr 3fr 1fr 1fr;
+}
+
+.container:has(.card-4:hover){
+    grid-template-columns: 1fr 1fr 1fr 3fr 1fr;
+}
+
+.container:has(.card-5:hover){
+    grid-template-columns: 1fr 1fr 1fr 1fr 3fr;
+}
+
+.card-1:hover, .card-2:hover, .card-3:hover, .card-4:hover, .card-5:hover{
+    box-shadow: #f8d3dc 0px -10px 50px inset;
+    filter: grayscale(0);
+}
+
+.card:hover .card_content{
+    position: absolute;
+    top: 210px;
+    left: 20px;
+    color: #fff;
+}
+
+.card:hover::after{
+    opacity: 0;
+}
+
+#arriba {
+    position: fixed;
+    bottom: 4px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: #f4bdc9;
+    color: #333;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family:"Didact Gothic", sans-serif; 
+
+}
+@media screen and (max-width: 756px)
+{
+    #subbarra
+    {
+        font-size: 1.3vw;
+    }
+    #barrabajo
+    {
+        height: 50px;
+        /*border: 1px solid black;*/
+        display: grid;
+        grid-template-columns: 0.91fr  1fr 1fr;
+        grid-template-areas: 
+        "primero tercero cuarto";
+        text-align: center;
+        align-items: center;
+        font-family:"Didact Gothic", sans-serif;    
+        font-size: 2vw;
+    }
+
+    #iconos a i
+    {
+        margin-left: 10px;
+        margin-right: 15px !important;
+        font-size: 2vw !important;
+        
+    }
+    #carrito
+    {
+        margin-left: 0px;
+        font-size: 2vw !important;
+    }
+    header
+    {
+        font-size: calc(0.8vw + 8px);
+        text-align: center;
+        align-items: center;
+        color: #333;
+        background-color: #f8d3dc;
+        display: grid;
+        grid-template-columns: 0.9fr 0.9fr 0.9fr 1.4fr 1.2fr 0.8fr 1fr;
+        grid-template-areas: 
+        "uno dos tres cuatro cinco seis siete";
+    }
+    #Imagen img
+    {
+        height: calc(1vw + 45px);
+    }
+    #Ped_Esp
+    {
+        margin-left: 5px;
+    }
+    #Blog
+    {
+        margin-left: -18px;
+    }
+    #Contactanos
+    {
+        margin-left: -16px;
+    }
+    #ultima_seccion
+    {
+        margin-top: -8%;
+        height: 360px;
+    }
+    #pri_secc_foo
+    {
+        margin-left: 2%;
+        padding-top: 2%;
+        display: grid;
+        grid-template-columns: 0.5fr 0.2fr 0.2fr 0.2fr;
+    }
+    #logos_foo
+    {
+        margin-left: -140px;
+    }
+    #logo2
+    {
+        height: 80px !important;
+        width: 90px !important;
+    }
+    #libro_reclamaciones
+    {
+        height: 70px !important;
+        width: 90px !important;
+    }
+    #contenido_footer
+    {
+        margin-left: -129px;
+    }
+    #redes_sociales
+    {
+        margin-top: 40px;
+        margin-left: -129px;
+    }
+    #contenido_footer h2, #redes_sociales h2, #Telefonos h2
+    {
+        font-size: calc(1vw + 7px) !important;
+    }
+    #contenido_footer ul li, #redes_sociales ul li, #Telefonos ul li
+    {
+        font-size: calc(1vw + 6px) !important;
+    }
+    #redes_sociales p a
+    {
+        font-size: calc(1vw + 7px) !important;
+    }
+    #seg_secc_foo
+    {
+        margin-left: 5%;
+        
+    }
+
+    #seg_secc_foo h2{
+        font-size: calc(1vw + 5px);
+        
+    }
+    #arriba {
+        position: fixed;
+        bottom: calc(1vw - 0px);
+        font-size: calc(1vw + 5px);
+    }
+
+    #titulo h1
+    {
+        font-size: 5vw;
+    }
+    #titulo h2
+    {
+        font-size: 1.8vw;
+        padding: 2vh 2vh;
+    }
+    .imagen_1
+    {
+        display: none;
+    }
+    #primer_espacio
+    {
+        grid-template-columns: 1fr 1fr;
+        gap: 5px;
+        text-align: center;
+        margin-right: 6%;
+        margin-top: 4vh;
+        height: auto;
+    }
+    .imagen_2 
+    {
+        text-align: center;
+    }
+    .imagen_2 img
+    {
+        margin-top: 1.7vh;
+        height: 42vw;
+    }
+    .descripcion
+    {
+        padding-top: 0;
+        margin-left: 8vh;
+        margin-bottom: 1vh;
+    }
+    .titulo h1
+    {
+        font-size: 3.8vw;
+        margin-bottom: 2vh;
+    }
+    .descripcion p
+    {
+        font-family:"Didact Gothic", sans-serif; 
+        font-size: 2.1vw;
+        text-align: justify;
+        word-spacing: 0;
+    }
+    #cont_2
+    {
+        margin-left: 1vh;
+        margin-right: 1vh;
+        gap: 1;
+    }
+    #imagen_form
+    {
+        padding: 20px 0vh;
+        padding-top: 13%;
+    }
+    #imagen_form img
+    {
+        height: 50vw;
+        border: 10px outset #f8f0f0;
+        margin-left: 0px;
+    }
+    #formulario
+    {
+        margin-right: 0% ;
+        margin-left: 0%;
+        width: 45vw;
+    }
+    #formulario form h1
+    {
+        font-size: 2.5vw;
+    }
+    #formulario form p
+    {
+        font-size: 1.4vw;
+    }
+    #formulario form label
+    {
+        font-size: 1.4vw;
+    }
+    #formulario form input, select
+    {
+        font-size: 1.4vw;
+        width: 90%;
+        margin-top: 3%;
+        margin-bottom: 3%;
+    }
+    input[type="date"] ,select
+    {
+        margin-bottom: 20px !important ;
+    }
+    .citaa
+    {
+        margin-left: 0%;
+    }
+    .citaa select
+    {
+        font-size: 1.4vw;
+        width: 93% !important;
+        margin-top: 3%;
+        margin-bottom: 3%;
+    }
+    #formulario form button
+    {
+        margin-left: 25%;
+        margin-right: 12%;
+        width: 24vw;
+        text-align: center;
+        font-size: 1.4vw;
+    }
+    #imagen_form img:hover
+    {
+        transform: translateX(-20px); 
+    }
+    .wrapper
+    {
+        height: 20vh;
+        padding-top: 8vh;
+        padding-bottom: 20vh;
+        overflow: hidden;
+        margin-left: 0px;
+        
+    }
+    .container{
+        width:62vh;
+        
+        height: 37vh;
+    }
+}
+@media screen and (min-width: 757px) and (max-width: 1023px)
+{
+    #subbarra
+    {
+        font-size: 1.5vw !important;
+    }
+    #barrabajo
+    {
+        grid-template-columns: 0.91fr  1fr 1fr !important;
+        grid-template-areas: 
+        "primero tercero cuarto";
+        font-size: 1.9vw;
+    }
+    #iconos a i
+    {
+        margin-left: 18px;
+        margin-right: 15px !important;
+        font-size: 1.9vw!important;
+        
+    }
+    #carrito
+    {
+        margin-left: 35px;
+    }
+    header
+    {
+        font-size: calc(1vw + 8px);
+        display: grid;
+        grid-template-columns: 0.9fr 0.9fr 0.9fr 1.4fr 1.2fr 0.8fr 1fr;
+        grid-template-areas: 
+        "uno dos tres cuatro cinco seis siete";
+    }
+    #Imagen img
+    {
+        height: calc(1vw + 70px);
+    }
+    #Ped_Esp
+    {
+        margin-left: 20px;
+    }
+    #Blog
+    {
+        margin-left: -10px;
+    }
+    #Contactanos
+    {
+        margin-left: -18px !important;
+    }
+    #ultima_seccion
+    {
+        margin-top: -10px;
+        height: 44vw;
+    }
+    #pri_secc_foo
+    {
+        margin-left: 2%;
+        padding-top: 2%;
+        margin-right: 2%;
+        display: grid;
+        grid-template-columns: 0.2fr 0.34fr 0.35fr 0.3fr;
+    }
+    #logos_foo
+    {
+        margin-left: -0px;
+    }
+    #logo2
+    {
+        height: 13vw !important;
+        width: auto !important;
+    }
+    #libro_reclamaciones
+    {
+        height: 10vw !important;
+        width: 14vw !important;
+    }
+    #contenido_footer
+    {
+        margin-left: 0px;
+    }
+    #redes_sociales
+    {
+        margin-top: 0px;
+        margin-left: 0px;
+    }
+    #contenido_footer h2, #redes_sociales h2, #Telefonos h2
+    {
+        font-size: calc(1vw + 7px) !important;
+    }
+    #contenido_footer ul li, #redes_sociales ul li, #Telefonos ul li
+    {
+        font-size: calc(1vw + 6px) !important;
+    }
+    #redes_sociales p a
+    {
+        font-size: calc(1vw + 7px) !important;
+    }
+    #Telefonos
+    {
+        margin-left: 0px;
+    }
+    #seg_secc_foo
+    {
+        margin-left: 5%;
+    }
+
+    #seg_secc_foo h2{
+        font-size: calc(1vw + 5px);
+        
+    }
+    #arriba {
+        position: fixed;
+        bottom: calc(1vw - 0px);
+        font-size: calc(1vw + 5px);
+    }
+    #subbarra
+    {
+        font-size: 2vw;
+    }
+    #titulo h1
+    {
+        font-size: 3.9vh;
+    }
+    #titulo h2
+    {
+        font-size: 1.7vw;
+        padding: 2vh 2vh;
+    }
+    .imagen_2
+    {
+        display: none;
+    }
+    #primer_espacio
+    {
+        grid-template-columns: 1fr 1fr;
+        gap: 5px;
+        margin-right: 3%;
+        margin-top: 0vh;
+    }
+    .imagen_1 
+    {
+        text-align: center;
+    }
+    .imagen_1 img
+    {
+        margin-top: 3vh;
+        height: 35vw;
+    }
+    .descripcion
+    {
+        padding-top: 2vh;
+        margin-left: 13vh;
+        margin-bottom: 0;
+    }
+    .titulo h1
+    {
+        font-size: 2.8vw;
+    }
+    .descripcion p
+    {
+        font-family:"Didact Gothic", sans-serif; 
+        font-size: 1.9vw;
+        text-align: justify;
+        word-spacing: 0;
+    }
+    #cont_2
+    {
+        margin-left: 4%;
+        margin-right: 4%;
+        gap: 0px;
+    }
+    #imagen_form
+    {
+        padding: 35px 4vh;
+        padding-top: 13%;
+    }
+    #imagen_form img
+    {
+        height: 50vw;
+        border: 10px outset #f8f0f0;
+        margin-left: -40px;
+    }
+    #formulario
+    {
+        margin-right: 20%;
+        margin-left: 0%;
+        width: 45vw;
+    }
+    #formulario form h1
+    {
+        font-size: 2.5vw;
+    }
+    #formulario form p
+    {
+        font-size: 1.4vw;
+    }
+    #formulario form label
+    {
+        font-size: 1.4vw;
+    }
+    #formulario form input, select
+    {
+        font-size: 1.4vw;
+        width: 90%;
+        margin-top: 3%;
+        margin-bottom: 3%;
+    }
+    input[type="date"] ,select
+    {
+        margin-bottom: 20px !important ;
+    }
+    .citaa
+    {
+        margin-left: 0%;
+    }
+    .citaa select
+    {
+        font-size: 1.4vw;
+        width: 96% !important;
+        margin-top: 3%;
+        margin-bottom: 3%;
+    }
+    #formulario form button
+    {
+        margin-left: 25%;
+        margin-right: 12%;
+        width: 24vw;
+        text-align: center;
+        font-size: 1.4vw;
+    }
+    #imagen_form img:hover
+    {
+        transform: translateX(-20px); 
+    }
+    .wrapper
+    {
+        height: 20vh;
+        padding-top: 10%;
+        padding-bottom: 23%;
+    }
+    .container{
+        max-width:80vh;
+        height: 45vh;
+    }
+    
+}
+@media screen and (min-width: 1024px) and (max-width: 1524px)
+{
+    #barrabajo
+    {
+        grid-template-columns: 0.91fr  1fr 1fr !important;
+        grid-template-areas: 
+        "primero tercero cuarto";
+        font-size: calc(1vw + 8px);
+    }
+    #ini-ses a
+    {
+        font-size: 1.2rem;
+    }
+    #iconos a i
+    {
+        margin-left: 18px;
+        margin-right: 15px !important;
+        font-size: 1.2rem !important;
+        
+    }
+    #carrito
+    {
+        margin-left: 35px;
+        font-size: 1.2rem;
+    }
+    header
+    {
+        font-size: calc(1vw + 8px);
+        display: grid;
+        grid-template-columns: 0.9fr 0.9fr 0.9fr 1.4fr 1.2fr 0.8fr 1fr;
+        grid-template-areas: 
+        "uno dos tres cuatro cinco seis siete";
+    }
+    #Imagen img
+    {
+        height: calc(1vw + 70px);
+    }
+    #Ped_Esp
+    {
+        margin-left: 20px;
+    }
+    #Blog
+    {
+        margin-left: -10px;
+    }
+    #Contactanos
+    {
+        margin-left: -18px !important;
+    }
+    #ultima_seccion
+    {
+        margin-top: -10px;
+        height: 38vw;
+    }
+    #pri_secc_foo
+    {
+        margin-left: 2%;
+        padding-top: 2%;
+        margin-right: 2%;
+        display: grid;
+        grid-template-columns: 0.26fr 0.34fr 0.35fr 0.3fr;
+    }
+    #logos_foo
+    {
+        margin-left: -0px;
+    }
+    #logo2
+    {
+        height: 13vw !important;
+        width: auto !important;
+    }
+    #libro_reclamaciones
+    {
+        height: 10vw !important;
+        width: 14vw !important;
+    }
+    #contenido_footer
+    {
+        margin-left: 0px;
+    }
+    #redes_sociales
+    {
+        margin-top: 0px;
+        margin-left: 0px;
+    }
+    #contenido_footer h2, #redes_sociales h2, #Telefonos h2
+    {
+        font-size: calc(1vw + 7px) !important;
+    }
+    #contenido_footer ul li, #redes_sociales ul li, #Telefonos ul li
+    {
+        font-size: calc(1vw + 6px) !important;
+    }
+    #redes_sociales p a
+    {
+        font-size: calc(1vw + 7px) !important;
+    }
+    #Telefonos
+    {
+        margin-left: 0px;
+    }
+    #seg_secc_foo
+    {
+        margin-left: 5%;
+    }
+
+    #seg_secc_foo h2{
+        font-size: calc(1vw + 5px);
+        
+    }
+    #arriba {
+        position: fixed;
+        bottom: calc(1vw - 0px);
+        font-size: 1.6vw;
+    }
+    #subbarra
+    {
+        font-size: 1vw !important;
+    }
+    #titulo h1
+    {
+        font-size: 5vh;
+    }
+    #titulo h2
+    {
+        font-size: 1.7vw;
+        padding: 2vh 2vh;
+    }
+    
+    #primer_espacio
+    {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 7px;
+        margin-right: 4%;
+        margin-left: 4%;
+    }
+    .imagen_1 img
+    {
+        width: 35vh;
+        height: 45vh;
+        margin-left: 7vh;
+    }
+    .imagen_2 
+    {
+
+        text-align: center;
+        padding-top: 13vh;
+    }
+    .imagen_2 img
+    {
+        
+        width: 32vh;
+        height: 42vh;
+
+    }
+    .descripcion
+    {
+        padding-top: 0;
+        margin-left: 5vh;
+        margin-bottom: 0;
+    }
+    .titulo h1
+    {
+        font-size: 2.8vw;
+    }
+    .descripcion p
+    {
+        font-family:"Didact Gothic", sans-serif; 
+        font-size: 1.9vw;
+        text-align: justify;
+        word-spacing: 0;
+    }
+    #cont_2
+    {
+        margin-left: 4%;
+        margin-right: 4%;
+        gap: 0px;
+    }
+    #imagen_form
+    {
+        padding: 35px 4vh;
+        padding-top: 13%;
+    }
+    #imagen_form img
+    {
+        height: 48vw;
+        border: 10px outset #f8f0f0;
+        margin-left: -40px;
+    }
+    #formulario
+    {
+        margin-right: 40% !important; 
+        margin-left: 3%;
+        width: 45vw;
+    }
+    #formulario form h1
+    {
+        font-size: 2.5vw;
+    }
+    #formulario form p
+    {
+        font-size: 1.4vw;
+    }
+    #formulario form label
+    {
+        font-size: 1.4vw;
+    }
+    #formulario form input, select
+    {
+        font-size: 1.4vw;
+        width: 96%;
+        margin-top: 3%;
+        margin-bottom: 3%;
+    }
+    input[type="date"]
+    {
+       
+        margin-top: 5% !important;
+    }
+    .citaa
+    {
+        margin-left: 0%;
+    }
+    .citaa select
+    {
+        font-size: 1.4vw;
+        width: 100%;
+        margin-top: 3%;
+        margin-bottom: 3%;
+    }
+    #formulario form button
+    {
+        margin-left: 25%;
+        margin-right: 12%;
+        width: 24vw;
+        text-align: center;
+        font-size: 1.4vw;
+    }
+    #imagen_form img:hover
+    {
+        transform: translateX(-20px); 
+    }
+    .wrapper
+    {
+        height: 20vh;
+        padding-top: 13vh;
+        padding-bottom: 30vh;
+    }
+    .container{
+        width:100vh;
+        height: 54vh;
+    }
+}

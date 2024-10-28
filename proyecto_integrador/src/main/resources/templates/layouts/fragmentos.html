@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+    <html lang="es">
+        <head th:fragment="cabecera">
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <!--TITULO-->
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+            <!--TEXTOS-->
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+            <!--SUBTITULOS-->
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Didact+Gothic&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+            <!--ICONOS-->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+            <!--ICONO-IMAGEN-->
+            <link rel="icon" href="/path/to/icon.png"> <!-- Cierra el atributo con el href correcto -->
+            
+        </head>
+        
+    <body>
+        <div id="subbarra" th:fragment="subbarra">
+            Realizamos las entregas con nuestro servicio particular de delivery
+        </div>
+        
+        <div id="barrabajo" th:fragment="barrabajo">
+            <div id="ini-ses">
+                <a th:href="@{/login/}" class="text_barra"><i class="fas fa-user"></i> Iniciar Sesion</a>
+            </div>
+            <div id="iconos">
+                <a href="https://www.facebook.com" target="_blank" class="text_barra">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.twitter.com" target="_blank" class="text_barra">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com" target="_blank" class="text_barra">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            <div id="carrito">
+                <a th:href="@{/tienda/}" class="text_barra"><i class="fas fa-shopping-cart"></i>  Carrito</a>
+            </div>
+        </div>
+        <header th:fragment="header">
+            <div id="Nosotros">
+                <a th:href="@{/nosotros/}" class="text_barra">Nosotros</a>
+            </div>
+            <div id="tiendas">
+                <a th:href="@{/tienda/}" class="text_barra">Tienda</a>
+            </div>
+            
+            <div id="Novias">
+                <a th:href="@{/novias/}" class="text_barra">Novias</a>
+            </div>
+            <div id="Imagen">
+                <a th:href="@{/Pagina_principal}" class="text_barra"> <img th:src="@{/img/logo_principal.jpg}" alt="imagen"></a>
+            </div>
+            <div id="Ped_Esp">
+                <a th:href="@{/pedidos_especiales/}" class="text_barra">Pedidos Especiales</a>
+            </div>
+            <div id="Blog">
+                <a href="#" class="text_barra">Blog</a>
+            </div>
+            <div id="Contactanos">
+                <a th:href="@{/contactanos/}" class="text_barra">Contactanos</a>
+            </div>
+        </header>
+        <footer id="ultima_seccion" th:fragment="footer" >
+            <div id="pri_secc_foo">
+                <div id="logos_foo">
+                    <a th:href="@{/templates/MenuPrincipal.html}"><img th:src="@{/img/logo2.jpg}" alt="logo_2" id="logo2"></a>
+                    <a href="#"><img th:src="@{/img/libro_reclamaciones.png}" alt = "libro_reclamaciones" id="libro_reclamaciones"></a>
+                </div>
+                <div id="contenido_footer">
+                    <h2>Marcas con las que trabajamos</h2>
+                    <ul> 
+                        <li>Blanca Flor</li>
+                        <li>Sello de Oro</li>
+                        <li>Dulfina</li>
+                        <li>UmSha</li>
+                        <li>Fratello</li>
+                        <li>La Calera</li>
+                    </ul>
+                </div>
+                <div id="redes_sociales">
+                    <h2>Redes Sociales</h2>
+                    <ul> 
+                        <li> Facebook <a href="https://www.facebook.com" target="_blank" class="text_barra">
+                            <i class="fab fa-facebook-f"></i> </a>
+                        </li> 
+                        <li> Instagram  <a href="https://www.instagram.com" target="_blank" class="text_barra">
+                            <i class="fab fa-instagram"></i>
+                        </a></li>
+                        <li>Twitter <a href="https://www.twitter.com" target="_blank" class="text_barra">
+                            <i class="fab fa-twitter"></i></a>
+                        </li> 
+                    </ul>
+                    <h2>Quieres trabajar con nosotros</h2>
+                    <p><a href="https://www.gmail.com" target="_blank" id="cv" >Envianos tu cv a pabluki_bakadmin@gmail.com</a></p>
+                </div>
+                <div id="Telefonos">
+                    <h2>Nuestros teléfonos de la empresa</h2>
+                    <ul> 
+                        <li>916193328</li>
+                        <li>902009426</li>
+                    </ul>
+                    <h2>Ubicacion</h2>
+                    <ul> 
+                        <li>Av. Ignacio Merino 2323, Lince 15046</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div id="seg_secc_foo">
+                <h2>© 2021 Pabluki's Bakery. Todos los Derechos Reservados.</h2>
+            </div>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <th:block th:include="layouts/fragmentos :: cabecera"></th:block>    
+        <link th:href="@{/css/tienda.css}" rel="stylesheet">
+        <title>Tienda | Pabluki's Bakery  </title>
+    </head>
+    <body>
+        <div th:replace="layouts/fragmentos :: subbarra">
+        </div>
+        <div id="barrabajo" th:replace="layouts/fragmentos :: barrabajo"> 
+        </div>
+        <header th:replace = "layouts/fragmentos :: header">
+        </header>
+        
+        <main>
+            <div id="tienda">
+                <div id="cont_izq">
+                    <div id="filtro_1">
+                        <h1>Filtros</h1>
+                        <div id="sub_filtros">
+                            <a href="#" onclick="cambiarContenido('clasicas')">Tortas Clásicas</a>
+                            <a href="#" onclick="cambiarContenido('especiales')">Tortas Especiales</a>
+                            <a href="#" onclick="cambiarContenido('velas')">Velas</a>
+                            <hr>
+                            <a th:href="@{/novias/}">Pedidos Novias</a>
+                            <a th:href="@{/pedidos_especiales/}">Pedidos Especiales</a>
+                        </div>
+                    </div>
+                    <div id="pub">
+                        <h1>¿Próxima a casarte?</h1>
+                        <hr>
+                        <img th:src="@{/img/imagenes_tienda/torta_novia_tienda.jpeg}" alt="torta_novia">
+                        <p>¡Haz de tu boda un momento inolvidable con una torta diseñada a medida en Pabluki's Bakery! Ofrecemos sabores 
+                            deliciosos y elegantes diseños que reflejan tu estilo único. Permítenos ser parte de tu historia y crear la 
+                            torta de tus sueños. ¡Contáctanos hoy!
+                        </p>
+                    </div>
+                </div>
+                <div id="cont_der">
+                    <div class="filtro">
+                            <select id="pasteles" name="pasteles">
+                                <option value="General">Todas las opciones</option>
+                                <option value="Mas_pedidas">Las mas pedidas</option>
+                                <option value="Mayor_precio">Mayor Precio</option>
+                                <option value="Menor_precio">Menor Precio</option>
+                                
+                            </select>
+                    
+                            <button id="toggleView">Cambiar vista</button>
+                    </div>
+                    <h1 class="titulos_tienda" id="titulo">Tortas Clásicas</h1>
+                    <div id="productContainer" class="grid-view">
+
+                    </div>
+                    <div id="botones_cambio">
+                        <button value="uno" onclick="cambiarContenido('clasicas')">1</button>
+                        <button value="dos" onclick="cambiarContenido('especiales')">2</button>
+                        <button value="tres" onclick="cambiarContenido('velas')">3</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <a href="#top" id="arriba">Ir al Inicio</a>
+        <footer id="ultima_seccion" th:replace="/layouts/fragmentos :: footer">
+        </footer>
+    </body>
+    <script th:src="@{/js/tienda_1.js}"></script>
+    <script th:src="@{/js/boton_tienda.js}"></script>
+</html>

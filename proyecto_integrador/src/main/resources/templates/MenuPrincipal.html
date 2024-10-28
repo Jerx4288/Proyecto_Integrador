@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <th:block th:include="layouts/fragmentos :: cabecera"></th:block>
+        <title>Index | Pabluki's Bakery</title>
+        <link th:href="@{/css/pagina_principal.css}" rel="stylesheet">
+    </head>
+    <body>
+        <div th:replace="layouts/fragmentos :: subbarra">
+        </div>
+        <div id="barrabajo" th:replace="layouts/fragmentos :: barrabajo"> 
+        </div>
+        <header th:replace = "layouts/fragmentos :: header">
+        </header>
+        
+        <main>
+            <div id="carrusel">
+                <div class="diapo">
+                    <div class="slide" id="slide1"><img th:src="@{/img/fondo_1.jpg}" alt="fondo_1"></div>
+                    <div class="slide" id="slide2"><img th:src="@{/img/fondo_2.jpg}" alt="fondo_2"></div>
+                    <div class="slide" id="slide3"><img th:src="@{/img/fondo_3.jpg}" alt="fondo_3"></div>
+                </div>
+                <button class="atras" onclick="previousSlide()">&#10094;</button>
+                <button class="siguiente" onclick="nextSlide()">&#10095;</button>
+            </div>
+            
+            <div id="mas_pedidos">
+                <h1>¡Los m&aacutes pedidos!</h1>
+                <h2>Las favoritas de nuestros #Pablukilovers <br> Disponibles en una variedad de tamaños y sabores.</h2>
+                <div id="tortas_pagprin">
+                    <div id="carrot_cake">
+                        <img th:src="@{/img/carrot-cake.jpg}" alt="carrot-cake">
+                        <div class="capa">
+                            <a th:href="@{/templates/Tienda.html}" id="carrot_ver"></a>
+                        </div>
+                        <h2>Carrot Cakes</h2>
+                        <p>Desde 20 soles</p> 
+                    </div>
+                    <div id="torta_chocolate">
+                        <img th:src="@{/img/torta-chocolate.jpg}" alt="torta-chocolate">
+                        <div class="capa">
+                            <a th:href="@{/templates/Tienda.html}"  id="novia_ver"></a>
+                        </div>
+                        <h2>Tortas de Chocolate</h2>
+                            <p>Desde 15 soles</p>
+                    </div>
+                    <div id="novia">
+                        <img th:src="@{/img/novia4.jpg}" alt="novia">
+                        <div class="capa">
+                            <a th:href="@{/templates/Tienda.html}"  id="novia_ver"></a>
+                        </div>
+                        <h2>Tortas de Novia</h2>
+                        <p>Desde 140 soles</p> 
+                    </div>
+                    <div id="personalizada">
+                        <img th:src="@{/img/personalizada2.jpg}" alt="personalizada">
+                        <div class="capa">
+                            <a th:href="@{/templates/Tienda.html}"  id="perso_ver"></a>
+                        </div>
+                        <h2>Tortas Personalizadas</h2>
+                        <p>Desde 120 soles</p> 
+                    </div>
+                </div>
+            </div>
+            <div id="tercera_seccion">
+                <div id="ts1">
+                    <img th:src="@{/img/uu.jpg}" alt="imagen1">
+                    <div class="txt">
+                        <p id="tit">¡Cada pastel en Pabluki's Bakery es tan único como tú!</p><br>
+                        <p id="tex">
+                        ¿Próxima a casarte, celebrar un bautizo o planeando una fiesta temática? Cuéntanos cómo sueñas tu evento, 
+                            y nosotros crearemos el pastel perfecto para tu ocasión especial. En Pabluki's Bakery, personalizamos cada 
+                            pedido para que tu celebración sea inolvidable.</p>
+                    </div>
+                </div>
+                <div id="ts2">
+                    <img th:src="@{/img/Vintage Cakes — Rose Vanilla.jpeg}" alt="imagen2">
+                    <img th:src="@{/img/Vintage Cakes 2 — Rose Vanilla.jpeg}" alt="imagen2">
+                    <img th:src="@{/img/BLOG — Rose Vanilla.jpeg}" alt="imagen2">
+                    <img th:src="@{/img/BLOG 2 — Rose Vanilla.jpeg}" alt="imagen2">
+                </div>
+            </div>
+            <div id="cuarta_seccion">
+                <div id="text_velas">
+                    <h1>Dulce Luz para Cada Celebración: Velas Exclusivas de Pabluki's Bakery</h1>
+                    <p>Añade un toque especial a tus celebraciones con las velas artesanales de Pabluki's Bakery. 
+                        Hechas con cera de alta calidad y fragancias encantadoras, nuestras velas complementan a la 
+                        perfección nuestros pasteles y hacen que cada momento sea más memorable</p>
+                    <button>Ver todos los productos</button>
+                </div>
+                <div id="imagenes_velas">
+                    <div class="diapositivas">
+                        <span style="--i:0"><img th:src="@{/img/vela1.jpeg}" alt="vela 1"></span>
+                        <span style="--i:1"><img th:src="@{/img/velas2.jpeg}" alt="vela 2"></span>
+                        <span style="--i:2"><img th:src="@{/img/vela3.jpeg}" alt="vela 3"></span>
+                        <span style="--i:3"><img th:src="@{/img/velas4.jpeg}" alt="vela 4"></span>
+                        <span style="--i:4"><img th:src="@{/img/velas5.jpg}" alt="vela 5"></span>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+        <a href="#top" id="arriba">Ir al Inicio</a>
+        <footer id="ultima_seccion" th:replace="/layouts/fragmentos :: footer">
+        </footer>
+        <script tH:src="@{/js/pagina_principal.js}"></script>
+    </body>
+</html>

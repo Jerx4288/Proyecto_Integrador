@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <th:block th:include="layouts/fragmentos :: cabecera"></th:block> 
+        <link th:href="@{/css/nosotros.css}" rel="stylesheet"> 
+        <title>Nosotros | Pabluki's Bakery  </title>
+    </head>
+    <body>
+        <div th:replace="layouts/fragmentos :: subbarra">
+        </div>
+        <div id="barrabajo" th:replace="layouts/fragmentos :: barrabajo"> 
+        </div>
+        <header th:replace = "layouts/fragmentos :: header">
+        </header>
+        <main>
+            <div id="titulo_linea">
+                <h1>Nuestra Historia</h1>
+                <h2>A lo largo de su trayectoria, Pabluki's Bakery ha evolucionado continuamente para convertirse 
+                    en la pastelería reconocida que es hoy, destacándose en el mercado de tortas gracias a su experiencia y 
+                    dedicación.</h2>
+            </div>
+            <div id="linea_tiempo">
+                <div class="contenedor izq-cont">
+                    <img th:src="@{/img/logo2.jpg}" alt="logo">
+                    <div class="texto">
+                        <h2>Fundación de Pabluki's Bakery</h2>
+                        <small>2004</small>
+                        <p>Pabluki's Bakery abre sus puertas como una tienda física dedicada a tortas artesanales, con un enfoque en calidad y atención personalizada.</p>
+                        <span class="izq-cont-arrow"></span>
+                    </div>
+                    <div id="imagenes_linea">
+                        <img th:src="@{/img/prueba.jpg}" alt="imagen">
+                    </div>
+                </div> 
+                
+                <div class="contenedor der-cont">
+                    <img th:src="@{/img/logo2.jpg}" alt="logo">
+                    <div class="texto">
+                        <h2>Expansión del menú</h2>
+                        <small>2007</small>
+                        <p>Se agregan nuevas opciones de postres tradicionales y personalizados, ampliando la oferta para satisfacer una mayor variedad de gustos.</p>
+                        <span class="der-cont-arrow"></span>
+                    </div>
+                    <div id="imagenes_linea_der">
+                        <img th:src="@{/img/prueba.jpg}" alt="imagen">
+                    </div>
+                </div> 
+                
+                <div class="contenedor izq-cont">
+                    <img th:src="@{/img/logo2.jpg}" alt="logo">
+                    <div class="texto">
+                        <h2>Remodelación de la tienda principal</h2>
+                        <small>2012</small>
+                        <p>La tienda física se moderniza y amplía su espacio para mejorar la experiencia del cliente y optimizar la producción de tortas.</p>
+                        <span class="izq-cont-arrow"></span>
+                    </div>
+                    <div id="imagenes_linea">
+                        <img th:src="@{/img/prueba.jpg}" alt="imagen">
+                    </div>
+                </div> 
+                <div class="contenedor der-cont">
+                    <img th:src="@{/img/logo2.jpg}" alt="logo">
+                    <div class="texto">
+                        <h2>Reconocimiento local</h2>
+                        <small>2016</small>
+                        <p>Pabluki's Bakery es reconocida como la mejor pastelería del barrio, destacándose por su atención al detalle y la calidad de sus productos.</p>
+                        <span class="der-cont-arrow"></span>
+                    </div>
+                    <div id="imagenes_linea_der">
+                        <img th:src="@{/img/prueba.jpg}" alt="imagen">
+                    </div>
+                    
+                </div> 
+                
+                <div class="contenedor izq-cont">
+                    <img th:src="@{/img/logo2.jpg}" alt="logo">
+                    <div class="texto">
+                        <h2>Apertura de una segunda tienda</h2>
+                        <small>2020</small>
+                        <p>Debido al éxito continuo, se inaugura una segunda tienda en una nueva ubicación, permitiendo atender a un mayor número de clientes en la ciudad.</p>
+                        <span class="izq-cont-arrow"></span>
+                    </div>
+                    <div id="imagenes_linea">
+                        <img th:src="@{/img/prueba.jpg}" alt="imagen">
+                    </div>
+                </div> 
+                <div class="contenedor der-cont">
+                    <img th:src="@{/img/logo2.jpg}" alt="logo">
+                    <div class="texto">
+                        <h2>Implementación de plataformas digitales</h2>
+                        <small>2024</small>
+                        <p>Pabluki's Bakery lanza su tienda en línea y comienza a ofrecer pedidos a través de plataformas digitales, facilitando el acceso a sus productos y adaptándose a las nuevas necesidades del mercado.</p>
+                        <span class="der-cont-arrow"></span>
+                    </div>
+                    <div id="imagenes_linea_der">
+                        <img th:src="@{/img/prueba.jpg}" alt="imagen">
+                    </div>
+                </div> 
+            </div>
+        </main>
+        <a href="#top" id="arriba">Ir al Inicio</a>
+        <footer id="ultima_seccion" th:replace="/layouts/fragmentos :: footer">
+        </footer>
+</body>
+</html>

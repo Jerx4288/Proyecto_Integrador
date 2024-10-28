@@ -1,0 +1,1819 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    scroll-behavior: smooth;
+    user-select: none;
+}
+header
+{
+    position: relative;
+    
+    font-family:"Didact Gothic", sans-serif;    
+    height: auto;
+    font-size: 25px;
+    text-align: center;
+    align-items: center;
+    color: #333;
+    background-color: #f8d3dc;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1.4fr 1.2fr 0.8fr 1fr;
+    grid-template-areas: 
+    "uno dos tres cuatro cinco seis siete";
+}
+#subbarra
+{
+    font-family:"Didact Gothic", sans-serif;
+    padding-top:10px;
+    padding-bottom: 10px;
+    text-align: center;
+    background-color: white;
+    font-size: 15px;
+}
+#principal
+{
+    grid-area: uno;
+}
+.text_barra
+{
+    text-decoration: none;
+    color: black !important;
+}
+.text_barra:hover
+{
+    color: white !important;
+}
+#Imagen img
+{
+  
+    width: auto;
+    height: 120px;
+}
+#Ped_Esp
+{
+    grid-area: cinco;
+    margin-left: 18px;
+}
+#Blog
+{
+    grid-area: seis;
+}
+#Contactanos
+{
+    grid-area: siete;
+}
+#barrabajo
+{
+    height: 50px;
+    /*border: 1px solid black;*/
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "primero segundo tercero cuarto";
+    text-align: center;
+    align-items: center;
+    font-family:"Didact Gothic", sans-serif;    
+    font-size: 15px;
+}
+#ini-ses
+{
+    grid-area: cuarto;
+    
+    
+}
+#ini-ses a i
+{
+    margin-right: 15px;
+    
+}
+
+#iconos a i{
+    margin-right: 50px;
+    font-size: 25px !important;
+    cursor: pointer;
+}
+#ini-ses a:hover, #carrito a:hover
+{
+    color: #e85e7c !important;
+}
+#iconos a i:hover, #ini-ses a i:hover{
+    color: #e85e7c;
+}
+
+#carrito
+{
+    grid-area: tercero;
+    margin-left: 150px;
+}
+#carrito a i{
+    margin-right: 15px;
+}
+body
+{
+    background-color: #f8f0f0;
+}
+#carrusel {
+    padding-top: 10px;
+    height: 600px;
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+#carrusel img
+{
+    width: 100%;
+    height: 610px;
+}
+#mas_pedidos
+{
+    padding-top: 50px;
+    text-align: center;
+    color: #333;
+    background-image: url('../img/fondo_mas_pedidos.jpg');
+    background-size: cover;
+    background-position: center;
+    
+}
+#mas_pedidos h1
+{
+    font-family: "Lobster Two", sans-serif;
+    font-size: 50px;
+    
+    font-weight: bold;
+}
+#mas_pedidos h2
+{
+    font-family:"Didact Gothic", sans-serif; 
+    line-height: 50px;
+    font-weight: normal !important;
+}
+#tortas_pagprin
+{
+    display: grid;
+    margin-left: 3.9%;
+    margin-right: 3%;
+    grid-template-columns:23vw 23vw 23vw 23vw;
+    grid-template-areas: 
+    "uno dos tres cuatro cinco";
+    column-gap: 10px;
+    
+}
+
+#carrot_cake img {
+    grid-area: uno;
+    width: 100%;
+    height: 320px;
+    padding-right: 20px;
+    transition: transform 500ms ease-out;
+}
+
+#torta_chocolate img
+{
+    grid-area: dos;
+    height: 320px;
+    width: 100%;
+    margin-left: 20px;
+    padding-right: 20px;
+    transition: transform 500ms ease-out;
+}
+#novia img
+{
+    grid-area: tres;
+    height: 320px;
+    transition: all 500ms ease-out;
+    margin-left: 15px;
+    
+    
+}
+#personalizada img
+{
+    grid-area: cuatro;
+    height: 320px;
+    transition: all 500ms ease-out;
+    margin-left: 0px !important;
+}
+#carrot_cake {
+    position:relative;
+    width: 360px;
+    height: auto;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 500ms ease-out;
+    padding-right: 20px;
+    font-family: "Didact Gothic", sans-serif; 
+}
+#torta_chocolate
+{
+    position:relative;
+    width: 360px;
+    height: auto;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 500ms ease-out;
+    padding-right: 40px;
+}
+
+#novia
+{
+    position:relative;
+    width: 360px;
+    height: auto;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 500ms ease-out;
+    padding-right: 40px;
+}
+#personalizada
+{
+    position:relative;
+    width: 360px;
+    height: auto;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 500ms ease-out;
+    
+}
+#carrot_cake .capa , #torta_chocolate .capa, #novia .capa, #personalizada .capa {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 353px;
+    background: rgba(240, 228, 241, 0.626);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 500ms ease-out;
+}
+
+#carrot_cake .capa a, #torta_chocolate .capa a, #novia .capa a, #personalizada .capa a {
+    color: #333;
+    font-weight: normal;
+    text-align: center;
+    font-family:"Didact Gothic", sans-serif;  
+    align-items: center;
+    background-color: #f8d3dc;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 20px;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+#carrot_cake p , #torta_chocolate p , #novia p , #personalizada p{
+    font-family:"Didact Gothic", sans-serif;  
+    font-weight: bold;
+}
+
+#carrot_cake:hover .capa, #torta_chocolate:hover .capa, #novia:hover .capa, #personalizada:hover .capa 
+{
+    opacity: 2 !important;
+    visibility: visible !important;
+}
+
+#carrot_cake:hover img, #torta_chocolate:hover img, #novia:hover img, #personalizada:hover img {
+    transform: scale(1.2) !important;
+}
+
+
+#tit_1
+{
+    margin-bottom: 90px;
+}
+
+
+#tit_1 a, #tit_2 a , #tit_3 a, #tit_4 a{
+    text-decoration: none;
+    color: #333;
+}
+
+#tit_1 a p, #tit_2 a p, #tit_3 a p, #tit_4 a p{
+    font-size: 18px;
+}
+
+#tit_1 a:hover, #tit_2 a:hover , #tit_3 a:hover, #tit_4 a:hover{
+    color: #e85e7c;
+}
+
+#ts1
+{
+    display: flex;
+    margin-top: 5%;
+    margin-left: 14.4%;
+    margin-right: 17%;
+    color: #333;
+}
+
+#ts1 img
+{
+    width: 1300px;
+    height: 360px;
+    margin-right: 7%;
+    border: 15px solid #f8d3dc;
+    border-radius: 30px;
+    margin-left: 60px;
+}
+
+#ts1 img:hover
+{
+    border: 15px solid #f4bdc9;
+}
+.txt
+{
+    text-align: center;
+}
+.txt #tit
+{
+    margin-top: 30px;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: "Lobster Two", sans-serif;
+    margin-bottom: -5px;
+}
+
+.txt #tex
+{
+    font-family:"Didact Gothic", sans-serif;  
+    line-height: 40px;
+    font-size: 25px;
+}
+#ts2
+{
+    margin-left: 17.4%;
+    margin-right: 11.3%;
+    margin-top: 30px;
+}
+#ts2 img
+{
+    width: auto;
+    height: 400px;
+    border: 15px solid #f8d3dc;
+    border-radius: 30px;
+    margin-right: 8.5px;
+}
+
+#ts2 img:hover
+{
+    border: 15px solid #f4bdc9;
+}
+
+#cuarta_seccion
+{
+    display: flex;
+    margin-top: 60px;
+    margin-bottom: 75px;
+}
+
+#text_velas
+{
+    margin-top: 30px;
+    margin-left: 14.4%;
+    text-align: center;
+    margin-right: 4%;
+    color: #333;
+}
+
+#text_velas h1{
+    font-family:"Lobster Two", sans-serif;
+    font-size: 40px;
+    margin-bottom: 5%;
+}
+
+#text_velas h1:hover, #tit:hover, #mas_pedidos h1:hover
+{
+    color: #f4bdc9;
+}
+
+#text_velas p
+{
+    font-family:"Didact Gothic", sans-serif;  
+    line-height: 45px;
+    font-size: 25px;
+    text-align: justify;
+}
+#imagenes_velas 
+{
+    height: 50vh;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+    float: right;
+    padding-right: 10%;
+    margin-top: 40px;
+    
+}
+
+.diapositivas {
+
+    position: relative;
+    width: 250px;
+    height: 250px;
+    transform-style: preserve-3d;
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: perspective(1000px) rotateY(0deg);
+    }
+    100% {
+        transform: perspective(900px) rotateY(360deg);
+    }
+}
+
+.diapositivas span {
+    color: #1A2130;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: rotateY(calc(var(--i) * 70deg)) translateZ(240px);
+}
+
+.diapositivas span img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+button{
+    width: 300px;
+    height: 50px;
+    font-size: 20px;
+    font-family:"Didact Gothic", sans-serif;
+    background-color: transparent;
+    border-color: #f4bdc9; 
+    background-color: #f4bdc9;
+    border-radius: 20px;
+}
+
+button:hover
+{
+    color: #f8f0f0;
+    border-color: #f8f0f0;
+}
+
+#ultima_seccion
+{
+    height: 420px;
+    width: auto;
+    background-color: #f8d3dc;
+    font-family:"Didact Gothic", sans-serif !important; 
+}
+
+#pri_secc_foo
+{
+    margin-left: 0%;
+    padding-top: 1%;
+    display: grid;
+    grid-template-columns: 25vw 25vw 25vw 24vw;
+}
+#logos_foo
+{
+    display: flex;
+    text-align: left !important;
+    flex-direction: column;
+    align-items: center;
+}
+
+#logos_foo img
+{
+    width: 160px;
+    height: 140px;
+}
+#logo2
+{
+    margin-bottom: 20px;
+}
+
+#libro_reclamaciones
+{
+    height: 100px !important;
+    width: 140px !important;
+    border-radius: 20px;
+}
+
+#contenido_footer
+{
+    margin-left: -60px;
+}
+
+#contenido_footer, #redes_sociales, #Telefonos
+{
+    text-align: left;
+    color: #333;
+}
+#redes_sociales
+{
+    margin-left: -90px;
+}
+#Telefonos
+{
+    margin-left: -108px;
+}
+
+#contenido_footer h2, #redes_sociales h2, #Telefonos h2{
+    font-family:"Didact Gothic", sans-serif;  
+    font-size: 25px !important;
+    
+}
+
+#contenido_footer ul li, #redes_sociales ul li, #Telefonos ul li
+{
+    font-size: 18px;
+    list-style-type: none;
+    line-height: 36px;
+    margin-left: -37px;
+}
+
+#contenido_footer ul li:hover, #redes_sociales ul li:hover, #Telefonos ul li:hover
+{
+    color: #f8f0f0;
+}
+#cv
+{
+    text-decoration: none; color: #333 !important; font-size: 18px;
+}
+
+#seg_secc_foo
+{
+    margin-left: 13.5%;
+}
+
+#seg_secc_foo h2{
+    font-size: 15px;
+    font-weight: none !important;
+    
+}
+hr
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#arriba {
+    position: fixed;
+    bottom: 15px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: #f4bdc9;
+    color: #333;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+
+}
+
+#carrot_ver::before, #perso_ver::before, #torta::before, #novia_ver::before {
+    content: "Ver más";
+  }
+
+
+.diapo 
+{
+    display: flex;
+    transition: transform 0.5s ease;
+    
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #333;
+    color: white;
+    font-size: 24px;
+    line-height: 200px;
+    height: 200px;
+    width: 300px;
+}
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.atras, .siguiente {
+    cursor: pointer;
+    position: absolute;
+    top: 52%;
+    width: auto;
+    padding: 16px;
+    padding-top: 12px !important;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    margin-left: 20px;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.siguiente {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+    margin-right: 20px;
+}
+
+.atras:hover, .siguiente:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+@media (max-width: 756px) {
+
+    #barrabajo
+    {
+        height: 50px;
+        /*border: 1px solid black;*/
+        display: grid;
+        grid-template-columns: 0.91fr  1fr 1fr;
+        grid-template-areas: 
+        "primero tercero cuarto";
+        text-align: center;
+        align-items: center;
+        font-family:"Didact Gothic", sans-serif;    
+        font-size: 15px;
+    }
+
+    #iconos a i
+    {
+        margin-left: 10px;
+        margin-right: 15px !important;
+        font-size: 1.2rem !important;
+        
+    }
+    #carrito
+    {
+        margin-left: 0px;
+    }
+    header
+    {
+        font-size: calc(0.8vw + 8px);
+        text-align: center;
+        align-items: center;
+        color: #333;
+        background-color: #f8d3dc;
+        display: grid;
+        grid-template-columns: 0.9fr 0.9fr 0.9fr 1.4fr 1.2fr 0.8fr 1fr;
+        grid-template-areas: 
+        "uno dos tres cuatro cinco seis siete";
+    }
+    #Imagen img
+    {
+        height: calc(1vw + 45px);
+    }
+    #Ped_Esp
+    {
+        margin-left: 5px;
+    }
+    #Blog
+    {
+        margin-left: -18px;
+    }
+    #Contactanos
+    {
+        margin-left: -16px;
+    }
+    #carrusel img 
+    {
+        width: 100%;
+        height: auto;  
+        max-height: 70vh;
+        object-fit: cover;
+    }
+    #mas_pedidos
+    {
+        padding-top: 10px;
+    }
+    #mas_pedidos h1
+    {
+        font-size: 24px;
+    }
+    #mas_pedidos h2
+    {
+        font-size: 15px;
+        line-height: 30px;
+        font-weight: normal !important;
+    }
+    #carrot_ver, #torta_ver, #novia_ver, #perso_ver
+    {
+        font-weight: bold !important;
+        font-size: 23px !important;
+    }
+    #carrot_ver::before {
+        content: "Carrot Cakes\A Desde S/20";
+        white-space: pre;
+    }
+    #perso_ver::before
+    {
+        content: "Tortas Personalizada\A Desde S/150";
+        white-space: pre;
+    }
+    #torta_ver::before
+    {
+        content: "Torta Chocolate\A Desde S/50";
+        white-space: pre;
+    }
+    #novia_ver::before 
+    {
+        content: "Tortas Novia\A Desde S/120";
+        white-space: pre;
+    }
+    #carrot_cake h2,  #carrot_cake p, #torta_chocolate h2,  #torta_chocolate p, #novia h2,  #novia p,  #personalizada h2,  #personalizada p 
+    {
+        display: none;
+    }
+    #tortas_pagprin
+    {
+        justify-content: space-around;
+        display: grid;
+        margin-left: 0% !important;
+        margin-right: 0% !important;
+        width: 100%; 
+        box-sizing: border-box;
+        grid-template-columns: 300px 300px;
+        grid-template-rows: 0.8fr 0.8fr;
+       grid-template-areas: "primero segundo"
+       "tercero cuarto";
+       column-gap: 0px;
+       row-gap: 15px;
+    }
+    #carrot_cake img {
+        grid-area: uno;
+        width: 180px;
+        height: 170px;
+
+    }
+    #torta_chocolate
+    {
+        height: auto;
+        width: 220px;
+        margin-left: 0px !important;
+        padding-right: 0px;
+        align-items: center;
+        align-content: center;
+        text-align: center;
+    }
+
+    #personalizada
+    {
+        width: 210px;
+    }
+    #torta_chocolate img
+    {
+        grid-area: dos;
+        width: 210px;
+        height: 170px;
+        padding-right: 0px;
+        margin-left: 0px;
+        transition: transform 500ms ease-out;
+    }
+    #novia img
+    {
+        grid-area: tres;
+        width: 180px;
+        height: 170px;
+        padding-right: 20px;
+        transition: all 500ms ease-out;
+        margin-left: 0px !important;
+        
+    }
+    #personalizada img
+    {
+        grid-area: cuatro;
+        width: 210px;
+        height: 170px;
+        transition: all 500ms ease-out;
+        
+    }
+    #carrot_cake .capa , #torta_chocolate .capa, #novia .capa, #personalizada .capa {
+        margin-left: -10px;
+    }
+    #novia .capa
+    {
+        margin-left: -10px !important;
+    }
+    #personalizada:hover .capa a,  #carrot_cake:hover .capa a, #torta_chocolate:hover .capa a, #novia:hover .capa a
+    {
+        margin-left: 0px !important;
+        font-size: calc(1vw  + 7px) !important;
+    }
+    #carrot_cake:hover .capa
+    {
+        opacity: 2 !important;
+        visibility: visible !important;
+        width: 162px;
+        margin-left: 90px;
+    }
+    #torta_chocolate:hover .capa
+    {
+        width: 190px;
+        margin-left: 16px !important;
+    }
+    #novia:hover .capa
+    {
+        width: 162px;
+        margin-left: 90px !important;
+    }
+    #personalizada:hover .capa 
+    {
+        width: 190px !important;
+        margin-left: 10px !important;
+    }
+    #carrot_cake:hover img, #torta_chocolate:hover img, #novia:hover img, #personalizada:hover img {
+        transform: scale(0.9) !important;
+    }
+    #mas_pedidos
+    {
+        height: 510px;
+    }
+    #ts1
+    {
+        align-items: center;
+        align-content: center;
+    }
+    #ts1 img
+    {
+        width: 210px !important;
+        height: 225px;
+        margin-right: 8%;
+        border-radius: 20px;
+        margin-left: -20px;
+    }
+    .txt #tit
+    {
+        margin-top: 0px;
+        font-size: 24px;
+        margin-bottom: -28px;
+    }
+
+    .txt #tex
+    {
+        line-height: 20px;
+        font-size: 15px;
+    }
+    .txt
+    {
+        margin-right: -30px;
+    }
+    #ts2
+    {
+        margin-left: 15%;
+        margin-right: 15%;
+        align-items: center;
+        text-align: center;
+        margin-top: 10px;
+    }
+    #ts2 img
+    {
+        width: 180px;
+        height: 230px;
+        border: 9px solid #f8d3dc;
+        border-radius: 15px;
+        margin-right: 5%;
+    }
+    #ts2 img:hover
+    {
+        border: 9px solid #f4bdc9;
+    }
+    #cuarta_seccion
+    {
+        display: flex;
+        flex-direction: column;
+    }
+    #text_velas
+    {
+        margin-top: -30px;
+        margin-left: 10%;
+        margin-right: 9%;
+    }
+    #text_velas h1
+    {
+        font-size: 5vw;
+        margin-bottom: 5%;
+    }
+
+    #text_velas p
+    {
+        font-size: 3vw;
+    }
+    button{
+        width: 250px;
+        height: 40px;
+        font-size: 2.6vw;
+        border-radius: 16px;
+    }
+    .diapositivas {
+        width: 160px;
+        height: 160px;
+    }
+    .diapositivas span {
+        transform: rotateY(calc(var(--i) * 70deg)) translateZ(150px);
+    }
+    #imagenes_velas 
+    {
+        margin-top: -60px;   
+        padding-right: 0px;
+    }
+    #ultima_seccion
+    {
+        margin-top: -8%;
+        height: 370px;
+    }
+    #pri_secc_foo
+    {
+        margin-left: 2%;
+        padding-top: 2%;
+        display: grid;
+        grid-template-columns: 0.5fr 0.2fr 0.2fr 0.2fr;
+    }
+    #logos_foo
+    {
+        margin-left: -140px;
+    }
+    #logo2
+    {
+        height: 80px !important;
+        width: 90px !important;
+    }
+    #libro_reclamaciones
+    {
+        height: 70px !important;
+        width: 90px !important;
+    }
+    #contenido_footer
+    {
+        margin-left: -129px;
+    }
+    #redes_sociales
+    {
+        margin-top: 40px;
+        margin-left: -129px;
+    }
+    #contenido_footer h2, #redes_sociales h2, #Telefonos h2
+    {
+        font-size: calc(1vw + 7px) !important;
+    }
+    #contenido_footer ul li, #redes_sociales ul li, #Telefonos ul li
+    {
+        font-size: calc(1vw + 6px) !important;
+    }
+    #redes_sociales p a
+    {
+        font-size: calc(1vw + 7px) !important;
+    }
+    #seg_secc_foo
+    {
+        margin-left: 5%;
+    }
+
+    #seg_secc_foo h2{
+        font-size: calc(1vw + 5px);
+        
+    }
+    #arriba {
+        position: fixed;
+        bottom: calc(1vw - 0px);
+        font-size: calc(1vw + 5px);
+    
+    }
+    #subbarra
+    {
+        font-size: calc(1vw + 7px);
+    }
+    #carrusel {
+        padding-top: 10px;
+        height: 28vh;
+        position: relative;
+        max-width: 100%;
+        margin: auto;
+        overflow: hidden;
+    }
+    .atras, .siguiente {
+        cursor: pointer;
+        position: absolute;
+        top: 52%;
+        width: 16px;
+        height: 30px;
+        padding: 16px;
+        padding-top: 1px !important;
+        padding-left: 9px !important;
+        margin-top: -16px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        margin-left: 10px;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .siguiente {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+        margin-right: 10px;
+    }
+    
+    
+}
+@media screen and (min-width: 757px) and (max-width: 1023px)
+    {
+        #barrabajo
+        {
+            grid-template-columns: 0.91fr  1fr 1fr !important;
+            grid-template-areas: 
+            "primero tercero cuarto";
+            font-size: calc(1vw + 8px);
+        }
+        #iconos a i
+        {
+            margin-left: 18px;
+            margin-right: 15px !important;
+            font-size: 1.2rem !important;
+            
+        }
+        #carrito
+        {
+            margin-left: 35px;
+        }
+        header
+        {
+            font-size: calc(1vw + 8px);
+            display: grid;
+            grid-template-columns: 0.9fr 0.9fr 0.9fr 1.4fr 1.2fr 0.8fr 1fr;
+            grid-template-areas: 
+            "uno dos tres cuatro cinco seis siete";
+        }
+        #Imagen img
+        {
+            height: calc(1vw + 70px);
+        }
+        #Ped_Esp
+        {
+            margin-left: 20px;
+        }
+        #Blog
+        {
+            margin-left: -10px;
+        }
+        #Contactanos
+        {
+            margin-left: -18px !important;
+        }
+        #carrusel {
+            padding-top: 10px;
+            height: 40vh;
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .atras, .siguiente {
+            cursor: pointer;
+            position: absolute;
+            top: 52%;
+            width: 16px;
+            height: 30px;
+            padding: 16px;
+            padding-top: 1px !important;
+            padding-left: 9px !important;
+            margin-top: -16px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            margin-left: 10px;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .siguiente {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+            margin-right: 10px;
+        }
+        .slide img {
+            width: 100% !important;
+            height: 40vh !important;
+            object-fit: cover; 
+        }
+        #mas_pedidos
+        {
+            padding-top: 16px;
+            
+        }
+        #mas_pedidos h1
+        {
+            font-size: 4vw;
+        }
+        #mas_pedidos h2
+        {
+            font-size: 2vw;
+        }
+        #carrot_ver, #torta_ver, #novia_ver, #perso_ver
+        {
+            font-weight: bold !important;
+            font-size: 10px !important;
+        }
+        #carrot_ver::before {
+            content: "Carrot Cakes\A Desde S/20";
+            white-space: pre;
+        }
+        #perso_ver::before
+        {
+            content: "Tortas Personalizada\A Desde S/150";
+            white-space: pre;
+        }
+        #torta_ver::before
+        {
+            content: "Torta Chocolate\A Desde S/50";
+            white-space: pre;
+        }
+        #novia_ver::before 
+        {
+            content: "Tortas Novia\A Desde S/120";
+            white-space: pre;
+        }
+        
+        #tortas_pagprin
+        {
+            justify-content: space-around;
+            display: grid;
+            margin-left: 0% !important;
+            margin-right: 0% !important;
+            width: 100%; 
+            box-sizing: border-box;
+            grid-template-columns: 300px 300px;
+            grid-template-areas: "primero segundo"
+            "tercero cuarto";
+            column-gap: 0px;
+            row-gap: 15px;
+        }
+        #carrot_cake img {
+            grid-area: uno;
+            width: 260px;
+            height: 240px;
+
+        }
+        #torta_chocolate
+        {
+            height: auto;
+            width: 330px;
+            margin-left: -35px;
+            padding-left: 0px;
+            align-items: center;
+            align-content: center;
+            text-align: center;
+        }
+
+        #personalizada
+        {
+            width: 310px;
+            margin-left: -25px;
+        }
+        #torta_chocolate img
+        {
+            grid-area: dos;
+            width: 270px !important;
+            height: 240px;
+            margin-left: 0px;
+            padding-right: 0px;
+            transition: transform 500ms ease-out;
+        }
+        #novia img
+        {
+            grid-area: tres;
+            width: 260px;
+            height: 240px;
+            padding-right: 20px;
+            transition: all 500ms ease-out;
+            margin-left: 0px !important;
+            
+        }
+        #personalizada img
+        {
+            grid-area: cuatro;
+            width: 260px;
+            height: 240px;
+            transition: all 500ms ease-out;
+            
+        }
+        #carrot_cake .capa , #torta_chocolate .capa, #novia .capa, #personalizada .capa {
+            margin-left: -10px;
+        }
+        #novia .capa,  #carrot_cake .capa, #torta_chocolate .capa, #personalizada .capa
+        {
+            display: none;
+        }
+        #personalizada:hover .capa a,  #carrot_cake:hover .capa a, #torta_chocolate:hover .capa a, #novia:hover .capa a
+        {
+            margin-left: 0px !important;
+            font-size: calc(1vw  + 7px) !important;
+        }
+        #carrot_cake:hover .capa
+        {
+            opacity: 2 !important;
+            visibility: visible !important;
+            width: 234px;
+            height: 24vw;
+            margin-left: 55px;
+        }
+        #torta_chocolate:hover .capa
+        {
+            width: 240px;
+            margin-left: 42px !important;
+        }
+        #novia:hover .capa
+        {
+            width: 240px;
+            margin-left: 50px !important;
+        }
+        #personalizada:hover .capa 
+        {
+            width: 240px !important;
+            margin-left: 37px !important;
+        }
+        #carrot_cake:hover img, #torta_chocolate:hover img, #novia:hover img, #personalizada:hover img {
+            transform: scale(0.9) !important;
+        }
+        #ts1 img
+        {
+            width: auto !important;
+            height: 26vh;
+            margin-right: 8%;
+            border-radius: 15px;
+            margin-left: -20px;
+            border: 7px solid #f8d3dc;
+        }
+        #ts1 img:hover
+        {
+            border: 7px solid #f4bdc9;
+        }
+        .txt #tit
+        {
+            margin-top: -4px;
+            font-size: 3vw;
+            margin-bottom: -5%;
+        }
+
+        .txt #tex
+        {
+            line-height: 3vw;
+            font-size: 2vw;
+        }
+        #ts2 img
+        {
+            width: 180px;
+            height: 230px;
+            border: 7px solid #f8d3dc;
+            border-radius: 15px;
+            margin-right: 5%;
+            margin-bottom: 10px;
+        }
+        #ts2 img:hover
+        {
+            border: 7px solid #f4bdc9;
+        }
+        #ts2
+        {
+            margin-left: 0%;
+            margin-right: 0%;
+            margin-top: 10px;
+            align-items: center;
+            text-align: center;
+        }
+        #cuarta_seccion
+        {
+            display: flex;
+            flex-direction: column;
+        }
+        #text_velas
+        {
+            margin-top: -30px;
+            margin-left: 10%;
+            margin-right: 9%;
+        }
+        #text_velas h1
+        {
+            font-size: 4.4vw !important;
+            margin-bottom: 5%;
+        }
+    
+        #text_velas p
+        {
+            font-size: 2vw;
+        }
+        button
+        {
+            width: 250px;
+            height: 40px;
+            margin-top: 1%;
+            font-size: 1.8vw;
+            border-radius: 16px;
+        }
+        .diapositivas {
+            width: 100% !;
+            height: 170px;
+        }
+        #imagenes_velas 
+        {
+            margin-top: 20px;   
+            padding-right: 0px;
+            width: 100%;
+            height: 35vw;
+        }
+        .diapositivas span img {
+            width: 30vw !important;
+            height: 30vw !important;
+            object-fit: cover; 
+        }
+        .diapositivas span {
+            color: #1A2130;
+            position: absolute;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            transform-origin: center;
+            transform-style: preserve-3d;
+            transform: rotateY(calc(var(--i) * 70deg)) translateZ(240px);
+        }
+        #ultima_seccion
+        {
+            margin-top: -10px;
+            height: 46vw;
+        }
+        #pri_secc_foo
+        {
+            margin-left: 2%;
+            padding-top: 2%;
+            margin-right: 2%;
+            display: grid;
+            grid-template-columns: 0.2fr 0.34fr 0.35fr 0.3fr;
+        }
+        #logos_foo
+        {
+            margin-left: -0px;
+        }
+        #logo2
+        {
+            height: 13vw !important;
+            width: auto !important;
+        }
+        #libro_reclamaciones
+        {
+            height: 10vw !important;
+            width: 14vw !important;
+        }
+        #contenido_footer
+        {
+            margin-left: 0px;
+        }
+        #redes_sociales
+        {
+            margin-top: 0px;
+            margin-left: 0px;
+        }
+        #contenido_footer h2, #redes_sociales h2, #Telefonos h2
+        {
+            font-size: calc(1vw + 7px) !important;
+        }
+        #contenido_footer ul li, #redes_sociales ul li, #Telefonos ul li
+        {
+            font-size: calc(1vw + 6px) !important;
+        }
+        #redes_sociales p a
+        {
+            font-size: calc(1vw + 7px) !important;
+        }
+        #Telefonos
+        {
+            margin-left: 0px;
+        }
+        #seg_secc_foo
+        {
+            margin-left: 5%;
+        }
+
+        #seg_secc_foo h2{
+            font-size: calc(1vw + 5px);
+            
+        }
+        #arriba {
+            position: fixed;
+            bottom: calc(1vw - 0px);
+            font-size: calc(1vw + 5px);
+        }
+        #subbarra
+        {
+            font-size: 2vw;
+        }
+}
+@media screen and (min-width: 1024px) and (max-width: 1524px)
+{
+    #subbarra
+    {
+        font-size: 1.7vw !important;
+    }
+    #barrabajo
+    {
+        grid-template-columns: 0.91fr  1fr 1fr !important;
+        grid-template-areas: 
+        "primero tercero cuarto";
+        font-size: calc(1vw + 8px);
+    }
+    #iconos a i
+    {
+        margin-left: 18px;
+        margin-right: 15px !important;
+        font-size: 1.2rem !important;
+        
+    }
+    #carrito
+    {
+        margin-left: 35px;
+    }
+    header
+    {
+        font-size: calc(1vw + 8px);
+        display: grid;
+        grid-template-columns: 0.9fr 0.9fr 0.9fr 1.4fr 1.2fr 0.8fr 1fr;
+        grid-template-areas: 
+        "uno dos tres cuatro cinco seis siete";
+    }
+    #Imagen img
+    {
+        height: calc(1vw + 70px);
+    }
+    #Ped_Esp
+    {
+        margin-left: 20px;
+    }
+    #Blog
+    {
+        margin-left: -10px;
+    }
+    #Contactanos
+    {
+        margin-left: -18px !important;
+    }
+    #carrusel {
+        padding-top: 10px;
+        height: 40vh;
+        position: relative;
+        max-width: 100%;
+        margin: auto;
+        overflow: hidden;
+    }
+    .atras, .siguiente {
+        cursor: pointer;
+        position: absolute;
+        top: 52%;
+        width: 16px;
+        height: 30px;
+        padding: 16px;
+        padding-top: 1px !important;
+        padding-left: 9px !important;
+        margin-top: -16px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        margin-left: 10px;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .siguiente {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+        margin-right: 10px;
+    }
+    .slide img {
+        width: 100% !important;
+        height: 40vh !important;
+        object-fit: cover; 
+    }
+    #mas_pedidos
+    {
+        padding-top: 16px;
+        height: 660px !important;
+        align-items: center;
+        align-content: center;
+        text-align: center;
+    }
+    #mas_pedidos h1
+    {
+        font-size: 4vw;
+    }
+    #mas_pedidos h2
+    {
+        font-size: 2vw;
+    }
+    #carrot_ver, #torta_ver, #novia_ver, #perso_ver
+    {
+        font-weight: bold !important;
+        font-size: 10px !important;
+    }
+
+    #tortas_pagprin
+    {
+        justify-content: space-around;
+        display: grid;
+        margin-left: 0% !important;
+        margin-right: 0% !important;
+        width: 100%; 
+        box-sizing: border-box;
+        align-items: center;
+        text-align: center;
+    }
+    #carrot_cake img {
+        grid-area: uno;
+        width: 25vw;
+        height: auto;
+    }
+    #carrot_cake, #novia
+    {
+        width: 24.5vw;
+    }
+    #novia
+    {
+        padding-right: 0px;
+    }
+    #torta_chocolate
+    {
+        height: auto;
+        width: 25vw;
+        padding-left: 0px;
+        align-items: center;
+        align-content: center;
+        text-align: center;
+    }
+
+    #personalizada
+    {
+        width: 24.5vw;
+        
+    }
+    #torta_chocolate img
+    {
+        grid-area: dos;
+        width: 25vw;
+        height: auto;
+        margin-left: 0px;
+        padding-right: 0px;
+        transition: transform 500ms ease-out;
+    }
+    #novia img
+    {
+        grid-area: tres;
+        width: 25vw;
+        height: auto;
+        padding-right: 20px;
+        transition: all 500ms ease-out;
+        margin-left: 0px !important;
+        
+    }
+    #personalizada img
+    {
+        grid-area: cuatro;
+        width: 25vw;
+        height: auto;
+        transition: all 500ms ease-out;
+        
+    }
+    #carrot_cake .capa , #torta_chocolate .capa, #novia .capa, #personalizada .capa {
+        margin-left: -10px;
+    }
+    #novia .capa
+    {
+        margin-left: -10px !important;
+    }
+    #personalizada:hover .capa a,  #carrot_cake:hover .capa a, #torta_chocolate:hover .capa a, #novia:hover .capa a
+    {
+        margin-left: 20px !important;
+        font-size: calc(1vw  + 7px) !important;
+    }
+    
+    #carrot_cake:hover .capa
+    {
+        opacity: 2 !important;
+        visibility: visible !important;
+        width: 234px;
+        margin-left: 55px;
+    }
+    #torta_chocolate:hover .capa
+    {
+        width: 240px;
+        margin-left: 42px !important;
+    }
+    #novia:hover .capa
+    {
+        width: 240px;
+        margin-left: 50px !important;
+    }
+    #personalizada:hover .capa 
+    {
+        width: 240px !important;
+        margin-left: 37px !important;
+    }
+    #carrot_cake:hover img, #torta_chocolate:hover img, #novia:hover img, #personalizada:hover img {
+        transform: scale(0.9) !important;
+    }
+    #carrot_ver::before, #perso_ver::before, #torta_ver::before, #novia_ver::before
+    {
+        content: "Ver más" !important;
+    }
+    #ts1 img
+    {
+        width: auto !important;
+        height: 26vh;
+        margin-right: 8%;
+        border-radius: 15px;
+        margin-left: -20px;
+        border: 7px solid #f8d3dc;
+    }
+    #ts1 img:hover
+    {
+        border: 7px solid #f4bdc9;
+    }
+    .txt #tit
+    {
+        margin-top: -4px;
+        font-size: 3vw;
+        margin-bottom: -5%;
+    }
+
+    .txt #tex
+    {
+        line-height: 3vw;
+        font-size: 2vw;
+    }
+    #ts2 img
+    {
+        width: 180px;
+        height: 230px;
+        border: 7px solid #f8d3dc;
+        border-radius: 15px;
+        margin-right: 5%;
+        margin-bottom: 10px;
+    }
+    #ts2 img:hover
+    {
+        border: 7px solid #f4bdc9;
+    }
+    #ts2
+    {
+        margin-left: 0%;
+        margin-right: 0%;
+        margin-top: 10px;
+        align-items: center;
+        text-align: center;
+    }
+    #cuarta_seccion
+    {
+        display: flex;
+        flex-direction: column;
+    }
+    #text_velas
+    {
+        margin-top: -30px;
+        margin-left: 10%;
+        margin-right: 9%;
+    }
+    
+    #text_velas h1
+    {
+        font-size: 3.2vw !important;
+        margin-bottom: 5%;
+    }
+
+    #text_velas p
+    {
+        font-size: 2vw;
+    }
+    button
+    {
+        width: 250px;
+        height: 40px;
+        margin-top: 1%;
+        font-size: 1.8vw;
+        border-radius: 16px;
+    }
+    .diapositivas {
+        width: 100% !;
+        height: 170px;
+    }
+    #imagenes_velas 
+    {
+        margin-top: 1px ;   
+        padding-right: 0px;
+        width: 100%;
+        height: 35vw;
+    }
+    .diapositivas span img {
+        width: 30vw !important;
+        height: 30vw !important;
+        object-fit: cover; 
+    }
+    .diapositivas span {
+        color: #1A2130;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        transform-origin: center;
+        transform-style: preserve-3d;
+        transform: rotateY(calc(var(--i) * 70deg)) translateZ(240px);
+    }
+    #ultima_seccion
+    {
+        margin-top: -10px;
+        height: 38vw;
+    }
+    #pri_secc_foo
+    {
+        margin-left: 2%;
+        padding-top: 2%;
+        margin-right: 2%;
+        display: grid;
+        grid-template-columns: 0.26fr 0.34fr 0.35fr 0.3fr;
+    }
+    #logos_foo
+    {
+        margin-left: -0px;
+    }
+    #logo2
+    {
+        height: 13vw !important;
+        width: auto !important;
+    }
+    #libro_reclamaciones
+    {
+        height: 10vw !important;
+        width: 14vw !important;
+    }
+    #contenido_footer
+    {
+        margin-left: 0px;
+    }
+    #redes_sociales
+    {
+        margin-top: 0px;
+        margin-left: 0px;
+    }
+    #contenido_footer h2, #redes_sociales h2, #Telefonos h2
+    {
+        font-size: calc(1vw + 7px) !important;
+    }
+    #contenido_footer ul li, #redes_sociales ul li, #Telefonos ul li
+    {
+        font-size: calc(1vw + 6px) !important;
+    }
+    #redes_sociales p a
+    {
+        font-size: calc(1vw + 7px) !important;
+    }
+    #Telefonos
+    {
+        margin-left: 0px;
+    }
+    #seg_secc_foo
+    {
+        margin-left: 5%;
+    }
+
+    #seg_secc_foo h2{
+        font-size: calc(1vw + 5px);
+        
+    }
+    #arriba {
+        position: fixed;
+        bottom: calc(1vw - 0px);
+        font-size: 1.6vw;
+    }
+    #subbarra
+    {
+        font-size: 2vw;
+    }
+}

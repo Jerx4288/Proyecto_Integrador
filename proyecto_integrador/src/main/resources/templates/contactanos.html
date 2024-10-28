@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <th:block th:include="layouts/fragmentos :: cabecera"></th:block>   
+        <link th:href="@{/css/contactanos.css}" rel="stylesheet">
+        <title>Contáctanos | Pabluki's Bakery  </title>
+    </head>
+    <body>
+        <div th:replace="layouts/fragmentos :: subbarra">
+        </div>
+        <div id="barrabajo" th:replace="layouts/fragmentos :: barrabajo"> 
+        </div>
+        <header th:replace = "layouts/fragmentos :: header">
+        </header>
+        <main>
+            <div id="tit_enc">
+                <h1>Encuéntranos</h1>
+                <h2><a th:href="@{/Pagina_principal}">Inicio</a>/ Encuéntranos</h2>
+            </div>
+            <div id="medio">
+                <div id="izquierda">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h2>Av. Ignacio Merino 2323 <br> Lince 15046 <br> Solo recojo previa coordinación</h2>
+                    <i class="fas fa-clock"></i>
+                    <h2>Horario: <br> Lunes a viernes: 9 am - 8 pm <br> Sábados y Domingos: No hay atención</h2>
+                    <i class="fas fa-phone"></i>
+                    <h2>Teléfonos: <br>+51 916 193 328 <br>+51 902 009 426</h2>
+                    <i class="fas fa-envelope"></i>
+                    <h2 id="correo">Correo: <br> pablu_info@gmail.com</h2>
+                </div>
+                <div id="formulario">
+                    <form action="https://formspree.io/f/movabvqj"method="POST">
+                        <h2>Envíanos un mensaje</h2>
+                        <label for="nombre">Nombre y apellidos <strong>*</strong></label> <br>
+                        <input type="text" id="nombre" name="nombre" required> <br>
+                        <label for="nombre">Celular <strong>*</strong></label><br>
+                        <input type="text" id="celular" name="celular" required><br>
+                        <label for="nombre">Correo Electrónico <strong>*</strong></label> <br>
+                        <input type="text" id="correoo" name="correo" required> <br>
+                        <label for="nombre">Mensaje <strong>*</strong></label> <br>
+                        <textarea type="text" id="mensaje" name="mensaje" rows="5" required> </textarea>
+                        <button type="submit">Enviar</button>
+                    </form>
+                </div>
+            </div>
+            <div id="mapa">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.3677509949507!2d-77.03458058870952!3d-12.086957442602353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c86015538957%3A0x9008a1e54168325c!2sAv.%20Ignacio%20Merino%202323%2C%20Lince%2015046!5e0!3m2!1ses-419!2spe!4v1725301707744!5m2!1ses-419!2spe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            
+        </main>
+        <a href="#top" id="arriba">Ir al Inicio</a>
+        <footer id="ultima_seccion" th:replace="/layouts/fragmentos :: footer">
+        </footer>
+    </body>
+</html>

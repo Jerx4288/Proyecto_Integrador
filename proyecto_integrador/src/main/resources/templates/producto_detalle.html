@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <th:block th:include="layouts/fragmentos :: cabecera"></th:block>    
+    <link th:href="@{/css/producto_detalle.css}" rel="stylesheet">
+    <title>Detalles | Pabluki's Bakery  </title>
+</head>
+<body>
+    <div th:replace="layouts/fragmentos :: subbarra">
+    </div>
+    <div id="barrabajo" th:replace="layouts/fragmentos :: barrabajo"> 
+    </div>
+    <header th:replace = "layouts/fragmentos :: header">
+    </header>
+    <main>
+        <div id="contenido">
+            <div id="imagen">
+                <img id="imagen-producto" alt="Producto">
+            </div>
+            <div id="des-form">
+                <h1 id="nombre-producto"></h1>
+                <p id="descripcion-producto"></p>
+                <form>
+                </form>
+            </div>
+        </div>
+
+    </main>
+    <footer id="ultima_seccion" th:replace="/layouts/fragmentos :: footer">
+    </footer>
+
+    <script th:src="@{/js/producto_detalle.js}"></script>
+</body>
+</html>

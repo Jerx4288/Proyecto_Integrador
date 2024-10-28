@@ -1,0 +1,1373 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    scroll-behavior: smooth;
+    user-select: none;
+}
+header
+{
+    position: relative;
+    
+    font-family:"Didact Gothic", sans-serif;    
+    height: auto;
+    font-size: 25px;
+    text-align: center;
+    align-items: center;
+    color: #333;
+    background-color: #f8d3dc;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1.4fr 1.2fr 0.8fr 1fr;
+    grid-template-areas: 
+    "uno dos tres cuatro cinco seis siete";
+}
+#subbarra
+{
+    font-family:"Didact Gothic", sans-serif;
+    padding-top:10px;
+    padding-bottom: 10px;
+    text-align: center;
+    background-color: white;
+    font-size: 15px;
+}
+#principal
+{
+    grid-area: uno;
+}
+.text_barra
+{
+    text-decoration: none;
+    color: black !important;
+}
+.text_barra:hover
+{
+    color: white !important;
+}
+#Imagen img
+{
+  
+    width: auto;
+    height: 120px;
+}
+#Ped_Esp
+{
+    grid-area: cinco;
+    margin-left: 18px;
+}
+#Blog
+{
+    grid-area: seis;
+}
+#Contactanos
+{
+    grid-area: siete;
+}
+#barrabajo
+{
+    height: 50px;
+    /*border: 1px solid black;*/
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "primero segundo tercero cuarto";
+    text-align: center;
+    align-items: center;
+    font-family:"Didact Gothic", sans-serif;    
+    font-size: 15px;
+}
+#ini-ses
+{
+    grid-area: cuarto;
+    
+    
+}
+#ini-ses a i
+{
+    margin-right: 15px;
+    
+}
+
+#iconos a i{
+    margin-right: 50px;
+    font-size: 25px !important;
+    cursor: pointer;
+}
+#ini-ses a:hover, #carrito a:hover
+{
+    color: #e85e7c !important;
+}
+#iconos a i:hover, #ini-ses a i:hover{
+    color: #e85e7c;
+}
+
+#carrito
+{
+    grid-area: tercero;
+    margin-left: 150px;
+}
+#carrito a i{
+    margin-right: 15px;
+}
+body
+{
+    background-color: #f8f0f0;
+}
+#ultima_seccion
+{
+    height: 380px;
+    width: auto;
+    background-color: #f8d3dc;
+    font-family:"Didact Gothic", sans-serif !important; 
+}
+
+#pri_secc_foo
+{
+    margin-left: 0%;
+    padding-top: 1%;
+    display: grid;
+    grid-template-columns: 25vw 25vw 25vw 24vw;
+}
+#logos_foo
+{
+    display: flex;
+    text-align: left !important;
+    flex-direction: column;
+    align-items: center;
+}
+
+#logos_foo img
+{
+    width: 160px;
+    height: 140px;
+}
+#logo2
+{
+    margin-bottom: 20px;
+}
+
+#libro_reclamaciones
+{
+    height: 100px !important;
+    width: 140px !important;
+    border-radius: 20px;
+}
+
+#contenido_footer
+{
+    margin-left: -60px;
+}
+
+#contenido_footer, #redes_sociales, #Telefonos
+{
+    text-align: left;
+    color: #333;
+}
+#redes_sociales
+{
+    margin-left: -90px;
+}
+#Telefonos
+{
+    margin-left: -108px;
+}
+
+#contenido_footer h2, #redes_sociales h2, #Telefonos h2{
+    font-family:"Didact Gothic", sans-serif;  
+    font-size: 25px !important;
+    
+}
+
+#contenido_footer ul li, #redes_sociales ul li, #Telefonos ul li
+{
+    font-size: 18px;
+    list-style-type: none;
+    line-height: 36px;
+    margin-left: -37px;
+}
+
+#contenido_footer ul li:hover, #redes_sociales ul li:hover, #Telefonos ul li:hover
+{
+    color: #f8f0f0;
+}
+#cv
+{
+    text-decoration: none; color: #333 !important; font-size: 18px;
+}
+
+#seg_secc_foo
+{
+    margin-left: 13.5%;
+}
+
+#seg_secc_foo h2{
+    font-size: 15px;
+    font-weight: none !important;
+    
+}
+main
+{
+    margin-top: 40px;
+}
+#tienda
+{
+    display: flex;
+}
+#filtro_1 h1{
+    
+    width: 100%;
+    padding: 10%;
+}
+#filtro_1
+{
+    margin-left: 10%;
+    width: 100%;
+    height: auto;
+    border: 5px solid transparent;
+    background-color: #f8d3dc;
+    margin-top: 65%;
+    border-radius: 5vh;
+}
+#filtro_1 hr {
+    border: none;
+    border-top: 0.5vh solid #f8aebe;
+    margin: 2vh 0;
+    margin-right: 15%;
+}
+
+#sub_filtros
+{
+    display: flex;
+    flex-direction: column;
+    font-family: "Didact Gothic", sans-serif;
+    margin-left: 11%;
+    margin-bottom: 4vh;
+}
+#sub_filtros a
+{
+    font-size: 2.7vh;
+    text-decoration: none;
+    color: #333;
+    margin-bottom: 2vh ;
+}
+#pub
+{
+    margin-top: 2vh !important;
+    border: 5px solid transparent;
+    background-color: #f8d3dc;
+    margin-left: 10%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5vh;
+    margin-bottom: 2vh;
+}
+
+#pub h1
+{
+    font-size: 3.8vh;
+    padding: 1.8vh;
+    padding-bottom: 0;
+}
+#pub hr {
+    border: none;
+    border-top: 0.5vh solid #e56581;
+    margin-right: 9%;
+    margin-top: -10px;
+    height: auto;
+    width: 80%;
+}
+#pub p
+{
+    font-family: "Didact Gothic", sans-serif;
+    margin-left: 9%;
+    margin-right: 9%;
+    margin-top: 10%;
+    margin-bottom: 9%;
+    text-align: justify;
+}
+#pub img
+{
+    margin-top: 20px;
+    display: flex;
+    text-align: center;
+    width: 22vh;
+    height: 30vh;
+}
+
+#cont_izq
+{
+    width: 20%;
+}
+#cont_der
+{
+    align-items:center;
+    text-align: center;
+    margin-left: 10%;
+    width: auto;
+    width: 80%;
+}
+h1{
+    font-family: "Lobster Two", sans-serif;
+}
+.filtro
+{
+    display: flex;
+    padding: 10px;
+    background-color: #f8d3dc;
+    border: 2px solid #f8d3dc;
+    border-radius: 20px;
+    width: auto;
+    text-align: center;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 30px;
+    margin-bottom: 3%;
+    margin-right: 10%;
+}
+#pasteles
+{
+    padding: 10px;
+    border: 1px solid transparent;
+    width: 60vh;
+    font-family: "Didact Gothic", sans-serif;
+    background-color: whitesmoke;
+}
+#toggleView
+{
+    font-family: "Didact Gothic", sans-serif;
+    padding: 10px;
+    width: 25vh;
+    background-color: #f8aebe;
+    color: #333;
+    border-radius: 2vh;
+    border: transparent;
+    cursor: pointer;
+}
+#toggleView:hover
+{
+    background-color: #f8f0f0;
+    color: #f8aebe;
+}
+.titulos_tienda
+{
+
+    width: 90%;
+    font-size: 4.5vh;
+}
+#productContainer {
+    width: 90%;
+    margin-bottom: 3%;
+}
+
+.grid-view {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 4vh;
+    transition: all 0.4s ease-in-out;
+}
+
+.product {
+    background-color: #f8d3dc;
+    padding: 16px;
+    border: 0.4vh solid transparent;
+    text-align: center;
+    transition: all 0.4s ease-in-out;
+    border-radius: 14%;
+    position: relative; 
+    overflow: hidden; 
+}
+
+.product img {
+    width: 25vh;
+    padding: 2vh;
+    height: 25vh;
+    transition: transform 0.3s ease-in-out; 
+    margin-bottom: 2px;
+    border-radius: 50%;
+    object-fit: cover;
+    
+}
+.cont_product
+{
+    background-color: #f8f0f0;
+    height: 100%;
+    width: 110%;
+    padding-top: 1px;
+    margin-left: -5%;
+}
+
+.cont_product h3 {
+    font-family: "Lobster Two", sans-serif;
+    margin-bottom: 0.5vh;
+    font-size: 3vh;
+    
+}
+
+.cont_product p {
+    font-family: "Didact Gothic", sans-serif;
+    text-align: justify;
+    margin-left: 7%;
+    margin-right: 7%;
+
+}
+
+
+.btn-ver-mas {
+    font-family: "Didact Gothic", sans-serif;
+    position: absolute;
+    bottom: 57%;
+    left: 52%;
+    transform: translate(-50%, 70%);
+    padding: 10px 20px;
+    background-color: #f8d3dc;
+    color: #333;
+    border: none;
+    border-radius: 2vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease-in-out;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.grid-view .product:hover .btn-ver-mas {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -110%);
+}
+.grid-view .product:hover 
+{
+    border-radius: 48px;
+    box-shadow:  10px 20px 40px #e56581,
+             -10px -10px 40px #f8d3dc;
+}
+.product:hover img {
+    transform: scale(1.1);
+}
+
+#botones_cambio
+{
+    margin-bottom: 3%;
+}
+
+/* Vista de lista */
+.list-view {
+    display: block;
+}
+
+.list-view .product {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 3%;
+    border-bottom: 1px solid #ddd;
+    transition: all 0.4s ease-in-out;
+    border-radius: 20px
+}
+.list-view .product img
+{
+    margin-right: 7%;
+    width: 35vh;
+}
+.list-view .product .cont_product
+{
+    margin-right: 7%;
+    height: auto;
+}
+.list-view .product .cont_product h3
+{
+    font-size: 3.3vh;
+}
+.list-view .product .cont_product p
+{
+    font-size: 2.2vh;
+    margin-bottom: 3%;
+}
+.list-view .product .cont_product button
+{
+    margin-bottom: 20px;
+}
+
+.list-view .product:hover 
+{
+    border-radius: 48px;
+    box-shadow:  10px 20px 40px #e56581,
+             -10px -10px 40px #f8d3dc;
+}
+
+.list-view .btn-ver-mas {
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    background-color: #f05a73;
+    color: white;
+    padding: 8px 16px;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+.grid-view, .list-view {
+    animation: fadeIn 0.4s ease-out;
+}
+
+.fade-out {
+    animation: fadeOut 0.4s ease-in;
+}
+
+#botones_cambio
+{
+    margin-left: 20%;
+    margin-right: 29%;
+}
+#botones_cambio button
+{
+    cursor: pointer;
+    font-family: "Didact Gothic", sans-serif;
+    padding: 15px;
+    width: 10vh;
+    border-radius: 20px;
+    border: transparent;
+    background-color: #f8d3dc;
+    font-weight: 400;
+    
+}
+#botones_cambio button:hover
+{
+    background-color: #f8aebe;
+    color: white;
+}
+#arriba {
+    position: fixed;
+    bottom: 4px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: #f4bdc9;
+    color: #333;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family:"Didact Gothic", sans-serif; 
+
+}
+@media screen and (max-width: 756px)
+{
+    #subbarra
+    {
+        font-size: 1.3vw;
+    }
+    #barrabajo
+    {
+        height: 50px;
+        /*border: 1px solid black;*/
+        display: grid;
+        grid-template-columns: 0.91fr  1fr 1fr;
+        grid-template-areas: 
+        "primero tercero cuarto";
+        text-align: center;
+        align-items: center;
+        font-family:"Didact Gothic", sans-serif;    
+        font-size: 2vw;
+    }
+
+    #iconos a i
+    {
+        margin-left: 10px;
+        margin-right: 15px !important;
+        font-size: 2vw !important;
+        
+    }
+    #carrito
+    {
+        margin-left: 0px;
+        font-size: 2vw !important;
+    }
+    header
+    {
+        font-size: calc(0.8vw + 8px);
+        text-align: center;
+        align-items: center;
+        color: #333;
+        background-color: #f8d3dc;
+        display: grid;
+        grid-template-columns: 0.9fr 0.9fr 0.9fr 1.4fr 1.2fr 0.8fr 1fr;
+        grid-template-areas: 
+        "uno dos tres cuatro cinco seis siete";
+    }
+    #Imagen img
+    {
+        height: calc(1vw + 45px);
+    }
+    #Ped_Esp
+    {
+        margin-left: 5px;
+    }
+    #Blog
+    {
+        margin-left: -18px;
+    }
+    #Contactanos
+    {
+        margin-left: -16px;
+    }
+    #ultima_seccion
+    {
+        margin-top: -8%;
+        height: 360px;
+    }
+    #pri_secc_foo
+    {
+        margin-left: 2%;
+        padding-top: 2%;
+        display: grid;
+        grid-template-columns: 0.5fr 0.2fr 0.2fr 0.2fr;
+    }
+    #logos_foo
+    {
+        margin-left: -140px;
+    }
+    #logo2
+    {
+        height: 80px !important;
+        width: 90px !important;
+    }
+    #libro_reclamaciones
+    {
+        height: 70px !important;
+        width: 90px !important;
+    }
+    #contenido_footer
+    {
+        margin-left: -129px;
+    }
+    #redes_sociales
+    {
+        margin-top: 40px;
+        margin-left: -129px;
+    }
+    #contenido_footer h2, #redes_sociales h2, #Telefonos h2
+    {
+        font-size: calc(1vw + 7px) !important;
+    }
+    #contenido_footer ul li, #redes_sociales ul li, #Telefonos ul li
+    {
+        font-size: calc(1vw + 6px) !important;
+    }
+    #redes_sociales p a
+    {
+        font-size: calc(1vw + 7px) !important;
+    }
+    #seg_secc_foo
+    {
+        margin-left: 5%;
+        
+    }
+    #seg_secc_foo h2{
+        font-size: calc(1vw + 5px);
+    }
+    #arriba {
+        position: fixed;
+        bottom: calc(1vw - 0px);
+        font-size: calc(1vw + 5px);
+    
+    }
+    main
+    {
+        margin-top: 20px;
+    }
+    #filtro_1 h1
+    {
+        font-size: 2.5vh;
+    }
+    #filtro_1
+    {
+        margin-left: 10%;
+        width: 115%;
+        margin-top: 60%;
+    }
+    
+    #sub_filtros
+    {
+        margin-bottom: 4vh;
+    }
+    #sub_filtros a
+    {
+        font-size: 1.2vh;
+        
+    }
+    .filtro
+    {
+        margin-top: 1vh;
+        margin-bottom: 2%;
+    }
+    #pasteles
+    {
+        width: 20vh;
+        font-size: 1vh;
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+    #toggleView
+    {
+        width: 15vh;
+        font-size: 1vh;
+        margin-right: 5%;
+    }
+    .titulos_tienda
+    {
+        font-size: 2.5vh;
+    }
+    .product 
+    {
+        padding: 0.8vh;
+        height: 90% !important;
+    }
+    
+    .product img {
+        width: 12vh;
+        padding: 1.5vh;
+        height: 12vh;
+    }
+    .cont_product
+    {
+        height: 25vh;
+        width: 110%;
+    }
+    
+    .cont_product h3 {
+        margin-bottom: 0.3vh;
+        font-size: 2vh;
+    }
+    .cont_product p 
+    {
+        font-size: 1.3vh;
+    }
+    .grid-view {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 1vh;
+    }
+    #cont_der {
+        margin-left: 11vw;
+        width: 90%;
+        margin-right: 0vw;
+    }
+    .btn-ver-mas {
+        bottom: 26vh;
+        left: 51%;
+        font-size: 1vh;
+    }
+    /* Vista de lista */
+    .list-view .product {
+        padding: 10px;
+        margin-bottom: 3%;
+    }
+    .list-view .product img
+    {
+        width: 15vh;
+    }
+    .list-view .product .cont_product
+    {
+        width: 170px;
+        margin-right: 0% !important;
+    }
+    .list-view .product .cont_product h3
+    {
+        font-size: 2vh;
+    }
+    .list-view .product .cont_product p
+    {
+        font-size: 1.2vh;
+        margin-bottom: 7%;
+    }
+    #botones_cambio
+    {
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+    #botones_cambio button
+    {
+        padding: 10px;
+        width: 7vh;
+        font-size: 1.2vh;
+        margin-bottom: 5.3vh;
+    }
+
+    #pub
+    {
+        width: 115%;
+    }
+    #pub h1
+    {
+        font-size: 2vh;
+        text-align: center;
+    }
+    #pub p
+    {
+        margin-left: 9%;
+        margin-right: 9%;
+        margin-bottom: 16%;
+        font-size: 1.2vh;
+
+    }
+    #pub img
+    {
+        margin-top: 5px;
+        width: 13vh;
+        height: 18vh;
+    }
+}
+@media screen and (min-width: 757px) and (max-width: 1023px)
+{
+    #subbarra
+    {
+        font-size: 1.5vw !important;
+    }
+    #barrabajo
+    {
+        grid-template-columns: 0.91fr  1fr 1fr !important;
+        grid-template-areas: 
+        "primero tercero cuarto";
+        font-size: 1.9vw;
+    }
+    #iconos a i
+    {
+        margin-left: 18px;
+        margin-right: 15px !important;
+        font-size: 1.9vw!important;
+        
+    }
+    #carrito
+    {
+        margin-left: 35px;
+    }
+    header
+    {
+        font-size: calc(1vw + 8px);
+        display: grid;
+        grid-template-columns: 0.9fr 0.9fr 0.9fr 1.4fr 1.2fr 0.8fr 1fr;
+        grid-template-areas: 
+        "uno dos tres cuatro cinco seis siete";
+    }
+    #Imagen img
+    {
+        height: calc(1vw + 70px);
+    }
+    #Ped_Esp
+    {
+        margin-left: 20px;
+    }
+    #Blog
+    {
+        margin-left: -10px;
+    }
+    #Contactanos
+    {
+        margin-left: -18px !important;
+    }
+    #ultima_seccion
+    {
+        margin-top: -10px;
+        height: 44vw;
+    }
+    #pri_secc_foo
+    {
+        margin-left: 2%;
+        padding-top: 2%;
+        margin-right: 2%;
+        display: grid;
+        grid-template-columns: 0.2fr 0.34fr 0.35fr 0.3fr;
+    }
+    #logos_foo
+    {
+        margin-left: -0px;
+    }
+    #logo2
+    {
+        height: 13vw !important;
+        width: auto !important;
+    }
+    #libro_reclamaciones
+    {
+        height: 10vw !important;
+        width: 14vw !important;
+    }
+    #contenido_footer
+    {
+        margin-left: 0px;
+    }
+    #redes_sociales
+    {
+        margin-top: 0px;
+        margin-left: 0px;
+    }
+    #contenido_footer h2, #redes_sociales h2, #Telefonos h2
+    {
+        font-size: calc(1vw + 7px) !important;
+    }
+    #contenido_footer ul li, #redes_sociales ul li, #Telefonos ul li
+    {
+        font-size: calc(1vw + 6px) !important;
+    }
+    #redes_sociales p a
+    {
+        font-size: calc(1vw + 7px) !important;
+    }
+    #Telefonos
+    {
+        margin-left: 0px;
+    }
+    #seg_secc_foo
+    {
+        margin-left: 5%;
+    }
+
+    #seg_secc_foo h2{
+        font-size: calc(1vw + 5px);
+        
+    }
+    #arriba {
+        position: fixed;
+        bottom: calc(1vw - 0px);
+        font-size: calc(1vw + 5px);
+    }
+    main
+    {
+        margin-top: 0px;
+    }
+    #filtro_1 h1
+    {
+        font-size: 2.7vh;
+        margin-bottom: 2%;
+    }
+    #filtro_1
+    {
+        margin-left: 10%;
+        width: 135%;
+        margin-top: 60%;
+    }
+    
+    #sub_filtros
+    {
+        margin-bottom: 3vh;
+    }
+    #sub_filtros a
+    {
+        font-size: 1.6vh;
+        
+    }
+    #pasteles
+    {
+        width: 23vh;
+        font-size: 1.3vh;
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+    #toggleView
+    {
+        width: 20vh;
+        font-size: 1.3vh;
+        margin-right: 5%;
+    }
+    .titulos_tienda
+    {
+        font-size: 3vh;
+    }
+    .product 
+    {
+        padding: 0.8vh;
+        height: 85% !important;
+    }
+    
+    .product img {
+        width: 15vh;
+        padding: 1.5vh;
+        height: 15vh;
+    }
+    .cont_product
+    {
+        height: 40vh;
+        width: 110%;
+    }
+    
+    .cont_product h3 {
+        margin-bottom: 0.3vh;
+        font-size: 2.5vh;
+    }
+    .cont_product p 
+    {
+        font-size: 1.5vh;
+    }
+    .grid-view {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 0.8fr 0.8fr 0.8fr;
+        gap: 2vh;
+    }
+    #cont_der {
+        margin-left: 14vw;
+        width: 100%;
+        margin-right: 0vw;
+    }
+    .btn-ver-mas {
+        bottom: 27.5vh;
+        left: 51%;
+        font-size: 1vh;
+    }
+    #productContainer
+    {
+        margin-bottom: -20px;
+    }
+    /* Vista de lista */
+    .list-view .product {
+        padding: 10px;
+        margin-bottom: 3%;
+    }
+    .list-view .product img
+    {
+        width: 16vh;
+    }
+    .list-view .product .cont_product
+    {
+        width: 36vh;
+        margin-right: 0% !important;
+    }
+    .list-view .product .cont_product h3
+    {
+        font-size: 2.3vh;
+    }
+    .list-view .product .cont_product p
+    {
+        font-size: 1.6vh;
+        margin-bottom: 7%;
+    }
+    #botones_cambio
+    {
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+    #botones_cambio button
+    {
+        padding: 10px;
+        width: 7vh;
+        font-size: 1.4vh;
+        margin-bottom: 2.3vh;
+    }
+
+    #pub
+    {
+        width: 135%;
+    }
+    #pub h1
+    {
+        font-size: 2vh;
+        text-align: center;
+    }
+    #pub p
+    {
+        margin-left: 9%;
+        margin-right: 9%;
+        margin-bottom: 16%;
+        font-size: 1.2vh;
+
+    }
+    #pub img
+    {
+        margin-top: 5px;
+        width: 13vh;
+        height: 18vh;
+    }
+}
+@media screen and (min-width: 1024px) and (max-width: 1524px)
+{
+    #subbarra
+    {
+        font-size: 1.7vw !important;
+    }
+    #barrabajo
+    {
+        grid-template-columns: 0.91fr  1fr 1fr !important;
+        grid-template-areas: 
+        "primero tercero cuarto";
+        font-size: calc(1vw + 8px);
+    }
+    #iconos a i
+    {
+        margin-left: 18px;
+        margin-right: 15px !important;
+        font-size: 1.2rem !important;
+        
+    }
+    #carrito
+    {
+        margin-left: 35px;
+    }
+    header
+    {
+        font-size: calc(1vw + 8px);
+        display: grid;
+        grid-template-columns: 0.9fr 0.9fr 0.9fr 1.4fr 1.2fr 0.8fr 1fr;
+        grid-template-areas: 
+        "uno dos tres cuatro cinco seis siete";
+    }
+    #Imagen img
+    {
+        height: calc(1vw + 70px);
+    }
+    #Ped_Esp
+    {
+        margin-left: 20px;
+    }
+    #Blog
+    {
+        margin-left: -10px;
+    }
+    #Contactanos
+    {
+        margin-left: -18px !important;
+    }
+    #ultima_seccion
+    {
+        margin-top: -10px;
+        height: 38vw;
+    }
+    #pri_secc_foo
+    {
+        margin-left: 2%;
+        padding-top: 2%;
+        margin-right: 2%;
+        display: grid;
+        grid-template-columns: 0.26fr 0.34fr 0.35fr 0.3fr;
+    }
+    #logos_foo
+    {
+        margin-left: -0px;
+    }
+    #logo2
+    {
+        height: 13vw !important;
+        width: auto !important;
+    }
+    #libro_reclamaciones
+    {
+        height: 10vw !important;
+        width: 14vw !important;
+    }
+    #contenido_footer
+    {
+        margin-left: 0px;
+    }
+    #redes_sociales
+    {
+        margin-top: 0px;
+        margin-left: 0px;
+    }
+    #contenido_footer h2, #redes_sociales h2, #Telefonos h2
+    {
+        font-size: calc(1vw + 7px) !important;
+    }
+    #contenido_footer ul li, #redes_sociales ul li, #Telefonos ul li
+    {
+        font-size: calc(1vw + 6px) !important;
+    }
+    #redes_sociales p a
+    {
+        font-size: calc(1vw + 7px) !important;
+    }
+    #Telefonos
+    {
+        margin-left: 0px;
+    }
+    #seg_secc_foo
+    {
+        margin-left: 5%;
+    }
+
+    #seg_secc_foo h2{
+        font-size: calc(1vw + 5px);
+        
+    }
+    #arriba {
+        position: fixed;
+        bottom: calc(1vw - 0px);
+    }
+    main
+    {
+        margin-top: 0px;
+    }
+    #filtro_1 h1
+    {
+        font-size: 2.7vh;
+        margin-bottom: 2%;
+    }
+    #filtro_1
+    {
+        margin-left: 10%;
+        width: 150%;
+        margin-top: 60%;
+    }
+    
+    #sub_filtros
+    {
+        margin-bottom: 3vh;
+    }
+    #sub_filtros a
+    {
+        font-size: 1.6vh;
+        
+    }
+    .filtro
+    {
+        margin-right: 8%;
+        margin-left: 3%;
+    }
+    #pasteles
+    {
+        width: 30vh;
+        font-size: 1.4vh;
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+    #toggleView
+    {
+        width: 25vh;
+        font-size: 1.4vh;
+        margin-right: 5%;
+    }
+    .titulos_tienda
+    {
+        font-size: 3.5vh;
+    }
+    .product {
+        padding: 16px;
+    }
+    
+    .product img {
+        width: 16vh;
+        padding: 1.5vh;
+        height: 16vh;
+    }
+    .cont_product
+    {
+        background-color: #f8f0f0;
+        height: 100%;
+        width: 115%;
+        padding-top: 1px;
+        margin-left: -6.6%;
+    }
+    
+    .cont_product h3 {
+        margin-bottom: 0.3vh;
+        font-size: 2.5vh;
+    }
+    .cont_product p 
+    {
+        font-size: 1.5vh;
+    }
+    .grid-view {
+        gap: 2vh;
+    }
+    #cont_der {
+        margin-left: 10vw;
+        width: 120%;
+        margin-right: 0vw;
+    }
+    .btn-ver-mas {
+        bottom: 27.5vh;
+        left: 51%;
+        font-size: 1vh;
+    }
+    #productContainer
+    {
+        margin-bottom: 20px;
+        margin-left: 3vh;
+    }
+    /* Vista de lista */
+    .list-view .product {
+        padding: 10px;
+        margin-bottom: 3%;
+    }
+    .list-view .product img
+    {
+        width: 20vh;
+        height: 20vh;
+        margin-left: 1.5vw;
+        margin-right: 6vw;
+    }
+    .list-view .product .cont_product
+    {
+        width: 45vw;
+        margin-right: 0% !important;
+    }
+    .list-view .product .cont_product h3
+    {
+        font-size: 2.9vh;
+    }
+    .list-view .product .cont_product p
+    {
+        font-size: 1.8vh;
+        margin-bottom: 3%;
+    }
+    .list-view .btn-ver-mas
+    {
+        font-size: 1.3vh;
+    }
+    #botones_cambio
+    {
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+    #botones_cambio button
+    {
+        padding: 10px;
+        width: 9vh;
+        font-size: 1.4vh;
+        margin-bottom: 2.3vh;
+    }
+
+    #pub
+    {
+        width: 150%;
+    }
+    #pub h1
+    {
+        font-size: 2.6vh;
+        text-align: center;
+    }
+    #pub p
+    {
+        margin-left: 9%;
+        margin-right: 9%;
+        margin-bottom: 16%;
+        font-size: 1.5vh;
+
+    }
+    #pub img
+    {
+        margin-top: 5px;
+        width: 15vh;
+        height: 21vh;
+    }
+}
