@@ -6,6 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>ADMIN 1</h1>
+    <h1>Bienvenido Administrador: </h1>
+    <div th:if="${mensaje != null}">
+        <span th:text="${mensaje}"></span>
+    </div>
 </body>
 </html>

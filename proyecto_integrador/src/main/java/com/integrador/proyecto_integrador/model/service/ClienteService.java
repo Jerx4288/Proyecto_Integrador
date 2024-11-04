@@ -51,7 +51,10 @@ public class ClienteService implements IClienteService
             if (clienteEn.isPresent()) {
                 Cliente cliente = clienteEn.get();
                 if (cliente.getPassword().equals(password)) {
-                    return "Inicio de sesión exitoso para " + cliente.getNombre();
+                    String cli_usu = cliente.getNombre() + " "+ cliente.getApellido();
+                    System.out.println("Inicio de sesión exitoso para " + cliente.getNombre()); 
+                    return cli_usu;
+                   
                 } else {
                     return "DNI o contraseña incorrectos.";
                 }
@@ -65,21 +68,28 @@ public class ClienteService implements IClienteService
 
     @Override
     public String iniciarSesionAdmin(String dni, String password) {
+        String error;
         try {
             Optional<Administrador> administradorEn = administradorDAO.findById(dni);
             
             if (administradorEn.isPresent()) {
                 Administrador administrador = administradorEn.get();
                 if (administrador.getPassword_a().equals(password)) {
-                    return "Inicio de sesión exitoso para " + administrador.getNombre_a();
-                } else {
-                    return "DNI o contraseña incorrectos.";
+                    error = administrador.getNombre_a() + " " + administrador.getApellido_a();
+                    System.out.println("Inicio de sesión exitoso para " + administrador.getNombre_a());
+                    return error;
+                } else 
+                { 
+                    error = "DNI o contraseña incorrectos.";
+                    return error;
                 }
             } else {
-                return "DNI no encontrado.";
+                error = "DNI no encontrado.";
+                return error;
             }
         } catch (Exception e) {
-            return "Error al iniciar sesión: " + e.getMessage();
+            error = "Error al iniciar sesión: ";
+            return error + e.getMessage();
         }
     }
     
