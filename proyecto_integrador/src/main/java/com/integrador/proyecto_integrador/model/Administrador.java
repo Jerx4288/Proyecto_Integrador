@@ -9,11 +9,23 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "administrador")
-public class Administrador implements Serializable{
+public class Administrador implements Serializable {
     
     @Id
     @Column(name = "id_admin")
     private String id_admin;
+
+    @Column(name = "nombre_a")
+    private String nombre_a;
+
+    @Column(name = "apellido_a")
+    private String apellido_a;
+
+    @Column(name = "correo_a")
+    private String correo_a;
+
+    @Column(name = "password_a")
+    private String password_a;
 
     public String getId_admin() {
         return id_admin;
@@ -55,15 +67,5 @@ public class Administrador implements Serializable{
         this.password_a = password_a;
     }
 
-    @Column(name = "nombre_a")
-    private String nombre_a;
-
-    @Column(name = "apellido_a")
-    private String apellido_a;
-
-    @Column(name = "correo_a")
-    private String correo_a;
-
-    @Column(name = "password_a")
-    private String password_a;
+    
 }
