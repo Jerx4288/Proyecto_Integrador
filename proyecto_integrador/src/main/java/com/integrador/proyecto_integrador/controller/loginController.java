@@ -41,25 +41,25 @@ public class loginController {
 
         if ("admin".equals(rol)) {
             System.out.println("Es admin");
-            String error = clienteService.iniciarSesionAdmin(dni, password);
+            String error = "Hola "+clienteService.iniciarSesionAdmin(dni, password)+" !";
             if  ( error.isEmpty()) {
                 redirectAttributes.addFlashAttribute("mensaje", error);
                 return "redirect:/login/?error=true";
             } else {
-                model.addAttribute("mensaje", error);
-                return "administrador";
+                model.addAttribute("mensaje_ini", error);
+                return "MenuPrincipal";
                 
             }
         } else {
             System.out.println("Es usuario");
-            String resultado = clienteService.iniciarSesion(dni, password);
+            String resultado = "Hola "+clienteService.iniciarSesion(dni, password)+" !";
             
             if (resultado.isEmpty()) {
                 redirectAttributes.addFlashAttribute("mensaje", resultado);
                 return "redirect:/login/?error=true";
                 
             } else {
-                model.addAttribute("mensaje", resultado);
+                model.addAttribute("mensaje_ini", resultado);
                 return "usuario";
             }
         }

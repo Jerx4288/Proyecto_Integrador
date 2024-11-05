@@ -1,6 +1,7 @@
 package com.integrador.proyecto_integrador.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -13,8 +14,11 @@ public class inicioController {
         return "redirect:/Pagina_principal";
     }
     @RequestMapping("/Pagina_principal")
-    private String Inicio ()
+    public String Inicio (Model model)
     {
-        return "MenuPrincipal.html";
+        String mensaje_ini = "Iniciar Sesion";
+        model.addAttribute("mensaje_ini", mensaje_ini);
+        return "MenuPrincipal";
+
     }
 }

@@ -51,7 +51,7 @@ public class ClienteService implements IClienteService
             if (clienteEn.isPresent()) {
                 Cliente cliente = clienteEn.get();
                 if (cliente.getPassword().equals(password)) {
-                    String cli_usu = cliente.getNombre() + " "+ cliente.getApellido();
+                    String cli_usu = cliente.getNombre();
                     System.out.println("Inicio de sesión exitoso para " + cliente.getNombre()); 
                     return cli_usu;
                    
@@ -75,7 +75,7 @@ public class ClienteService implements IClienteService
             if (administradorEn.isPresent()) {
                 Administrador administrador = administradorEn.get();
                 if (administrador.getPassword_a().equals(password)) {
-                    error = administrador.getNombre_a() + " " + administrador.getApellido_a();
+                    error = administrador.getNombre_a();
                     System.out.println("Inicio de sesión exitoso para " + administrador.getNombre_a());
                     return error;
                 } else 
