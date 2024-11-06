@@ -38,3 +38,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     mostrar(indice);
 });
+
+function toggleMenu(event) {
+    event.preventDefault(); 
+
+    var menu = document.getElementById("menu-opciones");
+
+    if (menu.style.display === "none" || menu.style.display === "") {
+        menu.style.display = "block";
+    } else {
+        menu.style.display = "none";
+    }
+}
+
+window.onclick = function(event) {
+    var menu = document.getElementById("menu-opciones");
+    if (!event.target.closest("#ini-ses")) {
+        menu.style.display = "none";
+    }
+}

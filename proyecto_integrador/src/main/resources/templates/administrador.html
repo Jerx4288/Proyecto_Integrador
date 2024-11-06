@@ -7,8 +7,9 @@
 </head>
 <body>
     <h1>Bienvenido Administrador: </h1>
-    <div th:if="${mensaje != null}">
-        <span th:text="${mensaje}"></span>
+    <div th:if="${mensaje_ini != null}">
+        <span th:text="${mensaje_ini}"></span>
+        <a th:href="@{/login/logout}" class="text_barra">Cerrar sesión</a>
     </div>
 </body>
 </html>

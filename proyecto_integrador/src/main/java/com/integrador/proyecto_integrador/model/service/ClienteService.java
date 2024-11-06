@@ -45,24 +45,28 @@ public class ClienteService implements IClienteService
 
     @Override
     public String iniciarSesion(String dni, String password) {
+        String error;
         try {
             Optional<Cliente> clienteEn = clienteDAO.findById(dni);
             
             if (clienteEn.isPresent()) {
                 Cliente cliente = clienteEn.get();
                 if (cliente.getPassword().equals(password)) {
-                    String cli_usu = cliente.getNombre();
+                     error = cliente.getNombre();
                     System.out.println("Inicio de sesión exitoso para " + cliente.getNombre()); 
-                    return cli_usu;
+                    return error;
                    
                 } else {
-                    return "DNI o contraseña incorrectos.";
+                    error ="";
+                    return error;
                 }
             } else {
-                return "DNI no encontrado.";
+                error ="";
+                return error;
             }
         } catch (Exception e) {
-            return "Error al iniciar sesión: " + e.getMessage();
+            error = "Error al iniciar sesión: ";
+            return error + e.getMessage();
         }
     }
 
@@ -80,11 +84,11 @@ public class ClienteService implements IClienteService
                     return error;
                 } else 
                 { 
-                    error = "DNI o contraseña incorrectos.";
+                    error ="";
                     return error;
                 }
             } else {
-                error = "DNI no encontrado.";
+                error ="";
                 return error;
             }
         } catch (Exception e) {
