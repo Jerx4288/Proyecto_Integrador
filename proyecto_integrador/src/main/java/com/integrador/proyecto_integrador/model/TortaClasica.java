@@ -20,7 +20,7 @@ public class TortaClasica implements Serializable{
     private String nombre_tc;
 
     @Column(name = "precio_tc")
-    private String precio_tc;
+    private double precio_tc;
 
     @Column(name = "tamano_tc")
     private String tamano_tc;
@@ -44,11 +44,11 @@ public class TortaClasica implements Serializable{
         this.nombre_tc = nombre_tc;
     }
 
-    public String getPrecio_tc() {
+    public double getPrecio_tc() {
         return precio_tc;
     }
 
-    public void setPrecio_tc(String precio_tc) {
+    public void setPrecio_tc(double precio_tc) {
         this.precio_tc = precio_tc;
     }
 

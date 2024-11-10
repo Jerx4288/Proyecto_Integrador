@@ -50,28 +50,45 @@ public class boletaController
             String tamanio = producto.get("tamanio") != null ? producto.get("tamanio").toString() : "";
 
             // Cargar las tortas filtradas y agregarlas a la lista
-            tortas.addAll(tortaClasicaService.cargarCategoriasFiltradas(nombre, tamanio));
+            List<TortaClasica> tortasFiltradas = tortaClasicaService.cargarCategoriasFiltradas(nombre, tamanio);
+            tortas.addAll(tortasFiltradas);
+
+            for (TortaClasica torta : tortasFiltradas) {
+                System.out.println("ID: " + torta.getId_tortac());
+            }
+            System.out.println("-------------------------------------------------------");
         }
 
         // Agregar la lista completa de tortas al modelo
+        session.setAttribute("tortas", tortas);
         model.addAttribute("tortas", tortas);
 
         // Retornar la vista boleta
-        return "boleta";
+        return "redirect:/boleta";
     }
 
     @GetMapping("/boleta")
-    public String mostrarBoleta(Model model, HttpSession session) {
-        // Verificar si el usuario está logueado y agregar mensaje de bienvenida
-        if (session.getAttribute("usuario") != null) {
-            String usuario = (String) session.getAttribute("usuario");
-            model.addAttribute("mensaje_ini", "Hola " + usuario + "!");
-        } else {
-            model.addAttribute("mensaje_ini", "Iniciar Sesion");
-        }
-
-        // Retornar la vista boleta con los datos en el modelo
-        return "boleta"; 
+public String mostrarBoleta(Model model, HttpSession session) {
+    if (session.getAttribute("usuario") != null) {
+        String usuario = (String) session.getAttribute("usuario");
+        model.addAttribute("mensaje_ini", "Hola " + usuario + "!");
+    } else {
+        model.addAttribute("mensaje_ini", "Iniciar Sesion");
     }
+
+    @SuppressWarnings("unchecked")
+    List<TortaClasica> tortas = (List<TortaClasica>) session.getAttribute("tortas");
+    if (tortas != null) {
+        model.addAttribute("tortas", tortas);
+
+        // Calcular el precio total sumando los precios de todas las tortas
+        double precioTotal = tortas.stream().mapToDouble(TortaClasica::getPrecio_tc).sum();
+        model.addAttribute("precioTotal", precioTotal);
+    }
+
+    return "boleta";
+}
+
+
 
 }

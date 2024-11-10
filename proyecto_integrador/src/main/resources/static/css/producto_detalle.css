@@ -354,7 +354,7 @@ form button:hover
     top: 50px;
     right: 260px;
     width: 380px;
-    max-height: 700px;
+    max-height: auto;
     overflow-y: auto;
     background-color: #ffffff;
     border: 1px solid #ccc;

@@ -1,4 +1,391 @@
 main
 {
-    height: 50vw;
+    height: auto;
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    scroll-behavior: smooth;
+    user-select: none;
+    animation: fadeIn 1s forwards;
+    opacity: 0;
+}
+header
+{
+    position: relative;
+    
+    font-family:"Didact Gothic", sans-serif;    
+    height: auto;
+    font-size: 25px;
+    text-align: center;
+    align-items: center;
+    color: #333;
+    background-color: #f8d3dc;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1.4fr 1.2fr 0.8fr 1fr;
+    grid-template-areas: 
+    "uno dos tres cuatro cinco seis siete";
+}
+#subbarra
+{
+    font-family:"Didact Gothic", sans-serif;
+    padding-top:10px;
+    padding-bottom: 10px;
+    text-align: center;
+    background-color: white;
+    font-size: 15px;
+}
+#principal
+{
+    grid-area: uno;
+}
+.text_barra
+{
+    text-decoration: none;
+    color: black !important;
+}
+.text_barra:hover
+{
+    color: white !important;
+}
+#Imagen img
+{
+  
+    width: auto;
+    height: 120px;
+}
+#Ped_Esp
+{
+    grid-area: cinco;
+    margin-left: 18px;
+}
+#Blog
+{
+    grid-area: seis;
+}
+#Contactanos
+{
+    grid-area: siete;
+}
+#barrabajo
+{
+    height: 50px;
+    /*border: 1px solid black;*/
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "primero segundo tercero cuarto";
+    text-align: center;
+    align-items: center;
+    font-family:"Didact Gothic", sans-serif;    
+    font-size: 15px;
+    position: relative;
+}
+#ini-ses
+{
+    grid-area: cuarto;
+    position: relative;
+    overflow: visible;
+    
+    
+}
+#ini-ses a i
+{
+    margin-right: 15px;
+    
+}
+
+#iconos a i{
+    margin-right: 50px;
+    font-size: 25px !important;
+    cursor: pointer;
+}
+#ini-ses a:hover, #carrito a:hover
+{
+    color: #e85e7c !important;
+}
+#iconos a i:hover, #ini-ses a i:hover{
+    color: #e85e7c;
+}
+
+#carrito
+{
+    grid-area: tercero;
+    margin-left: 150px;
+}
+#carrito a i{
+    margin-right: 15px;
+}
+body
+{
+    background-color: #f8f0f0;
+}
+#ultima_seccion
+{
+    height: 380px;
+    width: auto;
+    background-color: #f8d3dc;
+    font-family:"Didact Gothic", sans-serif !important; 
+}
+
+#pri_secc_foo
+{
+    margin-left: 0%;
+    padding-top: 1%;
+    display: grid;
+    grid-template-columns: 25vw 25vw 25vw 24vw;
+}
+#logos_foo
+{
+    display: flex;
+    text-align: left !important;
+    flex-direction: column;
+    align-items: center;
+}
+
+#logos_foo img
+{
+    width: 160px;
+    height: 140px;
+}
+#logo2
+{
+    margin-bottom: 20px;
+}
+
+#libro_reclamaciones
+{
+    height: 100px !important;
+    width: 140px !important;
+    border-radius: 20px;
+}
+
+#contenido_footer
+{
+    margin-left: -60px;
+}
+
+#contenido_footer, #redes_sociales, #Telefonos
+{
+    text-align: left;
+    color: #333;
+}
+#redes_sociales
+{
+    margin-left: -90px;
+}
+#Telefonos
+{
+    margin-left: -108px;
+}
+
+#contenido_footer h2, #redes_sociales h2, #Telefonos h2{
+    font-family:"Didact Gothic", sans-serif;  
+    font-size: 25px !important;
+    
+}
+
+#contenido_footer ul li, #redes_sociales ul li, #Telefonos ul li
+{
+    font-size: 18px;
+    list-style-type: none;
+    line-height: 36px;
+    margin-left: -37px;
+}
+
+#contenido_footer ul li:hover, #redes_sociales ul li:hover, #Telefonos ul li:hover
+{
+    color: #f8f0f0;
+}
+#cv
+{
+    text-decoration: none; color: #333 !important; font-size: 18px;
+}
+
+#seg_secc_foo
+{
+    margin-left: 13.5%;
+}
+
+#seg_secc_foo h2{
+    font-size: 15px;
+    font-weight: none !important;
+    
+}
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.boleta-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.detalle-cliente {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.detalle-torta {
+    margin: 15px 0;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.detalle-torta:last-child {
+    border-bottom: none;
+}
+
+.detalle-torta strong {
+    display: inline-block;
+    width: 100px;
+}
+.boleta-container {
+    width: 80%;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos generales para los títulos */
+h1, h2, h3 {
+    text-align: center;
+    color: #333;
+}
+
+/* Detalles de cliente */
+.detalle-cliente {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+/* Detalles de las tortas */
+.detalle-torta {
+    margin-bottom: 15px;
+}
+
+.detalle-torta p {
+    font-size: 1em;
+    color: #555;
+}
+
+/* Métodos de pago */
+.metodo-pago label {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 1em;
+    color: #333;
+}
+
+.metodo-pago input {
+    margin-right: 5px;
+}
+
+/* Tipo de entrega */
+.tipo-entrega label {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 1em;
+    color: #333;
+}
+
+.tipo-entrega input {
+    margin-right: 5px;
+}
+
+/* Dirección de entrega */
+.direccion-container {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.direccion-container input {
+    width: 100%;
+    padding: 8px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+/* Total y boton */
+.total {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.boton-finalizar {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.boton-finalizar button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.boton-finalizar button:hover {
+    background-color: #218838;
+}
+
+/* Estilos de los iconos de FontAwesome */
+.fa {
+    margin-right: 8px;
+}
+
+#contenido_carrito {
+    position: absolute    ;
+    top: 50px;
+    right: 260px;
+    width: 380px;
+    max-height:  auto;
+    overflow-y: auto;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    display: none;
+    z-index: 1000;
+    font-family:"Didact Gothic", sans-serif;   
+    overflow: hidden;
+}
+
+#contenido_carrito.show {
+    display: block;
+}
+#lista-carrito td {
+    padding: 0.7vw;
+}
+.btn-eliminar, .btn-ver-carrito
+{
+    background-color: #f8d3dc;
+    cursor: pointer;
+    font-family: "Didact Gothic", sans-serif;
+    border: transparent;
+    border-radius: 1vw;
+    padding: 0.6vw;
+}
+.btn-eliminar:hover, .btn-ver-carrito:hover
+{
+    background-color: #f8aebe;
+    color: white;
 }

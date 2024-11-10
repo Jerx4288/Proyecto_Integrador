@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <th:block th:include="layouts/fragmentos :: cabecera"></th:block>    
     <link th:href="@{/css/tienda.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link th:href="@{/css/boleta.css}" rel="stylesheet">
     <title>Boleta | Pabluki's Bakery  </title>
+    <style>
+        /* Estilos de la boleta */
+       
+    </style>
 </head>
 <body>
     <div th:replace="layouts/fragmentos :: subbarra">
@@ -13,33 +18,73 @@
     </div>
     <header th:replace = "layouts/fragmentos :: header">
     </header>
-    <main>
-        <h1>Tu Boleta de Compra</h1>
-        <h1 th:text="${mensaje_ini}"></h1>
-
-        <h2>Lista de Tortas</h2>
-        <div th:if="${#lists.isEmpty(tortas)}">
-            <p>No hay tortas en el carrito.</p>
+    <div class="boleta-container">
+        <h1>Boleta de Compra</h1>
+        
+        <div class="detalle-cliente">
+            <p th:text="${mensaje_ini}"></p>
         </div>
     
-        <div th:unless="${#lists.isEmpty(tortas)}">
-            <ul>
-                <li th:each="torta : ${tortas}">
-                    <strong>Nombre:</strong> <span th:text="${torta.nombre}"></span><br>
-                    <strong>Tamaño:</strong> <span th:text="${torta.tamanio}"></span><br>
-                    <strong>Precio:</strong> <span th:text="${torta.precioTotal}"></span><br>
-                    <strong>Dedicatoria:</strong> <span th:text="${torta.dedicatoria}"></span><br>
-                </li>
-            </ul>
+        <h2>Detalles de la Compra</h2>
+    
+        <div th:each="torta : ${tortas}" class="detalle-torta">
+            <p><strong>ID:</strong> <span th:text="${torta.id_tortac}"></span></p>
+            <p><strong>Nombre:</strong> <span th:text="${torta.nombre_tc}"></span></p>
+            <p><strong>Tamaño:</strong> <span th:text="${torta.tamano_tc}"></span></p>
+            <p><strong>Precio:</strong> S/.<span th:text="${torta.precio_tc}"></span></p>
         </div>
     
-
-    <p th:text="${mensaje_carrito}"></p> <!-- Muestra un mensaje si no hay productos -->
-    </main>
+        <h3>Método de Pago</h3>
+        <div class="metodo-pago">
+            <label>
+                <input type="radio" name="metodo_pago" value="efectivo" /> 
+                <i class="fa-solid fa-money-bill"></i> Efectivo
+            </label>
+            <label>
+                <input type="radio" name="metodo_pago" value="tarjeta" /> 
+                <i class="fa fa-credit-card"></i> Tarjeta
+            </label>
+        </div>
+    
+        <h3>Tipo de Entrega</h3>
+        <div class="tipo-entrega">
+            <label>
+                <input type="radio" name="entrega" value="tienda" /> 
+                En Tienda
+            </label>
+            <label>
+                <input type="radio" name="entrega" value="delivery" /> 
+                Delivery
+            </label>
+        </div>
+    
+        <div class="direccion-container" style="display: none;">
+            <label for="direccion">Dirección de Entrega:</label>
+            <input type="text" id="direccion" name="direccion" placeholder="Ingresa tu dirección" />
+        </div>
+    
+        <div class="total">
+            <strong>Total a pagar: </strong> S/.<span th:text="${precioTotal}" id="totalCompra"></span>
+        </div>
+    
+        <form id="form-finalizar-compra" action="/boleta/guardar" method="POST">
+            <input type="hidden" name="productos" id="productos" />
+            <input type="hidden" name="metodo_pago" id="metodo_pago" />
+            <input type="hidden" name="entrega" id="entrega" />
+            <input type="hidden" name="direccion" id="direccion_input" />
+            <input type="hidden" name="total" id="total_input" />
+    
+            <div class="boton-finalizar">
+                <button type="submit">Finalizar Compra</button>
+            </div>
+        </form>
+    </div>
+    
+    
     <footer id="ultima_seccion" th:replace="/layouts/fragmentos :: footer">
     </footer>
-    <style th:src="@{/css/carrito.cs}"></style>
     <script tH:src="@{/js/pagina_principal.js}"></script>
     <script tH:src="@{/js/carrito.js}"></script>
+    <script tH:src="@{/js/tipo_entrega.js}"></script>
 </body>
 </html>

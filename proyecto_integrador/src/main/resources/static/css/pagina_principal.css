@@ -671,8 +671,8 @@ hr
     position: absolute    ;
     top: 50px;
     right: 260px;
-    width: 350px;
-    max-height: 500px;
+    width: 370px;
+    max-height: auto;
     overflow-y: auto;
     background-color: #ffffff;
     border: 1px solid #ccc;
@@ -689,22 +689,6 @@ hr
 }
 #lista-carrito td {
     padding: 0.7vw;
-}
-#contenido_carrito {
-    position: absolute    ;
-    top: 50px;
-    right: 150px;
-    width: 500px;
-    max-height: 400px;
-    overflow-y: auto;
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 15px;
-    display: none;
-    z-index: 1000;
-    font-family:"Didact Gothic", sans-serif;   
-    overflow: hidden;
 }
 
 #contenido_carrito.show {

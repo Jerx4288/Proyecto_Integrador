@@ -612,7 +612,7 @@ h1{
     top: 50px;
     right: 260px;
     width: 390px;
-    max-height: 400px;
+    max-height: auto;
     overflow-y: auto;
     background-color: #ffffff;
     border: 1px solid #ccc;

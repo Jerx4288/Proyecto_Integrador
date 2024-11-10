@@ -3,7 +3,7 @@
     top: 50px;
     right: 260px;
     width: 350px;
-    max-height: 500px;
+    max-height: auto !important;
     overflow-y: auto;
     background-color: #ffffff;
     border: 1px solid #ccc;
