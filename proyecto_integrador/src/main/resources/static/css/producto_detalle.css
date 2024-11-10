@@ -220,7 +220,7 @@ main
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     padding-top: 3vw;
-    
+    height: auto;
 }
 #imagen
 {
@@ -348,4 +348,474 @@ form button:hover
 
 .menu-opciones li a:hover {
     color: #007bff; 
+}
+#contenido_carrito {
+    position: absolute    ;
+    top: 50px;
+    right: 260px;
+    width: 380px;
+    max-height: 700px;
+    overflow-y: auto;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    display: none;
+    z-index: 1000;
+    font-family:"Didact Gothic", sans-serif;   
+    overflow: hidden;
+}
+
+#contenido_carrito.show {
+    display: block;
+}
+#lista-carrito td {
+    padding: 0.7vw;
+}
+.btn-eliminar, .btn-ver-carrito
+{
+    background-color: #f8d3dc;
+    cursor: pointer;
+    font-family: "Didact Gothic", sans-serif;
+    border: transparent;
+    border-radius: 1vw;
+    padding: 0.6vw;
+}
+.btn-eliminar:hover, .btn-ver-carrito:hover
+{
+    background-color: #f8aebe;
+    color: white;
+}
+@media (max-width: 756px) {
+
+    #barrabajo
+    {
+        height: 50px;
+        /*border: 1px solid black;*/
+        display: grid;
+        grid-template-columns: 0.91fr  1fr 1fr;
+        grid-template-areas: 
+        "primero tercero cuarto";
+        text-align: center;
+        align-items: center;
+        font-family:"Didact Gothic", sans-serif;    
+        font-size: 15px;
+    }
+
+    #iconos a i
+    {
+        margin-left: 10px;
+        margin-right: 15px !important;
+        font-size: 1.2rem !important;
+        
+    }
+    #carrito
+    {
+        margin-left: 0px;
+    }
+    header
+    {
+        font-size: calc(0.8vw + 8px);
+        text-align: center;
+        align-items: center;
+        color: #333;
+        background-color: #f8d3dc;
+        display: grid;
+        grid-template-columns: 0.9fr 0.9fr 0.9fr 1.4fr 1.2fr 0.8fr 1fr;
+        grid-template-areas: 
+        "uno dos tres cuatro cinco seis siete";
+    }
+    #Imagen img
+    {
+        height: calc(1vw + 45px);
+    }
+    #Ped_Esp
+    {
+        margin-left: 5px;
+    }
+    #Blog
+    {
+        margin-left: -18px;
+    }
+    #Contactanos
+    {
+        margin-left: -16px;
+    }
+    #ultima_seccion
+    {
+        margin-top: -8%;
+        height: 360px;
+    }
+    #pri_secc_foo
+    {
+        margin-left: 2%;
+        padding-top: 2%;
+        display: grid;
+        grid-template-columns: 0.5fr 0.2fr 0.2fr 0.2fr;
+    }
+    #logos_foo
+    {
+        margin-left: -140px;
+    }
+    #logo2
+    {
+        height: 80px !important;
+        width: 90px !important;
+    }
+    #libro_reclamaciones
+    {
+        height: 70px !important;
+        width: 90px !important;
+    }
+    #contenido_footer
+    {
+        margin-left: -129px;
+    }
+    #redes_sociales
+    {
+        margin-top: 40px;
+        margin-left: -129px;
+    }
+    #contenido_footer h2, #redes_sociales h2, #Telefonos h2
+    {
+        font-size: calc(1vw + 7px) !important;
+    }
+    #contenido_footer ul li, #redes_sociales ul li, #Telefonos ul li
+    {
+        font-size: calc(1vw + 6px) !important;
+    }
+    #redes_sociales p a
+    {
+        font-size: calc(1vw + 7px) !important;
+    }
+    #seg_secc_foo
+    {
+        margin-left: 5%;
+        
+    }
+
+    #seg_secc_foo h2{
+        font-size: calc(1vw + 5px);
+        
+    }
+    #arriba {
+        position: fixed;
+        bottom: calc(1vw - 0px);
+        font-size: calc(1vw + 5px);
+    }
+    #imagen-producto
+    {
+        text-align: center;
+        align-items: center ;
+        width: auto;
+        height: 40vw !important;    
+        border: 20px #f8d3dc double !important;
+    }
+    #nombre-producto
+    {
+        font-size: 5vw !important;
+    }
+    #descripcion-producto
+    {
+        font-size: 2vw !important;
+    }
+    form
+    {
+        margin: 0 !important;
+        padding: 2px !important;
+        
+    }
+    form h2
+    {
+        font-size: 4vw !important;
+    }
+    form label
+    {
+        font-size: 3vw !important;
+    }
+    #contenido
+    {
+        height: 100vw;
+        align-items: center;
+        display: grid;
+        grid-template-columns: 0.6fr 0.6fr;
+        grid-template-rows: 1fr;
+        padding-top: 0 !important;
+        margin-top: -50px;
+    }
+}
+@media screen and (min-width: 757px) and (max-width: 1023px)
+{
+    #subbarra
+    {
+        font-size: 1.5vw !important;
+    }
+    #barrabajo
+    {
+        grid-template-columns: 0.91fr  1fr 1fr !important;
+        grid-template-areas: 
+        "primero tercero cuarto";
+        font-size: 1.9vw;
+    }
+    #iconos a i
+    {
+        margin-left: 18px;
+        margin-right: 15px !important;
+        font-size: 1.9vw!important;
+        
+    }
+    #carrito
+    {
+        margin-left: 35px;
+    }
+    header
+    {
+        font-size: calc(1vw + 8px);
+        display: grid;
+        grid-template-columns: 0.9fr 0.9fr 0.9fr 1.4fr 1.2fr 0.8fr 1fr;
+        grid-template-areas: 
+        "uno dos tres cuatro cinco seis siete";
+    }
+    #Imagen img
+    {
+        height: calc(1vw + 70px);
+    }
+    #Ped_Esp
+    {
+        margin-left: 20px;
+    }
+    #Blog
+    {
+        margin-left: -10px;
+    }
+    #Contactanos
+    {
+        margin-left: -18px !important;
+    }
+    #ultima_seccion
+    {
+        margin-top: -10px;
+        height: 44vw;
+    }
+    #pri_secc_foo
+    {
+        margin-left: 2%;
+        padding-top: 2%;
+        margin-right: 2%;
+        display: grid;
+        grid-template-columns: 0.2fr 0.34fr 0.35fr 0.3fr;
+    }
+    #logos_foo
+    {
+        margin-left: -0px;
+    }
+    #logo2
+    {
+        height: 13vw !important;
+        width: auto !important;
+    }
+    #libro_reclamaciones
+    {
+        height: 10vw !important;
+        width: 14vw !important;
+    }
+    #contenido_footer
+    {
+        margin-left: 0px;
+    }
+    #redes_sociales
+    {
+        margin-top: 0px;
+        margin-left: 0px;
+    }
+    #contenido_footer h2, #redes_sociales h2, #Telefonos h2
+    {
+        font-size: calc(1vw + 7px) !important;
+    }
+    #contenido_footer ul li, #redes_sociales ul li, #Telefonos ul li
+    {
+        font-size: calc(1vw + 6px) !important;
+    }
+    #redes_sociales p a
+    {
+        font-size: calc(1vw + 7px) !important;
+    }
+    #Telefonos
+    {
+        margin-left: 0px;
+    }
+    #seg_secc_foo
+    {
+        margin-left: 5%;
+    }
+
+    #seg_secc_foo h2{
+        font-size: calc(1vw + 5px);
+        
+    }
+    #arriba {
+        position: fixed;
+        bottom: calc(1vw - 0px);
+        font-size: calc(1vw + 5px);
+    }
+    #imagen-producto
+    {
+        text-align: center;
+        align-items: center ;
+        width: auto;
+        height: 40vw !important;    
+        border: 20px #f8d3dc double !important;
+    }
+    #nombre-producto
+    {
+        font-size: 4vw !important;
+    }
+    #descripcion-producto
+    {
+        font-size: 2vw !important;
+    }
+    form
+    {
+        margin: 0 !important;
+        padding: 2px !important;
+        
+    }
+    form h2
+    {
+        font-size: 3vw !important;
+    }
+    form label
+    {
+        font-size: 2vw !important;
+    }
+    form button
+    {
+        margin-bottom: 30px;
+    }
+    #contenido
+    {
+        height: auto;
+        align-items: center;
+        display: grid;
+        grid-template-columns: 0.6fr 0.6fr;
+        grid-template-rows: 0.7fr;
+        padding-top: 0 !important;
+        margin-top:0;
+    }
+}
+@media screen and (min-width: 1024px) and (max-width: 1524px)
+{
+    #barrabajo
+    {
+        grid-template-columns: 0.91fr  1fr 1fr !important;
+        grid-template-areas: 
+        "primero tercero cuarto";
+        font-size: calc(1vw + 8px);
+    }
+    #ini-ses a
+    {
+        font-size: 1.2rem;
+    }
+    #iconos a i
+    {
+        margin-left: 18px;
+        margin-right: 15px !important;
+        font-size: 1.2rem !important;
+        
+    }
+    #carrito
+    {
+        margin-left: 35px;
+        font-size: 1.2rem;
+    }
+    header
+    {
+        font-size: calc(1vw + 8px);
+        display: grid;
+        grid-template-columns: 0.9fr 0.9fr 0.9fr 1.4fr 1.2fr 0.8fr 1fr;
+        grid-template-areas: 
+        "uno dos tres cuatro cinco seis siete";
+    }
+    #Imagen img
+    {
+        height: calc(1vw + 70px);
+    }
+    #Ped_Esp
+    {
+        margin-left: 20px;
+    }
+    #Blog
+    {
+        margin-left: -10px;
+    }
+    #Contactanos
+    {
+        margin-left: -18px !important;
+    }
+    #ultima_seccion
+    {
+        margin-top: -10px;
+        height: 32vw;
+    }
+    #pri_secc_foo
+    {
+        margin-left: 2%;
+        padding-top: 2%;
+        margin-right: 2%;
+        display: grid;
+        grid-template-columns: 0.26fr 0.34fr 0.35fr 0.3fr;
+    }
+    #logos_foo
+    {
+        margin-left: -0px;
+    }
+    #logo2
+    {
+        height: 13vw !important;
+        width: auto !important;
+    }
+    #libro_reclamaciones
+    {
+        height: 10vw !important;
+        width: 14vw !important;
+    }
+    #contenido_footer
+    {
+        margin-left: 0px;
+    }
+    #redes_sociales
+    {
+        margin-top: 0px;
+        margin-left: 0px;
+    }
+    #contenido_footer h2, #redes_sociales h2, #Telefonos h2
+    {
+        font-size: calc(1vw + 7px) !important;
+    }
+    #contenido_footer ul li, #redes_sociales ul li, #Telefonos ul li
+    {
+        font-size: calc(1vw + 6px) !important;
+    }
+    #redes_sociales p a
+    {
+        font-size: calc(1vw + 7px) !important;
+    }
+    #Telefonos
+    {
+        margin-left: 0px;
+    }
+    #seg_secc_foo
+    {
+        margin-left: 5%;
+    }
+
+    #seg_secc_foo h2{
+        font-size: calc(1vw + 5px);
+        
+    }
+    #arriba {
+        position: fixed;
+        bottom: calc(1vw - 0px);
+        font-size: 1.6vw;
+    }
 }

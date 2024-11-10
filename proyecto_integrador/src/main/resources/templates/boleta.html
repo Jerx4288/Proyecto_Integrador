@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <th:block th:include="layouts/fragmentos :: cabecera"></th:block>    
+    <link th:href="@{/css/tienda.css}" rel="stylesheet">
+    <link th:href="@{/css/boleta.css}" rel="stylesheet">
+    <title>Boleta | Pabluki's Bakery  </title>
+</head>
+<body>
+    <div th:replace="layouts/fragmentos :: subbarra">
+    </div>
+    <div id="barrabajo" th:replace="layouts/fragmentos :: barrabajo"> 
+    </div>
+    <header th:replace = "layouts/fragmentos :: header">
+    </header>
+    <main>
+        <h1>Tu Boleta de Compra</h1>
+        <h1 th:text="${mensaje_ini}"></h1>
+
+        <h2>Lista de Tortas</h2>
+        <div th:if="${#lists.isEmpty(tortas)}">
+            <p>No hay tortas en el carrito.</p>
+        </div>
+    
+        <div th:unless="${#lists.isEmpty(tortas)}">
+            <ul>
+                <li th:each="torta : ${tortas}">
+                    <strong>Nombre:</strong> <span th:text="${torta.nombre}"></span><br>
+                    <strong>Tamaño:</strong> <span th:text="${torta.tamanio}"></span><br>
+                    <strong>Precio:</strong> <span th:text="${torta.precioTotal}"></span><br>
+                    <strong>Dedicatoria:</strong> <span th:text="${torta.dedicatoria}"></span><br>
+                </li>
+            </ul>
+        </div>
+    
+
+    <p th:text="${mensaje_carrito}"></p> <!-- Muestra un mensaje si no hay productos -->
+    </main>
+    <footer id="ultima_seccion" th:replace="/layouts/fragmentos :: footer">
+    </footer>
+    <style th:src="@{/css/carrito.cs}"></style>
+    <script tH:src="@{/js/pagina_principal.js}"></script>
+    <script tH:src="@{/js/carrito.js}"></script>
+</body>
+</html>

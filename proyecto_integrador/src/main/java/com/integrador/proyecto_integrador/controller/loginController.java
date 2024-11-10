@@ -62,6 +62,8 @@ public class loginController {
                 nombreUsuario = clienteService.iniciarSesionAdmin(dni, password);
                 session.setAttribute("usuario", nombreUsuario);
                 session.setAttribute("rol", rolUsuario);
+                session.setAttribute("dni", dni);
+                System.out.println(dni);
                 System.out.println("Usuario de sesión: " + session.getAttribute("usuario")); 
                 model.addAttribute("mensaje_ini", e2);
                 return "MenuPrincipal";
@@ -78,6 +80,7 @@ public class loginController {
                 error = "Hola " + clienteService.iniciarSesion(dni, password) + " !";
                 session.setAttribute("usuario", nombreUsuario);
                 session.setAttribute("rol", rolUsuario);
+                session.setAttribute("dni", dni);
                 System.out.println("Usuario de sesión: " + session.getAttribute("usuario")); 
                 model.addAttribute("mensaje_ini", error);
                 return "MenuPrincipal";

@@ -9,19 +9,28 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/productodetalle")
-public class productoDetalleController 
-{
+public class proDetController {
+
     @RequestMapping("/")
-    public String detalle(@RequestParam(name = "id", required = false) String id, Model model, HttpSession session) {
-       
-        model.addAttribute("productoId", id);
+    public String inicio(@RequestParam(value = "id", required = false) String productoId, Model model, HttpSession session) {
         if (session.getAttribute("usuario") != null) {
             String usuario = (String) session.getAttribute("usuario");
+            String dni = (String) session.getAttribute("dni");
+            System.out.println(dni);
             model.addAttribute("mensaje_ini", "Hola " + usuario + "!");
+            if (productoId == null) 
+            {
+                return "tienda";
+            }else
+            {
+                System.out.println("Jalo bien id " + productoId );
+                return "producto_detalle"; // nombre de la vista Thymeleaf
+            }
+            
         } else {
             model.addAttribute("mensaje_ini", "Iniciar Sesion");
         }
-        return "producto_detalle"; 
-
+        System.out.println("Entro al controlador");
+        return "producto_detalle"; // nombre de la vista Thymeleaf
     }
 }

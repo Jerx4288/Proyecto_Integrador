@@ -67,8 +67,31 @@
                 </a>
             </div>
             <div id="carrito">
-                <a th:href="@{/tienda/}" class="text_barra"><i class="fas fa-shopping-cart"></i>  Carrito</a>
+                <a th:href="@{/login/}" th:if="${mensaje_ini == 'Iniciar Sesion'}" class="text_barra">
+                    <i class="fas fa-shopping-cart"></i> Carrito
+                </a>
+                <a href="#" th:if="${mensaje_ini != 'Iniciar Sesion'}" class="text_barra" onclick="toggleCarrito(event)">
+                    <i class="fas fa-shopping-cart"></i> Carrito
+                </a>
+                <div id="contenido_carrito" th:if="${mensaje_ini != 'Iniciar Sesion'}" style="display: none;">
+                    <table id="lista-carrito" class="u-full-width">
+                        <thead>
+                            <tr>
+                                <th>Imagen</th>
+                                <th>Nombre</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                
             </div>
+            
+            
+            
         </div>
         <header th:fragment="header">
             <div id="Nosotros">
@@ -145,7 +168,7 @@
             </div>
         </footer>
     </body>
-   
+    <style th:src="@{/css/carrito.cs}"></style>
 
     
 </html>

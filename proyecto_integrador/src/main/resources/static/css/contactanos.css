@@ -389,7 +389,45 @@ iframe
     text-decoration: none;
     display: block;
 }
+#contenido_carrito {
+    position: absolute    ;
+    top: 50px;
+    right: 260px;
+    width: 500px;
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    display: none;
+    z-index: 1000;
+    font-family:"Didact Gothic", sans-serif;   
+    overflow: hidden;
+}
 
+#contenido_carrito.show {
+    display: block;
+}
+#lista-carrito td {
+    padding: 0.5vw;
+}
+.btn-eliminar, .btn-ver-carrito
+{
+    background-color: #f8d3dc;
+    cursor: pointer;
+    width: 120px;
+    font-family: "Didact Gothic", sans-serif;
+    border: transparent;
+    border-radius: 1vw;
+    font-size: 0.8vw;
+    margin-top: 0;
+}
+.btn-eliminar:hover, .btn-ver-carrito:hover
+{
+    background-color: #f8aebe;
+    color: white;
+}
 .menu-opciones li a:hover {
     color: #007bff; 
 }
