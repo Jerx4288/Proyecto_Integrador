@@ -407,6 +407,7 @@ input[type="date"],select {
 .form_int
 {
     display: flex;
+    height: 6vw;
     margin-top: 10px;
 }
 .citaa
