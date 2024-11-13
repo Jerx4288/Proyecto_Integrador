@@ -4,7 +4,7 @@ function mostrarCarrito(event) {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     const carritoTableBody = document.querySelector('#lista-carrito tbody');
     const contenidoCarrito = document.getElementById('contenido_carrito');
-
+    
     // Limpiar la tabla
     carritoTableBody.innerHTML = '';
 
@@ -144,15 +144,7 @@ function eliminarProductoDelCarrito(index) {
     mostrarCarrito(new Event('click'));
 }
 
-function vaciarCarrito() {
-    // Elimina el carrito del localStorage
-    localStorage.removeItem('carrito');
 
-    // Opcional: Actualiza la interfaz de usuario para reflejar que el carrito está vacío
-    console.log("El carrito ha sido vaciado.");
-    // Aquí puedes actualizar el DOM o mostrar un mensaje al usuario, si lo deseas.
-    document.getElementById('mensaje-carrito').textContent = "El carrito está vacío.";
-}
 function enviarDatosCarrito(carrito) {
     console.log('Carrito antes de enviar:', carrito);
     fetch('/boleta', {

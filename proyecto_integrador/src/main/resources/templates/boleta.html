@@ -33,7 +33,26 @@
             <p><strong>Tamaño:</strong> <span th:text="${torta.tamano_tc}"></span></p>
             <p><strong>Precio:</strong> S/.<span th:text="${torta.precio_tc}"></span></p>
         </div>
+        <div class="cantidades">
+            <strong>Cantidad total de productos: </strong> <span th:text="${cantidadTotal}"></span>
+        </div>
+        <div class="dedicatoria">
+            <strong>¿Deseas agregar una dedicatoria?</strong>
+            <label>
+                <input type="radio" name="dedicatoria" value="si" id="dedicatoria_si" /> Sí
+            </label>
+            <label>
+                <input type="radio" name="dedicatoria" value="no" id="dedicatoria_no" checked /> No
+            </label>
+        </div>
     
+        <!-- Contenedor para la dedicatoria -->
+        <div id="dedicatoria_area" style="display: none;" class="dedicatoria-container">
+            <label for="dedicatoria_texto">Escribe tu dedicatoria (máximo 150 caracteres):</label>
+            <textarea id="dedicatoria_texto" name="dedicatoria_texto" maxlength="150" placeholder="Escribe aquí tu dedicatoria..."></textarea>
+            <small id="caracteres_contador">150 caracteres restantes</small>
+        </div>
+
         <h3>Método de Pago</h3>
         <div class="metodo-pago">
             <label>

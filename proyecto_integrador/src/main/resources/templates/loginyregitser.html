@@ -97,8 +97,15 @@
                 </div>
                 <div class="input-container">
                     <i class="fa-solid fa-lock"></i>
-                    <input th:field="*{password}" type="password" id="password_registro" placeholder="Contraseña" required>
+                    <input th:field="*{password}" 
+                           type="password" 
+                           id="password_registro" 
+                           placeholder="Contraseña" 
+                           required 
+                           pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$" 
+                           title="La contraseña debe tener al menos 8 caracteres, incluir una mayúscula, un número y un carácter especial.">
                 </div>
+                
                 <div class="check">
                     <input type="checkbox" id="showPassword">
                     <label for="showPassword">Mostrar contraseña</label>

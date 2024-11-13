@@ -2,7 +2,7 @@ const container = document.getElementById('container');
 const registerBtn = document.getElementById('register');
 const loginBtn = document.getElementById('login');
 const showPasswordCheckbox = document.getElementById('showPassword');
-const password1 = document.getElementById('password1');
+const password1 = document.getElementById('password_registro');
 
 
 const updateContainerAndTitle = (isRegister) => {

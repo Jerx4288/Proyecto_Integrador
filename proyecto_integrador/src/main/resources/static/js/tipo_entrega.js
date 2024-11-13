@@ -1,3 +1,40 @@
+document.querySelectorAll('input[name="dedicatoria"]').forEach(function(radio) {
+    radio.addEventListener('change', function() {
+        const dedicatoriaArea = document.getElementById('dedicatoria_area');
+        const dedicatoriaInput = document.getElementById('dedicatoria_input');
+        
+        if (document.getElementById('dedicatoria_si').checked) {
+            dedicatoriaArea.style.display = 'flex';  // Mostrar el textarea
+            dedicatoriaInput.value = document.getElementById('dedicatoria_texto').value;
+        } else {
+            dedicatoriaArea.style.display = 'none';  // Ocultar el textarea
+            dedicatoriaInput.value = ''; // Limpiar el valor del campo
+        }
+    });
+});
+
+// Asegúrate de que el estado inicial esté bien configurado al cargar la página
+if (document.getElementById('dedicatoria_si').checked) {
+    document.getElementById('dedicatoria_area').style.display = 'block';
+} else {
+    document.getElementById('dedicatoria_area').style.display = 'none';
+}
+
+
+const textarea = document.getElementById('dedicatoria_texto');
+const contador = document.getElementById('caracteres_contador');
+
+textarea.addEventListener('input', function() {
+    textarea.value = textarea.value.replace(/[^a-zA-Z0-9\s]/g, '');
+
+    const caracteresRestantes = 150 - textarea.value.length;
+    contador.textContent = `${caracteresRestantes} caracteres restantes`;
+});
+
+
+
+
+//Entrega 
 document.querySelectorAll('input[name="entrega"]').forEach(function (radio) {
     radio.addEventListener('change', function () {
         var direccionContainer = document.querySelector('.direccion-container');

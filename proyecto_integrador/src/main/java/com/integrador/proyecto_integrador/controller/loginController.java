@@ -66,6 +66,7 @@ public class loginController {
                 System.out.println(dni);
                 System.out.println("Usuario de sesión: " + session.getAttribute("usuario")); 
                 model.addAttribute("mensaje_ini", e2);
+                
                 return "MenuPrincipal";
             }
         } else {

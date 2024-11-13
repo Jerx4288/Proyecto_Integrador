@@ -37,57 +37,62 @@ public class boletaController
         // Obtener los productos desde el payload
         List<Map<String, Object>> productos = payload.get("productos");
         List<TortaClasica> tortas = new ArrayList<>();  // Lista para acumular todas las tortas
-
+        int cantidadTotal = 0;
         for (Map<String, Object> producto : productos) {
             // Imprimir los detalles del producto
             System.out.println("Nombre del producto: " + producto.get("nombre"));
             System.out.println("Tamaño: " + producto.get("tamanio"));
             System.out.println("Precio total: " + producto.get("precioTotal"));
-            System.out.println("Dedicatoria: " + producto.get("dedicatoria"));
 
             // Obtener nombre y tamaño del producto
             String nombre = producto.get("nombre") != null ? producto.get("nombre").toString() : "";
             String tamanio = producto.get("tamanio") != null ? producto.get("tamanio").toString() : "";
-
+            
             // Cargar las tortas filtradas y agregarlas a la lista
             List<TortaClasica> tortasFiltradas = tortaClasicaService.cargarCategoriasFiltradas(nombre, tamanio);
             tortas.addAll(tortasFiltradas);
-
+            
             for (TortaClasica torta : tortasFiltradas) {
                 System.out.println("ID: " + torta.getId_tortac());
+                cantidadTotal++;
             }
             System.out.println("-------------------------------------------------------");
         }
-
+        System.out.println(cantidadTotal);
         // Agregar la lista completa de tortas al modelo
         session.setAttribute("tortas", tortas);
         model.addAttribute("tortas", tortas);
-
+        model.addAttribute("cantidadTotal", cantidadTotal);
         // Retornar la vista boleta
         return "redirect:/boleta";
     }
 
     @GetMapping("/boleta")
-public String mostrarBoleta(Model model, HttpSession session) {
-    if (session.getAttribute("usuario") != null) {
-        String usuario = (String) session.getAttribute("usuario");
-        model.addAttribute("mensaje_ini", "Hola " + usuario + "!");
-    } else {
-        model.addAttribute("mensaje_ini", "Iniciar Sesion");
+    public String mostrarBoleta(Model model, HttpSession session) {
+        if (session.getAttribute("usuario") != null) {
+            String usuario = (String) session.getAttribute("usuario");
+            model.addAttribute("mensaje_ini", "Hola " + usuario + "!");
+        } else {
+            model.addAttribute("mensaje_ini", "Iniciar Sesion");
+        }
+    
+        @SuppressWarnings("unchecked")
+        List<TortaClasica> tortas = (List<TortaClasica>) session.getAttribute("tortas");
+    
+        if (tortas != null) {
+            model.addAttribute("tortas", tortas);
+    
+            // Calcular la cantidad total de productos
+            int cantidadTotal = tortas.size();  // Aquí obtenemos el número total de productos
+            model.addAttribute("cantidadTotal", cantidadTotal);
+    
+            // Calcular el precio total sumando los precios de todas las tortas
+            double precioTotal = tortas.stream().mapToDouble(TortaClasica::getPrecio_tc).sum();
+            model.addAttribute("precioTotal", precioTotal);
+        }
+    
+        return "boleta";
     }
-
-    @SuppressWarnings("unchecked")
-    List<TortaClasica> tortas = (List<TortaClasica>) session.getAttribute("tortas");
-    if (tortas != null) {
-        model.addAttribute("tortas", tortas);
-
-        // Calcular el precio total sumando los precios de todas las tortas
-        double precioTotal = tortas.stream().mapToDouble(TortaClasica::getPrecio_tc).sum();
-        model.addAttribute("precioTotal", precioTotal);
-    }
-
-    return "boleta";
-}
 
 
 

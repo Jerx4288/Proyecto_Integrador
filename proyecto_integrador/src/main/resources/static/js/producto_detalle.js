@@ -22,11 +22,7 @@ const productos = {
                     {value: '25 porciones', label: 'De 25 porciones', price: 250}
                 ] 
             },
-            {  label: "Redacte una breve dedicatoria:",
-                type: "textarea",
-                name: "dedicatoria",
-                rows: 2,
-                cols: 9 }
+            
         ]
     },
     torta_clasica_2: {
@@ -43,11 +39,7 @@ const productos = {
                     {value: '25 porciones', label: 'De 25 porciones', price: 160}
                 ] 
             },
-            {  label: "Redacte una breve dedicatoria:",
-                type: "textarea",
-                name: "dedicatoria",
-                rows: 2,
-                cols: 9 }
+            
         ]
     },
     torta_clasica_3: {
@@ -63,11 +55,7 @@ const productos = {
                     {value: '25 porciones', label: 'De 25 porciones', price: 180}
                 ] 
             },
-            {  label: "Redacte una breve dedicatoria:",
-                type: "textarea",
-                name: "dedicatoria",
-                rows: 2,
-                cols: 9 }
+            
         ]
     },
     torta_clasica_4: {
@@ -83,11 +71,7 @@ const productos = {
                     {value: '25 porciones', label: 'De 25 porciones', price: 130}
                 ] 
             },
-            {  label: "Redacte una breve dedicatoria:",
-                type: "textarea",
-                name: "dedicatoria",
-                rows: 2,
-                cols: 9 }
+            
         ]
     },
     torta_clasica_5: {
@@ -103,11 +87,7 @@ const productos = {
                     {value: '25 porciones', label: 'De 25 porciones', price: 180}
                 ] 
             },
-            {  label: "Redacte una breve dedicatoria:",
-                type: "textarea",
-                name: "dedicatoria",
-                rows: 2,
-                cols: 9 }
+            
         ]
     },
     torta_clasica_6: {
@@ -123,11 +103,7 @@ const productos = {
                     {value: '25 porciones', label: 'De 25 porciones', price: 100}
                 ] 
             },
-            {  label: "Redacte una breve dedicatoria:",
-                type: "textarea",
-                name: "dedicatoria",
-                rows: 2,
-                cols: 9 }
+            
         ]
     },
     torta_clasica_7: {
@@ -143,11 +119,7 @@ const productos = {
                     {value: '25 porciones', label: 'De 25 porciones', price: 180}
                 ] 
             },
-            {  label: "Redacte una breve dedicatoria:",
-                type: "textarea",
-                name: "dedicatoria",
-                rows: 2,
-                cols: 9 }
+            
         ]
     },
     torta_clasica_8: {
@@ -163,11 +135,7 @@ const productos = {
                     {value: '25 porciones', label: 'De 25 porciones', price: 120}
                 ] 
             },
-            {  label: "Redacte una breve dedicatoria:",
-                type: "textarea",
-                name: "dedicatoria",
-                rows: 2,
-                cols: 9 }
+            
         ]
     },
     torta_clasica_9: {
@@ -183,11 +151,7 @@ const productos = {
                     {value: '25 porciones', label: 'De 25 porciones', price: 110}
                 ] 
             },
-            {  label: "Redacte una breve dedicatoria:",
-                type: "textarea",
-                name: "dedicatoria",
-                rows: 2,
-                cols: 9 }
+            
         ]
     },
     torta_especial_1: {
@@ -222,13 +186,7 @@ const productos = {
                     { value: 'Fudge', label: 'Fudge', price:30 }
                 ]
             },
-            {
-                label: "Redacte una breve dedicatoria:",
-                type: "textarea",
-                name: "dedicatoria",
-                rows: 2,
-                cols: 9
-            }
+            
         ]
     },    
     torta_especial_2:
@@ -264,13 +222,7 @@ const productos = {
                     { value: 'Fudge', label: 'Fudge', price:50 }
                 ]
             },
-            {
-                label: "Redacte una breve dedicatoria:",
-                type: "textarea",
-                name: "dedicatoria",
-                rows: 2,
-                cols: 9
-            }
+            
         ]
     },
     torta_especial_3:
@@ -306,13 +258,7 @@ const productos = {
                     { value: 'Fudge', label: 'Fudge', price:50 }
                 ]
             },
-            {
-                label: "Redacte una breve dedicatoria:",
-                type: "textarea",
-                name: "dedicatoria",
-                rows: 2,
-                cols: 9
-            }
+            
         ]
     },
     torta_especial_4:
@@ -347,13 +293,6 @@ const productos = {
                     { value: 'Manjar', label: 'Manjar Blanco', price: 35 },
                     { value: 'Fudge', label: 'Fudge', price:50 }
                 ]
-            },
-            {
-                label: "Redacte una breve dedicatoria:",
-                type: "textarea",
-                name: "dedicatoria",
-                rows: 2,
-                cols: 9
             }
         ]
     },
@@ -389,13 +328,6 @@ const productos = {
                     { value: 'Manjar', label: 'Manjar Blanco', price: 35 },
                     { value: 'Fudge', label: 'Fudge', price:50 }
                 ]
-            },
-            {
-                label: "Redacte una breve dedicatoria:",
-                type: "textarea",
-                name: "dedicatoria",
-                rows: 2,
-                cols: 9
             }
         ]
     },
@@ -431,13 +363,6 @@ const productos = {
                     { value: 'Manjar', label: 'Manjar Blanco', price: 35 },
                     { value: 'Fudge', label: 'Fudge', price:50 }
                 ]
-            },
-            {
-                label: "Redacte una breve dedicatoria:",
-                type: "textarea",
-                name: "dedicatoria",
-                rows: 2,
-                cols: 9
             }
         ]
     },
@@ -473,13 +398,6 @@ const productos = {
                     { value: 'Manjar', label: 'Manjar Blanco', price: 35 },
                     { value: 'Fudge', label: 'Fudge', price:50 }
                 ]
-            },
-            {
-                label: "Redacte una breve dedicatoria:",
-                type: "textarea",
-                name: "dedicatoria",
-                rows: 2,
-                cols: 9
             }
         ]
     },
@@ -515,13 +433,6 @@ const productos = {
                     { value: 'Manjar', label: 'Manjar Blanco', price: 35 },
                     { value: 'Fudge', label: 'Fudge', price:50 }
                 ]
-            },
-            {
-                label: "Redacte una breve dedicatoria:",
-                type: "textarea",
-                name: "dedicatoria",
-                rows: 2,
-                cols: 9
             }
         ]
     },
@@ -557,13 +468,6 @@ const productos = {
                     { value: 'Manjar', label: 'Manjar Blanco', price: 35 },
                     { value: 'Fudge', label: 'Fudge', price:50 }
                 ]
-            },
-            {
-                label: "Redacte una breve dedicatoria:",
-                type: "textarea",
-                name: "dedicatoria",
-                rows: 2,
-                cols: 9
             }
         ]
     },
@@ -599,13 +503,6 @@ const productos = {
                     { value: 'Manjar', label: 'Manjar Blanco', price: 35 },
                     { value: 'Fudge', label: 'Fudge', price:50 }
                 ]
-            },
-            {
-                label: "Redacte una breve dedicatoria:",
-                type: "textarea",
-                name: "dedicatoria",
-                rows: 2,
-                cols: 9
             }
         ]     
     },
@@ -641,13 +538,6 @@ const productos = {
                     { value: 'Manjar', label: 'Manjar Blanco', price: 35 },
                     { value: 'Fudge', label: 'Fudge', price:50 }
                 ]
-            },
-            {
-                label: "Redacte una breve dedicatoria:",
-                type: "textarea",
-                name: "dedicatoria",
-                rows: 2,
-                cols: 9
             }
         ]
     },
@@ -683,13 +573,6 @@ const productos = {
                     { value: 'Manjar', label: 'Manjar Blanco', price: 35 },
                     { value: 'Fudge', label: 'Fudge', price:50 }
                 ]
-            },
-            {
-                label: "Redacte una breve dedicatoria:",
-                type: "textarea",
-                name: "dedicatoria",
-                rows: 2,
-                cols: 9
             }
         ]
     },
@@ -925,7 +808,6 @@ if (productoId && productos[productoId]) {
         const tipo = form.querySelector('select[name="tipo"]') ? form.querySelector('select[name="tipo"]').value : '';
         const relleno = form.querySelector('select[name="relleno"]') ? form.querySelector('select[name="relleno"]').value : '';
         const cantidad = form.querySelector('select[name="cantidad"]') ? form.querySelector('select[name="cantidad"]').value : '';
-        const dedicatoria = form.querySelector('textarea[name="dedicatoria"]') ? form.querySelector('textarea[name="dedicatoria"]').value : '';
 
         // Crear objeto del producto para añadir al carrito
         const productoEnCarrito = {
@@ -935,7 +817,6 @@ if (productoId && productos[productoId]) {
             tipo: tipo,
             relleno: relleno,
             cantidad: cantidad,
-            dedicatoria: dedicatoria,
             precioTotal: precioTotal
         };
 
