@@ -5,6 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.integrador.proyecto_integrador.model.Administrador;
+import com.integrador.proyecto_integrador.model.Cliente;
+
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -17,16 +20,27 @@ public class inicioController {
     }
     @RequestMapping("/Pagina_principal")
     public String Inicio(Model model, HttpSession session) {
-        if (session.getAttribute("usuario") != null) {
-            String usuario = (String) session.getAttribute("usuario");
-            String rol = (String) session.getAttribute("rol");  // Obtener el rol de la sesión
-            model.addAttribute("mensaje_ini", "Hola " + usuario + "!");
-            model.addAttribute("rol", rol);  // Pasar el rol al modelo
+        String mensajeBienvenida;
+        Object usuario = session.getAttribute("usuario");
+
+        if (usuario instanceof Administrador) {
+            Administrador administrador = (Administrador) usuario;
+            mensajeBienvenida = "Hola " + administrador.getNombre_a() + "!";
+        } else if (usuario instanceof Cliente) {
+            Cliente cliente = (Cliente) usuario;
+            mensajeBienvenida = "Hola " + cliente.getNombre() + "!";
+        } else if (usuario != null) {
+            // Si 'usuario' es un String o cualquier otro tipo
+            mensajeBienvenida = "Hola " + usuario.toString() + "!";
         } else {
-            model.addAttribute("mensaje_ini", "Iniciar Sesion");
+            // Caso donde el usuario no está logueado
+            mensajeBienvenida = "Iniciar Sesion";
         }
-        return "MenuPrincipal"; 
-    }
+
+        model.addAttribute("mensaje_ini", mensajeBienvenida);
+
+            return "MenuPrincipal"; 
+        }
     
 
     }

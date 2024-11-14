@@ -777,17 +777,7 @@ if (productoId && productos[productoId]) {
 
             form.appendChild(label);
             form.appendChild(select);
-        } else if (field.type === 'textarea') {
-            const label = document.createElement('label');
-            label.textContent = field.label;
 
-            const textarea = document.createElement('textarea');
-            textarea.name = field.name;
-            textarea.rows = field.rows || 4;
-            textarea.cols = field.cols || 50;
-
-            form.appendChild(label);
-            form.appendChild(textarea);
         }
     });
 
@@ -828,9 +818,8 @@ if (productoId && productos[productoId]) {
 
         // Guardar el carrito actualizado en el localStorage
         localStorage.setItem('carrito', JSON.stringify(carrito));
-
-        // Mostrar el carrito actualizado en consola (opcional)
-        console.log(carrito);
+        
+        System.out.println(carrito);
     });
 
 } else {

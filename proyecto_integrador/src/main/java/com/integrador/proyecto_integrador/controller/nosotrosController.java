@@ -4,6 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.integrador.proyecto_integrador.model.Administrador;
+import com.integrador.proyecto_integrador.model.Cliente;
+
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -12,12 +15,19 @@ public class nosotrosController {
     @RequestMapping("/")
     private String nosotros (Model model, HttpSession session)
     {
-        if (session.getAttribute("usuario") != null) {
-            String usuario = (String) session.getAttribute("usuario");
-            model.addAttribute("mensaje_ini", "Hola " + usuario + "!");
+        String mensajeBienvenida;
+        Object usuario = session.getAttribute("usuario");
+
+        if (usuario instanceof Administrador) {
+            Administrador administrador = (Administrador) usuario;
+            mensajeBienvenida = "Hola " + administrador.getNombre_a() + "!";
+        } else if (usuario instanceof Cliente) {
+            Cliente cliente = (Cliente) usuario;
+            mensajeBienvenida = "Hola " + cliente.getNombre() + "!";
         } else {
-            model.addAttribute("mensaje_ini", "Iniciar Sesion");
+            mensajeBienvenida = "¡Hola!";
         }
+        model.addAttribute("mensaje_ini", mensajeBienvenida);
         return "nosotros"; 
     }
 }

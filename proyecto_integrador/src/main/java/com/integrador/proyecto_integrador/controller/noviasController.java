@@ -24,9 +24,14 @@ public class noviasController {
         } else if (usuario instanceof Cliente) {
             Cliente cliente = (Cliente) usuario;
             mensajeBienvenida = "Hola " + cliente.getNombre() + "!";
+        } else if (usuario != null) {
+            // Si 'usuario' es un String o cualquier otro tipo
+            mensajeBienvenida = "Hola " + usuario.toString() + "!";
         } else {
-            mensajeBienvenida = "¡Hola!";
+            // Caso donde el usuario no está logueado
+            mensajeBienvenida = "Iniciar Sesion";
         }
+
         model.addAttribute("mensaje_ini", mensajeBienvenida);
         return "novias";
     }

@@ -49,7 +49,7 @@ public class boletaController
         List<Map<String, Object>> productos = payload.get("productos");
         List<TortaClasica> tortas = new ArrayList<>();  // Lista para acumular todas las tortas
         int cantidadTotal = 0;
-        for (Map<String, Object> producto : productos) {
+        for (Map<String, Object> producto : productos) { //iteramos sobre cada producto, el map permite tener un objeto de diferentes atributos
             // Imprimir los detalles del producto
             System.out.println("Nombre del producto: " + producto.get("nombre"));
             System.out.println("Tamaño: " + producto.get("tamanio"));
@@ -61,8 +61,9 @@ public class boletaController
             
             // Cargar las tortas filtradas y agregarlas a la lista
             List<TortaClasica> tortasFiltradas = tortaClasicaService.cargarCategoriasFiltradas(nombre, tamanio);
-            tortas.addAll(tortasFiltradas);
-            
+            //añadimos las tortas al array que habiamos inicializado
+            tortas.addAll(tortasFiltradas); 
+            //se itera sobre cada torta
             for (TortaClasica torta : tortasFiltradas) {
                 System.out.println("ID: " + torta.getId_tortac());
                 cantidadTotal++;
@@ -100,7 +101,7 @@ public class boletaController
         if (tortas != null) {
             model.addAttribute("tortas", tortas);
     
-            // Calcular la cantidad total de productos
+            // Calculamos la cantidad total de productos
             int cantidadTotal = tortas.size();  // Aquí obtenemos el número total de productos
             model.addAttribute("cantidadTotal", cantidadTotal);
     
@@ -114,76 +115,67 @@ public class boletaController
 
 
     @RequestMapping("boleta/guardar")
-public String finalizar(@RequestParam("productos") String productos,
-                        @RequestParam("cantidad") int cantidad,
-                        @RequestParam("metodo_pago") String metodoPago,
-                        @RequestParam("entrega") String entrega,
-                        @RequestParam("direccion") String direccion,
-                        @RequestParam("total") double total,
-                        @RequestParam("fecha_compra") String fechaCompra,
-                        @RequestParam("dedicatoria") String dedicatoria,
-                        HttpSession session,
-                        RedirectAttributes redirectAttributes) {
+    public String finalizar(@RequestParam("productos") String productos, @RequestParam("cantidad") int cantidad,@RequestParam("metodo_pago") String metodoPago, @RequestParam("entrega") String entrega,
+                        @RequestParam("direccion") String direccion, @RequestParam("total") double total, @RequestParam("fecha_compra") String fechaCompra,
+                        @RequestParam("dedicatoria") String dedicatoria,HttpSession session, RedirectAttributes redirectAttributes) 
+    {
+        System.out.println("Entró al último controlador");
+        // Imprimir los valores para depuración
+        System.out.println("Productos: " + productos);
+        System.out.println("Método de Pago: " + metodoPago);
+        System.out.println("Tipo de Entrega: " + entrega);
+        System.out.println("Dirección: " + direccion);
+        System.out.println("Total: " + total);
+        System.out.println("Cantidad: " + cantidad);
+        System.out.println("Fecha de compra: " + fechaCompra);
+        System.out.println("Dedicatoria: " + dedicatoria);
 
-    System.out.println("Entró al último controlador");
+        // Convertir el parámetro "productos" en una lista de IDs
+        List<String> productosIds = Arrays.asList(productos.split(","));
+        System.out.println("Lista de productos IDs: " + productosIds);
 
-    // Imprimir los valores para depuración
-    System.out.println("Productos: " + productos);
-    System.out.println("Método de Pago: " + metodoPago);
-    System.out.println("Tipo de Entrega: " + entrega);
-    System.out.println("Dirección: " + direccion);
-    System.out.println("Total: " + total);
-    System.out.println("Cantidad: " + cantidad);
-    System.out.println("Fecha de compra: " + fechaCompra);
-    System.out.println("Dedicatoria: " + dedicatoria);
+        // Cargar las tortas clásicas según los IDs recibidos
+        List<TortaClasica> productosList = tortaClasicaService.cargarTortaClasicas(productosIds);
+        System.out.println("Productos cargados: " + productosList);
 
-    // Convertir el parámetro "productos" en una lista de IDs
-    List<String> productosIds = Arrays.asList(productos.split(","));
-    System.out.println("Lista de productos IDs: " + productosIds);
+        // Obtener el usuario desde la sesión
+        Object usuario = session.getAttribute("usuario");
 
-    // Cargar las tortas clásicas según los IDs recibidos
-    List<TortaClasica> productosList = tortaClasicaService.cargarTortaClasicas(productosIds);
-    System.out.println("Productos cargados: " + productosList);
+        if (usuario instanceof Cliente) {
+            Cliente cliente = (Cliente) usuario;
+            // Buscar el tipo de envío por su nombre
+            TipoEnvio tipoEnvio = tipoEnvioService.buscarTipoEnvioPorNombre(entrega);
+            if (tipoEnvio == null) {
+                redirectAttributes.addFlashAttribute("error", "Tipo de envío no válido.");
+                System.out.println("Error: Tipo de envío no válido.");
+                return "redirect:/boleta";
+            }
 
-    // Obtener el usuario desde la sesión
-    Object usuario = session.getAttribute("usuario");
+            // Crear la boleta
+            Boleta boleta = new Boleta(null, fechaCompra, total, metodoPago, dedicatoria, productosList, cantidad, cliente, tipoEnvio);
 
-    if (usuario instanceof Cliente) {
-        Cliente cliente = (Cliente) usuario;
+            // Asociar la boleta con las tortas
+            for (TortaClasica torta : productosList) {
+                torta.getBoletas();  // Solo cargar la colección, no modificarla aún.
+            }
+            // Luego de terminar de iterar, modifica la colección fuera del ciclo.
+            for (TortaClasica torta : productosList) {
+                torta.getBoletas().add(boleta);
+            }
 
-        // Buscar el tipo de envío por su nombre
-        TipoEnvio tipoEnvio = tipoEnvioService.buscarTipoEnvioPorNombre(entrega);
-        if (tipoEnvio == null) {
-            redirectAttributes.addFlashAttribute("error", "Tipo de envío no válido.");
-            System.out.println("Error: Tipo de envío no válido.");
+            // Guardar la boleta en la base de datos
+            boletaService.guardarBoleta(boleta);
+            System.out.println("Boleta guardada exitosamente.");
+
+            // Redirigir a la página de boleta
             return "redirect:/boleta";
+
+        } else {
+            // Si no hay un cliente en la sesión, redirigir al login
+            redirectAttributes.addFlashAttribute("error", "No se encontró al cliente en la sesión.");
+            System.out.println("Error: No se encontró al cliente en la sesión.");
+            return "redirect:/login/";
         }
-
-        // Crear la boleta
-        Boleta boleta = new Boleta(null, fechaCompra, total, metodoPago, dedicatoria, productosList, cantidad, cliente, tipoEnvio);
-
-        // Asociar la boleta con las tortas
-        for (TortaClasica torta : productosList) {
-            torta.getBoletas();  // Solo cargar la colección, no modificarla aún.
-        }
-        // Luego de terminar de iterar, modifica la colección fuera del ciclo.
-        for (TortaClasica torta : productosList) {
-            torta.getBoletas().add(boleta);
-        }
-
-        // Guardar la boleta en la base de datos
-        boletaService.guardarBoleta(boleta);
-        System.out.println("Boleta guardada exitosamente.");
-
-        // Redirigir a la página de boleta
-        return "redirect:/boleta";
-
-    } else {
-        // Si no hay un cliente en la sesión, redirigir al login
-        redirectAttributes.addFlashAttribute("error", "No se encontró al cliente en la sesión.");
-        System.out.println("Error: No se encontró al cliente en la sesión.");
-        return "redirect:/login/";
     }
-}
 
 }

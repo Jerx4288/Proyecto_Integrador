@@ -51,14 +51,14 @@ function mostrarCarrito(event) {
         eliminarButton.onclick = () => eliminarProductoDelCarrito(producto.id);
         eliminarCell.appendChild(eliminarButton);
 
-        // Agregar las celdas a la fila
+        // Agregamos las celdas a la fila
         fila.appendChild(imagenCell);
         fila.appendChild(nombreCell);
         fila.appendChild(precioCell);
         fila.appendChild(cantidadCell);
         fila.appendChild(eliminarCell);
 
-        // Agregar la fila a la tabla
+        // Agregamos las fila a la tabla
         carritoTableBody.appendChild(fila);
 
         // Sumar el precio total del carrito
@@ -67,7 +67,7 @@ function mostrarCarrito(event) {
 
     // Mostrar el total en la tabla
     const totalRow = document.querySelector('#total-carrito');
-    if (!totalRow) {
+    if (!totalRow) { //si existe
         const totalFila = document.createElement('tr');
         totalFila.id = 'total-carrito';
         totalFila.innerHTML = `  
@@ -76,7 +76,8 @@ function mostrarCarrito(event) {
         `;
         carritoTableBody.appendChild(totalFila);
     } else {
-        totalRow.children[1].textContent = `S/${precioTotalCarrito.toFixed(2)}`;
+        //selecionamos la segunda celda del totalRow
+        totalRow.children[1].textContent = `S/${precioTotalCarrito.toFixed(2)}`; //toFixed -> convierte la variable en una cadena de texto con dos decimales
     }
 
     // Verificar si el botón "Ver carrito completo" ya existe antes de agregarlo
@@ -106,7 +107,9 @@ function toggleCarrito(event) {
     event.preventDefault(); 
     const contenidoCarrito = document.getElementById("contenido_carrito");
 
-    if (contenidoCarrito.style.display === "none" || !contenidoCarrito.style.display) {
+    //se muestra el carrito cuando el cliente da click en el
+    if (contenidoCarrito.style.display === "none" || !contenidoCarrito.style.display) 
+    {
         contenidoCarrito.style.display = "block";
         mostrarCarrito(event);  // Actualiza el carrito al mostrarse
         document.addEventListener("click", closeOnClickOutside);
@@ -117,11 +120,11 @@ function toggleCarrito(event) {
 }
 
 
-
 function closeOnClickOutside(event) {
     const contenidoCarrito = document.getElementById("contenido_carrito");
     const carrito = document.getElementById("carrito");
 
+    //se verifica si se hizo click fuera del contenidoCarrito o carrito
     if (!contenidoCarrito.contains(event.target) && !carrito.contains(event.target)) {
         contenidoCarrito.style.display = "none";
         document.removeEventListener("click", closeOnClickOutside);
@@ -131,13 +134,13 @@ function closeOnClickOutside(event) {
 
 
 function eliminarProductoDelCarrito(index) {
-    // Recuperar el carrito del localStorage
+    //Se recupera el carrito del localStorage
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
-    // Eliminar el producto en el índice correspondiente
+    // Se elimina el el producto en el índice correspondiente
     carrito.splice(index, 1);
 
-    // Guardar el carrito actualizado en el localStorage
+    // Guarda el carrito actualizado en el localStorage
     localStorage.setItem('carrito', JSON.stringify(carrito));
 
     // Actualizar el carrito visible
@@ -155,9 +158,8 @@ function enviarDatosCarrito(carrito) {
         body: JSON.stringify({ productos: carrito }) // Enviamos los productos como JSON
     })
     .then(response => {
-        // Si la respuesta es exitosa, redirigir al usuario a /boleta
         if (response.ok) {
-            window.location.href = '/boleta';  // Realizar la redirección manual
+            window.location.href = '/boleta'; //redirigimos al controlador boleta
         } else {
             console.error('Error al procesar los datos del carrito.');
         }
