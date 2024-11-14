@@ -67,5 +67,8 @@ public class Administrador implements Serializable {
         this.password_a = password_a;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Administrador{nombre='" + nombre_a + "', email='" + correo_a + "'}";
+    }
 }

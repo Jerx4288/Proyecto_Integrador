@@ -44,59 +44,44 @@ public class ClienteService implements IClienteService
     }
 
     @Override
-    public String iniciarSesion(String dni, String password) {
-        String error;
+    public Optional<Cliente> iniciarSesion(String dni, String password) {
         try {
             Optional<Cliente> clienteEn = clienteDAO.findById(dni);
             
             if (clienteEn.isPresent()) {
                 Cliente cliente = clienteEn.get();
                 if (cliente.getPassword().equals(password)) {
-                     error = cliente.getNombre();
-                    System.out.println("Inicio de sesión exitoso para " + cliente.getNombre()); 
-                    return error;
-                   
-                } else {
-                    error ="";
-                    return error;
+                    System.out.println("Inicio de sesión exitoso para " + cliente.getNombre());
+                    return Optional.of(cliente);  // Retorna el objeto Cliente completo si coincide la contraseña
                 }
-            } else {
-                error ="";
-                return error;
             }
+            return Optional.empty();  // Retorna vacío si el DNI o contraseña no coinciden
+
         } catch (Exception e) {
-            error = "Error al iniciar sesión: ";
-            return error + e.getMessage();
+            System.err.println("Error al iniciar sesión: " + e.getMessage());
+            return Optional.empty();  // Retorna vacío en caso de error
         }
     }
 
     @Override
-    public String iniciarSesionAdmin(String dni, String password) {
-        String error;
+    public Optional<Administrador> iniciarSesionAdmin(String dni, String password) {
         try {
             Optional<Administrador> administradorEn = administradorDAO.findById(dni);
             
             if (administradorEn.isPresent()) {
                 Administrador administrador = administradorEn.get();
                 if (administrador.getPassword_a().equals(password)) {
-                    error = administrador.getNombre_a();
                     System.out.println("Inicio de sesión exitoso para " + administrador.getNombre_a());
-                    return error;
-                } else 
-                { 
-                    error ="";
-                    return error;
+                    return Optional.of(administrador);  // Retorna el objeto Administrador completo
                 }
-            } else {
-                error ="";
-                return error;
             }
+            return Optional.empty();  // Retorna vacío si el DNI o contraseña no coinciden
+
         } catch (Exception e) {
-            error = "Error al iniciar sesión: ";
-            return error + e.getMessage();
+            System.err.println("Error al iniciar sesión: " + e.getMessage());
+            return Optional.empty();  // Retorna vacío en caso de error
         }
     }
-    
 
     
 }

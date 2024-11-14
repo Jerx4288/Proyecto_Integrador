@@ -28,10 +28,10 @@
         <h2>Detalles de la Compra</h2>
     
         <div th:each="torta : ${tortas}" class="detalle-torta">
-            <p><strong>ID:</strong> <span th:text="${torta.id_tortac}"></span></p>
-            <p><strong>Nombre:</strong> <span th:text="${torta.nombre_tc}"></span></p>
+            <p><strong>ID:</strong> <span name="id_tc" th:text="${torta.id_tortac}"></span></p>
+            <p><strong>Nombre:</strong> <span name="nombre_tc" th:text="${torta.nombre_tc}"></span></p>
             <p><strong>Tamaño:</strong> <span th:text="${torta.tamano_tc}"></span></p>
-            <p><strong>Precio:</strong> S/.<span th:text="${torta.precio_tc}"></span></p>
+            <p><strong>Precio:</strong> S/.<span name="precio_tc" th:text="${torta.precio_tc}"></span></p>
         </div>
         <div class="cantidades">
             <strong>Cantidad total de productos: </strong> <span th:text="${cantidadTotal}"></span>
@@ -46,7 +46,6 @@
             </label>
         </div>
     
-        <!-- Contenedor para la dedicatoria -->
         <div id="dedicatoria_area" style="display: none;" class="dedicatoria-container">
             <label for="dedicatoria_texto">Escribe tu dedicatoria (máximo 150 caracteres):</label>
             <textarea id="dedicatoria_texto" name="dedicatoria_texto" maxlength="150" placeholder="Escribe aquí tu dedicatoria..."></textarea>
@@ -64,7 +63,24 @@
                 <i class="fa fa-credit-card"></i> Tarjeta
             </label>
         </div>
-    
+
+        <!-- Menú flotante para pago con tarjeta -->
+        <div id="tarjeta-info" class="tarjeta-container" style="display: none;">
+            <span id="cerrar-tarjeta" class="cerrar-tarjeta">&times;</span> <!-- Icono de cerrar -->
+            <h4>Detalles de la Tarjeta</h4>
+            <form id="form-tarjeta">
+                <label for="numero_tarjeta">Número de Tarjeta:</label>
+                <input type="text" id="numero_tarjeta" name="numero_tarjeta" pattern="\d{16}" placeholder="1234 5678 9012 3456" required />
+
+                <label for="fecha_expiracion">Fecha de Expiración:</label>
+                <input type="text" id="fecha_expiracion" name="fecha_expiracion" pattern="\d{2}/\d{2}" placeholder="MM/AA" required />
+
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" pattern="\d{3}" placeholder="123" required />
+                <button type="button" id="continuar-pago">Continuar</button>
+            </form>
+        </div>
+
         <h3>Tipo de Entrega</h3>
         <div class="tipo-entrega">
             <label>
@@ -85,15 +101,23 @@
         <div class="total">
             <strong>Total a pagar: </strong> S/.<span th:text="${precioTotal}" id="totalCompra"></span>
         </div>
-    
+
+        
+        <div class="fecha-compra">
+            <strong>Fecha de Compra:</strong> <span th:text="${#dates.format(#dates.createNow(), 'yyyy-MM-dd HH:mm:ss')}"></span>
+        </div>
+        
+                
         <form id="form-finalizar-compra" action="/boleta/guardar" method="POST">
             <input type="hidden" name="productos" id="productos" />
+            <input type="hidden" name="cantidad" id="cantidad" />
             <input type="hidden" name="metodo_pago" id="metodo_pago" />
             <input type="hidden" name="entrega" id="entrega" />
             <input type="hidden" name="direccion" id="direccion_input" />
             <input type="hidden" name="total" id="total_input" />
-    
-            <div class="boton-finalizar">
+            <input type="hidden" name="fecha_compra" id="fecha_compra" />
+            <input type="hidden" name="dedicatoria" id="dedicatoria_input" />
+            <div id="finalizar-compra" type="submit" class="boton-finalizar">
                 <button type="submit">Finalizar Compra</button>
             </div>
         </form>

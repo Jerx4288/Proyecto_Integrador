@@ -1,11 +1,14 @@
 package com.integrador.proyecto_integrador.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -78,4 +81,22 @@ public class TortaClasica implements Serializable{
                ", stock_tc='" + stock_tc + '\'' +
                '}';
     }
+    
+    @ManyToMany(mappedBy = "tortasClasicas")
+    private List<Boleta> boletas = new ArrayList<>();
+    
+    
+    public TortaClasica() {
+    
+    }
+
+    public List<Boleta> getBoletas() {
+        return boletas;
+    }
+
+    public void setBoletas(List<Boleta> boletas) {
+        this.boletas = boletas;
+    }
+    
+    
 }

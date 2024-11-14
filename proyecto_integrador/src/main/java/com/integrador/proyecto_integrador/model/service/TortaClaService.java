@@ -2,6 +2,7 @@ package com.integrador.proyecto_integrador.model.service;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +14,23 @@ public class TortaClaService implements ITortaClaService {
 
 
     @Autowired
-    private ITortaClasicaDAO ITortaClasicaDAO;
+    private ITortaClasicaDAO tortaClasicaDAO;
 
     @Override
     public List<TortaClasica> cargarCategoriasFiltradas(String nombre, String tamano) {
-        return ITortaClasicaDAO.buscarPorNombreYTamano(nombre, tamano);
+        return tortaClasicaDAO.buscarPorNombreYTamano(nombre, tamano);
     }
+
+    @Override
+    public List<TortaClasica> cargarTortaClasicas(List<String> ids) {
+        System.out.println("IDs recibidos: " + ids);  // Agregar esta línea para ver los IDs
+        return tortaClasicaDAO.findByIdsIn(ids);
+    }
+
+    
+
+
+
+    
     
 }
