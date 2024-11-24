@@ -20,6 +20,55 @@ if (document.getElementById('dedicatoria_si').checked) {
     document.getElementById('dedicatoria_area').style.display = 'none';
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+
+    // 1. Mostrar/Ocultar el área de dedicatoria
+    const dedicatoriaRadios = document.querySelectorAll('input[id^="dedicatoria_"]'); // Selecciona todos los radios de dedicatoria por su id
+    const dedicatoriaArea = document.getElementById('dedicatoria_area'); // Selecciona el área de dedicatoria
+
+    dedicatoriaRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.value === 'si') {
+                dedicatoriaArea.style.display = 'block'; // Muestra la dedicatoria
+            } else {
+                dedicatoriaArea.style.display = 'none'; // Oculta la dedicatoria
+            }
+        });
+    });
+
+    // 2. Mostrar/Ocultar la dirección de entrega
+    const entregaRadios = document.querySelectorAll('input[id^="entrega_"]'); // Selecciona todos los radios de entrega por su id
+    const direccionContainer = document.getElementById('direccion_container'); // Selecciona el contenedor de dirección
+
+    entregaRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.value === 'delivery') {
+                direccionContainer.style.display = 'block'; // Muestra la dirección
+            } else {
+                direccionContainer.style.display = 'none'; // Oculta la dirección
+            }
+        });
+    });
+
+    // 3. (Opcional) Recoger las IDs de las tortas seleccionadas
+    // Si necesitas manejar alguna lógica para recolectar las IDs de las tortas seleccionadas
+    const tortasIds = [];
+
+    // Recolectar las IDs de las tortas de la forma que prefieras.
+    // Aquí te doy un ejemplo donde recolectas las IDs de los inputs ocultos
+    const tortasClasicasIds = document.querySelectorAll('input[id^="id_torta_clasica_"]');
+    tortasClasicasIds.forEach(input => {
+        tortasIds.push(input.value); // Recolecta los valores de las tortas clásicas
+    });
+
+    const tortasEspecialesIds = document.querySelectorAll('input[id^="id_torta_especial_"]');
+    tortasEspecialesIds.forEach(input => {
+        tortasIds.push(input.value); // Recolecta los valores de las tortas especiales
+    });
+
+    console.log('IDs seleccionadas:', tortasIds); // Imprime las IDs en la consola si necesitas verificarlas
+
+});
 
 const textarea = document.getElementById('dedicatoria_texto');
 const contador = document.getElementById('caracteres_contador');
@@ -49,62 +98,9 @@ document.querySelectorAll('input[name="entrega"]').forEach(function (radio) {
 
 
 
-document.getElementById('finalizar-compra').addEventListener('click', function(e) {
-    e.preventDefault(); 
 
-    let fechaCompra = new Date();
 
-    // Formatear la fecha como 'yyyy-MM-dd HH:mm:ss'
-    let formattedDate = fechaCompra.getFullYear() + '-' + 
-                        (fechaCompra.getMonth() + 1).toString().padStart(2, '0') + '-' + 
-                        fechaCompra.getDate().toString().padStart(2, '0') + ' ' + 
-                        fechaCompra.getHours().toString().padStart(2, '0') + ':' + 
-                        fechaCompra.getMinutes().toString().padStart(2, '0') + ':' + 
-                        fechaCompra.getSeconds().toString().padStart(2, '0');
 
-    // Asignar el valor al campo hidden
-    document.getElementById('fecha_compra').value = formattedDate;
-
-    
-    let metodoPago = document.querySelector('input[name="metodo_pago"]:checked')?.value;
-    let tipoEntrega = document.querySelector('input[name="entrega"]:checked')?.value;
-    let direccion = document.getElementById('direccion').value;
-    let cantidadTotal = document.querySelector('.cantidades span').textContent;
-    let productosData = [];
-    let dedicatoria = document.querySelector('input[name="dedicatoria"]:checked')?.value === 'si' 
-                        ? document.getElementById('dedicatoria_texto').value 
-                        : 'no incluye'; 
-
-    document.querySelectorAll('.detalle-torta').forEach(function(torta) {
-        let id = torta.querySelector('span[name="id_tc"]').textContent; 
-        productosData.push(id);
-    });
-
-    console.log("Productos: ", productosData);
-    console.log("Método de Pago: ", metodoPago);
-    console.log("Tipo de Entrega: ", tipoEntrega);
-    console.log("Dirección: ", direccion);
-    console.log("Total: ", document.getElementById('totalCompra').textContent);
-    console.log("Cantidad Total: ", cantidadTotal);
-    console.log("Dedicatoria: ", dedicatoria);
-
-    // Asignar los valores a los campos hidden
-    document.getElementById('productos').value = productosData.join(',');
-    document.getElementById('metodo_pago').value = metodoPago;
-    document.getElementById('entrega').value = tipoEntrega;
-    document.getElementById('cantidad').value = cantidadTotal;
-    document.getElementById('total_input').value = document.getElementById('totalCompra').textContent;
-    document.getElementById('dedicatoria_input').value = dedicatoria;
-    
-    if (tipoEntrega === 'delivery') {
-        document.getElementById('direccion_input').value = direccion;
-    } else {
-        document.getElementById('direccion_input').value = 'No'; // Asegurarse de que el campo esté vacío si no es delivery
-    }
-
-    document.getElementById('form-finalizar-compra').submit();
-    
-});
 document.querySelectorAll('input[name="metodo_pago"]').forEach(function (radio) {
     radio.addEventListener('change', function () {
         var metodoPago = document.querySelector('input[name="metodo_pago"]:checked').value;
@@ -119,15 +115,7 @@ document.querySelectorAll('input[name="metodo_pago"]').forEach(function (radio) 
     });
 });
 
-// Funcionalidad para cerrar el menú flotante
-document.getElementById('cerrar-tarjeta').addEventListener('click', function () {
-    document.getElementById('tarjeta-info').style.display = 'none';
-});
 
-document.getElementById('continuar-pago').addEventListener('click', function () {
-    document.getElementById('tarjeta-info').style.display = 'none';
-    document.body.classList.remove('modal-active'); // Eliminar la clase para restaurar el fondo
-});
 // Asegurarse de que los campos de tarjeta se mantengan cuando se haga la finalización
 document.getElementById('form-finalizar-compra').addEventListener('submit', function () {
     if (document.querySelector('input[name="metodo_pago"]:checked').value === 'tarjeta') {

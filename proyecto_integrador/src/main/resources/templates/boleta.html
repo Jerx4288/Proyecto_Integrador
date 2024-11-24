@@ -18,110 +18,111 @@
     </div>
     <header th:replace = "layouts/fragmentos :: header">
     </header>
-    <div class="boleta-container">
-        <h1>Boleta de Compra</h1>
-        
-        <div class="detalle-cliente">
-            <p th:text="${mensaje_ini}"></p>
-        </div>
-    
-        <h2>Detalles de la Compra</h2>
-    
-        <div th:each="torta : ${tortas}" class="detalle-torta">
-            <p><strong>ID:</strong> <span name="id_tc" th:text="${torta.id_tortac}"></span></p>
-            <p><strong>Nombre:</strong> <span name="nombre_tc" th:text="${torta.nombre_tc}"></span></p>
-            <p><strong>Tamaño:</strong> <span th:text="${torta.tamano_tc}"></span></p>
-            <p><strong>Precio:</strong> S/.<span name="precio_tc" th:text="${torta.precio_tc}"></span></p>
-        </div>
-        <div class="cantidades">
-            <strong>Cantidad total de productos: </strong> <span th:text="${cantidadTotal}"></span>
-        </div>
-        <div class="dedicatoria">
-            <strong>¿Deseas agregar una dedicatoria?</strong>
-            <label>
-                <input type="radio" name="dedicatoria" value="si" id="dedicatoria_si" /> Sí
-            </label>
-            <label>
-                <input type="radio" name="dedicatoria" value="no" id="dedicatoria_no" checked /> No
-            </label>
-        </div>
-    
-        <div id="dedicatoria_area" style="display: none;" class="dedicatoria-container">
-            <label for="dedicatoria_texto">Escribe tu dedicatoria (máximo 150 caracteres):</label>
-            <textarea id="dedicatoria_texto" name="dedicatoria_texto" maxlength="150" placeholder="Escribe aquí tu dedicatoria..."></textarea>
-            <small id="caracteres_contador">150 caracteres restantes</small>
-        </div>
-
-        <h3>Método de Pago</h3>
-        <div class="metodo-pago">
-            <label>
-                <input type="radio" name="metodo_pago" value="efectivo" /> 
-                <i class="fa-solid fa-money-bill"></i> Efectivo
-            </label>
-            <label>
-                <input type="radio" name="metodo_pago" value="tarjeta" /> 
-                <i class="fa fa-credit-card"></i> Tarjeta
-            </label>
-        </div>
-
-        <!-- Menú flotante para pago con tarjeta -->
-        <div id="tarjeta-info" class="tarjeta-container" style="display: none;">
-            <span id="cerrar-tarjeta" class="cerrar-tarjeta">&times;</span> <!-- Icono de cerrar -->
-            <h4>Detalles de la Tarjeta</h4>
-            <form id="form-tarjeta">
-                <label for="numero_tarjeta">Número de Tarjeta:</label>
-                <input type="text" id="numero_tarjeta" name="numero_tarjeta" pattern="\d{16}" placeholder="1234 5678 9012 3456" required />
-
-                <label for="fecha_expiracion">Fecha de Expiración:</label>
-                <input type="text" id="fecha_expiracion" name="fecha_expiracion" pattern="\d{2}/\d{2}" placeholder="MM/AA" required />
-
-                <label for="cvv">CVV:</label>
-                <input type="text" id="cvv" name="cvv" pattern="\d{3}" placeholder="123" required />
-                <button type="button" id="continuar-pago">Continuar</button>
-            </form>
-        </div>
-
-        <h3>Tipo de Entrega</h3>
-        <div class="tipo-entrega">
-            <label>
-                <input type="radio" name="entrega" value="tienda" /> 
-                En Tienda
-            </label>
-            <label>
-                <input type="radio" name="entrega" value="delivery" /> 
-                Delivery
-            </label>
-        </div>
-    
-        <div class="direccion-container" style="display: none;">
-            <label for="direccion">Dirección de Entrega:</label>
-            <input type="text" id="direccion" name="direccion" placeholder="Ingresa tu dirección" />
-        </div>
-    
-        <div class="total">
-            <strong>Total a pagar: </strong> S/.<span th:text="${precioTotal}" id="totalCompra"></span>
-        </div>
-
-        
-        <div class="fecha-compra">
-            <strong>Fecha de Compra:</strong> <span th:text="${#dates.format(#dates.createNow(), 'yyyy-MM-dd HH:mm:ss')}"></span>
-        </div>
-        
-                
-        <form id="form-finalizar-compra" action="/boleta/guardar" method="POST">
-            <input type="hidden" name="productos" id="productos" />
-            <input type="hidden" name="cantidad" id="cantidad" />
-            <input type="hidden" name="metodo_pago" id="metodo_pago" />
-            <input type="hidden" name="entrega" id="entrega" />
-            <input type="hidden" name="direccion" id="direccion_input" />
-            <input type="hidden" name="total" id="total_input" />
-            <input type="hidden" name="fecha_compra" id="fecha_compra" />
-            <input type="hidden" name="dedicatoria" id="dedicatoria_input" />
-            <div id="finalizar-compra" type="submit" class="boton-finalizar">
-                <button type="submit">Finalizar Compra</button>
+    <form action="/guardar" method="POST">
+        <div class="boleta-container">
+            <h1>Boleta de Compra</h1>
+            
+            <div class="detalle-cliente">
+                <p th:text="${mensaje_ini}"></p>
             </div>
-        </form>
-    </div>
+        
+            <h2>Detalles de la Compra</h2>
+        
+            <div th:if="${not #lists.isEmpty(tortasClasicas)}">
+                <h3>Tortas Clásicas</h3>
+                <div th:each="torta : ${tortasClasicas}" class="detalle-torta">
+                    <p><strong>ID:</strong> <span th:text="${torta.id_tortac}"></span></p>
+                    <p><strong>Nombre:</strong> <span th:text="${torta.nombre_tc}"></span></p>
+                    <p><strong>Tamaño:</strong> <span th:text="${torta.tamano_tc}"></span></p>
+                    <p><strong>Precio:</strong> S/.<span th:text="${torta.precio_tc}"></span></p>
+                    <input type="hidden" name="tortasClasicasIds" th:value="${torta.id_tortac}" />
+                </div>
+            </div>
+            
+            <div th:if="${not #lists.isEmpty(tortasEspeciales)}">
+                <h3>Tortas Especiales</h3>
+                <div th:each="torta : ${tortasEspeciales}" class="detalle-torta">
+                    <p><strong>ID:</strong> <span th:text="${torta.id_tortae}"></span></p>
+                    <p><strong>Nombre:</strong> <span th:text="${torta.nombre_te}"></span></p>
+                    <p><strong>Porción:</strong> <span th:text="${torta.porcion_te}"></span></p>
+                    <p><strong>Relleno:</strong> <span th:text="${torta.relleno_te}"></span></p>
+                    <p><strong>Precio:</strong> S/.<span th:text="${torta.precio_te}"></span></p>
+                    <input type="hidden" name="tortasEspecialesIds" th:value="${torta.id_tortae}" />
+
+                </div>
+            </div>
+            
+            
+            
+            <div class="cantidades"> 
+                <strong>Cantidad total de productos: </strong>
+                <span th:text="${cantidadTotal}"></span>
+                <input type="hidden" name="cantidad" th:value="${cantidadTotal}" />
+            </div>
+            <div class="dedicatoria">
+                <strong>¿Deseas agregar una dedicatoria?</strong>
+                <label>
+                    <input type="radio" name="dedicatoria" value="si" id="dedicatoria_si" /> Sí
+                </label>
+                <label>
+                    <input type="radio" name="dedicatoria" value="no" id="dedicatoria_no" checked /> No
+                </label>
+            </div>
+        
+            <div id="dedicatoria_area" style="display: none;" class="dedicatoria-container">
+                <label for="dedicatoria_texto">Escribe tu dedicatoria (máximo 150 caracteres):</label>
+                <textarea id="dedicatoria_texto" name="dedicatoria_texto" maxlength="150" placeholder="Escribe aquí tu dedicatoria..."></textarea>
+                <small id="caracteres_contador">150 caracteres restantes</small>
+            </div>
+
+            <h3>Método de Pago</h3>
+            <div class="metodo-pago">
+                <label>
+                    <input type="radio" name="metodoPago" value="efectivo" /> Efectivo
+                </label>
+                <label>
+                    <input type="radio" name="metodoPago" value="tarjeta" /> Tarjeta
+                </label>
+            </div>
+
+            <!-- Menú flotante para pago con tarjeta -->
+            
+
+            <h3>Tipo de Entrega</h3>
+            <div class="tipo-entrega">
+                <label>
+                    <input type="radio" name="entrega" value="tienda" /> 
+                    En Tienda
+                </label>
+                <label>
+                    <input type="radio" name="entrega" value="delivery" /> 
+                    Delivery
+                </label>
+            </div>
+        
+            <div class="direccion-container" style="display: none;">
+                <label for="direccion">Dirección de Entrega:</label>
+                <input type="text" id="direccion" name="direccion" placeholder="Ingresa tu dirección" />
+            </div>
+        
+            <div class="total">
+                <strong>Total a pagar: </strong> S/.<span th:text="${precioTotal}" id="totalCompra"></span>
+                <input type="hidden" name="total" th:value="${precioTotal}" />
+            </div>
+
+            
+            <div class="fecha-compra">
+                <strong>Fecha de Compra:</strong> 
+                <span th:text="${#dates.format(#dates.createNow(), 'yyyy-MM-dd HH:mm:ss')}"></span>
+                <input type="hidden" name="fechaCompra" th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd HH:mm:ss')}" />
+            </div>
+            
+                    
+            <button type="submit">Confirmar Compra</button>
+            
+        </div>
+        
+    </form>
     
     
     <footer id="ultima_seccion" th:replace="/layouts/fragmentos :: footer">

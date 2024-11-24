@@ -92,6 +92,21 @@ public class Boleta {
     public void setTortasClasicas(List<TortaClasica> tortasClasicas) {
         this.tortasClasicas = tortasClasicas;
     }
+    @ManyToMany
+    @JoinTable(
+        name = "boleta_has_torta_especial", 
+        joinColumns = @JoinColumn(name = "boleta_id_detalle_boleta"), 
+        inverseJoinColumns = @JoinColumn(name = "torta_especial_id_tortae")
+    )
+    private List<TortaEspecial> tortaEspeciales = new ArrayList<>();
+    public List<TortaEspecial> getTortaEspeciales() {
+        return tortaEspeciales;
+    }
+
+    public void setTortaEspeciales(List<TortaEspecial> tortaEspeciales) {
+        this.tortaEspeciales = tortaEspeciales;
+    }
+
     @ManyToOne
     @JoinColumn(name = "cliente_dni")  // 'dni' es la clave foránea que referencia a Cliente
     private Cliente cliente;
@@ -118,17 +133,30 @@ public class Boleta {
     }
 
     public Boleta(Integer id_boleta, String fecha_boleta, double total_boleta, String metpago_boleta,
-            String dedicatoria, List<TortaClasica> tortaClasica, Integer cantidad_bol ,Cliente cliente, TipoEnvio tipoenvio) {
-        this.id_boleta = id_boleta;
-        this.fecha_boleta = fecha_boleta;
-        this.total_boleta = total_boleta;
-        this.metpago_boleta = metpago_boleta;
-        this.dedicatoria = dedicatoria;
-        this.tortasClasicas = tortaClasica;
-        this.cantidad_bol = cantidad_bol;
-        this.cliente = cliente;
-        this.tipoenvio = tipoenvio;
+        String dedicatoria, List<Object> productos, Integer cantidad_bol, Cliente cliente, TipoEnvio tipoenvio) {
+    this.id_boleta = id_boleta;
+    this.fecha_boleta = fecha_boleta;
+    this.total_boleta = total_boleta;
+    this.metpago_boleta = metpago_boleta;
+    this.dedicatoria = dedicatoria;
+    // Se utiliza una lista común de tipo Object para aceptar tanto TortaClasica como TortaEspecial
+    this.tortasClasicas = new ArrayList<>();
+    this.tortaEspeciales = new ArrayList<>();
+    
+    // Aquí separamos las tortas en su lista correspondiente
+    for (Object producto : productos) {
+        if (producto instanceof TortaClasica) {
+            tortasClasicas.add((TortaClasica) producto);
+        } else if (producto instanceof TortaEspecial) {
+            tortaEspeciales.add((TortaEspecial) producto);
+        }
     }
+    
+    this.cantidad_bol = cantidad_bol;
+    this.cliente = cliente;
+    this.tipoenvio = tipoenvio;
+}
+
     
     public Boleta() {
         // Constructor por defecto para JPA
@@ -142,6 +170,7 @@ public class Boleta {
         this.cantidad_bol = cantidad_bol;
     }
 
+   
 
     
     
