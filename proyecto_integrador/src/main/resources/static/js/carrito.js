@@ -20,7 +20,13 @@ function mostrarCarrito(event) {
     let precioTotalCarrito = 0;
 
     // Iterar sobre los productos del carrito y agregar una fila a la tabla
-    carrito.forEach(producto => {
+    carrito.forEach((producto, index) => {
+        // Verificar si 'producto' tiene las propiedades necesarias
+        if (!producto.nombre || !producto.precioTotal) {
+            console.error('Producto mal definido:', producto);
+            return;
+        }
+
         const fila = document.createElement('tr');
 
         // Imagen
@@ -35,9 +41,9 @@ function mostrarCarrito(event) {
         const nombreCell = document.createElement('td');
         nombreCell.textContent = producto.nombre;
 
-        // Precio
+        // Precio (mostrar precio total calculado correctamente)
         const precioCell = document.createElement('td');
-        precioCell.textContent = `S/${producto.precioTotal}`;
+        precioCell.textContent = `S/${producto.precioTotal.toFixed(2)}`;
 
         // Cantidad
         const cantidadCell = document.createElement('td');
@@ -48,26 +54,29 @@ function mostrarCarrito(event) {
         const eliminarButton = document.createElement('button');
         eliminarButton.textContent = 'Eliminar';
         eliminarButton.classList.add('btn-eliminar');
-        eliminarButton.onclick = () => eliminarProductoDelCarrito(producto.id);
+        
+        // Pasar el índice al evento de eliminación
+        eliminarButton.onclick = () => eliminarProductoDelCarrito(index);
+
         eliminarCell.appendChild(eliminarButton);
 
-        // Agregamos las celdas a la fila
+        // Agregar celdas a la fila
         fila.appendChild(imagenCell);
         fila.appendChild(nombreCell);
         fila.appendChild(precioCell);
         fila.appendChild(cantidadCell);
         fila.appendChild(eliminarCell);
 
-        // Agregamos las fila a la tabla
+        // Agregar fila a la tabla
         carritoTableBody.appendChild(fila);
 
-        // Sumar el precio total del carrito
-        precioTotalCarrito += producto.precioTotal * (producto.cantidad || 1);
+        // Sumar el precio total del carrito (con el precio total del producto ya calculado)
+        precioTotalCarrito += producto.precioTotal;
     });
 
     // Mostrar el total en la tabla
     const totalRow = document.querySelector('#total-carrito');
-    if (!totalRow) { //si existe
+    if (!totalRow) { // si no existe
         const totalFila = document.createElement('tr');
         totalFila.id = 'total-carrito';
         totalFila.innerHTML = `  
@@ -76,14 +85,12 @@ function mostrarCarrito(event) {
         `;
         carritoTableBody.appendChild(totalFila);
     } else {
-        //selecionamos la segunda celda del totalRow
-        totalRow.children[1].textContent = `S/${precioTotalCarrito.toFixed(2)}`; //toFixed -> convierte la variable en una cadena de texto con dos decimales
+        totalRow.children[1].textContent = `S/${precioTotalCarrito.toFixed(2)}`;
     }
 
     // Verificar si el botón "Ver carrito completo" ya existe antes de agregarlo
     const botonExistente = document.querySelector('.btn-ver-carrito');
     if (!botonExistente) {
-        // Agregar el botón "Ver carrito completo"
         const verCarritoButton = document.createElement('button');
         verCarritoButton.textContent = 'Ver carrito completo';
         verCarritoButton.classList.add('btn-ver-carrito');
@@ -91,7 +98,6 @@ function mostrarCarrito(event) {
             enviarDatosCarrito(carrito); // Llamar a la función para enviar el carrito al servidor
         };
 
-        // Agregar el botón al final del contenido del carrito
         const contenidoCarritoFooter = document.createElement('div');
         contenidoCarritoFooter.classList.add('footer-carrito');
         contenidoCarritoFooter.appendChild(verCarritoButton);
@@ -99,7 +105,6 @@ function mostrarCarrito(event) {
         contenidoCarrito.appendChild(contenidoCarritoFooter);
     }
 }
-
 
 
 
@@ -134,18 +139,20 @@ function closeOnClickOutside(event) {
 
 
 function eliminarProductoDelCarrito(index) {
-    //Se recupera el carrito del localStorage
+    // Recuperar carrito
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
-    // Se elimina el el producto en el índice correspondiente
-    carrito.splice(index, 1);
-
-    // Guarda el carrito actualizado en el localStorage
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-
-    // Actualizar el carrito visible
-    mostrarCarrito(new Event('click'));
+    // Verificar si el índice es válido
+    if (index >= 0 && index < carrito.length) {
+        carrito.splice(index, 1); // Eliminar producto
+        localStorage.setItem('carrito', JSON.stringify(carrito)); // Actualizar carrito en localStorage
+        mostrarCarrito(new Event('click')); // Refrescar la vista del carrito
+    } else {
+        console.error('Índice fuera de rango. No se puede eliminar el producto.');
+    }
 }
+
+
 
 
 function enviarDatosCarrito(carrito) {

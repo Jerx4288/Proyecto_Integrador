@@ -34,7 +34,7 @@ public class TortaEspecial implements Serializable{
     private String tipo_keke_te;
 
     @Column(name = "stock_te")
-    private String stock_te;
+    private Integer stock_te;
 
     @Override
     public String toString() {
@@ -102,11 +102,11 @@ public class TortaEspecial implements Serializable{
         this.tipo_keke_te = tipo_keke_te;
     }
 
-    public String getStock_te() {
+    public Integer getStock_te() {
         return stock_te;
     }
 
-    public void setStock_te(String stock_te) {
+    public void setStock_te(Integer stock_te) {
         this.stock_te = stock_te;
     }
 

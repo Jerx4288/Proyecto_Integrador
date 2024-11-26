@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
     dedicatoriaRadios.forEach(radio => {
         radio.addEventListener('change', function() {
             if (this.value === 'si') {
-                dedicatoriaArea.style.display = 'block'; // Muestra la dedicatoria
+                dedicatoriaArea.style.display = 'flex'; // Muestra la dedicatoria
             } else {
                 dedicatoriaArea.style.display = 'none'; // Oculta la dedicatoria
             }
@@ -101,9 +101,9 @@ document.querySelectorAll('input[name="entrega"]').forEach(function (radio) {
 
 
 
-document.querySelectorAll('input[name="metodo_pago"]').forEach(function (radio) {
+document.querySelectorAll('input[name="metodoPago"]').forEach(function (radio) {
     radio.addEventListener('change', function () {
-        var metodoPago = document.querySelector('input[name="metodo_pago"]:checked').value;
+        var metodoPago = document.querySelector('input[name="metodoPago"]:checked').value;
 
         if (metodoPago === 'tarjeta') {
             // Mostrar el formulario de pago con tarjeta
@@ -115,18 +115,30 @@ document.querySelectorAll('input[name="metodo_pago"]').forEach(function (radio) 
     });
 });
 
+function cerrarTarjeta() {
+    document.getElementById('tarjeta-info').style.display = 'none';
+}
+
+
 
 // Asegurarse de que los campos de tarjeta se mantengan cuando se haga la finalización
-document.getElementById('form-finalizar-compra').addEventListener('submit', function () {
+document.getElementById('form-finalizar-compra').addEventListener('submit', function (event) {
+    event.preventDefault();  // Prevenir el envío del formulario para procesar primero los datos
+
     if (document.querySelector('input[name="metodo_pago"]:checked').value === 'tarjeta') {
         // Guardar los datos de tarjeta si el pago es con tarjeta
-        var tarjetaNumero = document.getElementById('numero_tarjeta').value;
-        var tarjetaFecha = document.getElementById('fecha_expiracion').value;
+        var tarjetaNumero = document.getElementById('numero-tarjeta').value;
+        var tarjetaFecha = document.getElementById('fecha-expiracion').value;
         var tarjetaCVV = document.getElementById('cvv').value;
 
+        // Asignar los valores a los campos ocultos
         document.getElementById('metodo_pago').value = 'tarjeta';
         document.getElementById('numero_tarjeta_input').value = tarjetaNumero;
         document.getElementById('fecha_expiracion_input').value = tarjetaFecha;
         document.getElementById('cvv_input').value = tarjetaCVV;
+
+        // Puedes enviar el formulario aquí si todo está listo para enviarse
+        // document.getElementById('form-finalizar-compra').submit();
     }
 });
+

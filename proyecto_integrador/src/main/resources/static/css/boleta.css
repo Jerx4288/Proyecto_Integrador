@@ -233,7 +233,7 @@ body {
 }
 .boleta-container h2 
 {
-    margin-bottom: -5px;
+    margin-bottom: 15px;
     margin-left: 10px;
 
 }
@@ -287,6 +287,11 @@ body {
     margin-top: 20px;
     margin-bottom: 20px;
     font-family: Arial, sans-serif;
+}
+.tortaCla h3
+{
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
 }
 h1
 {
@@ -451,7 +456,7 @@ h2, h3 {
     width: 400px;
     display: none; 
     z-index: 9999;
-    font-family:"Didact Gothic", sans-serif;  
+    font-family: "Didact Gothic", sans-serif;
 }
 
 .tarjeta-container input {
@@ -471,13 +476,13 @@ h2, h3 {
     cursor: pointer;
 }
 
-
 .tarjeta-container h4 {
     margin-bottom: 10px;
     font-size: 18px;
     text-align: center;
     color: #fff;
 }
+
 #continuar-pago {
     background-color: #f8aebe; 
     color: white; 

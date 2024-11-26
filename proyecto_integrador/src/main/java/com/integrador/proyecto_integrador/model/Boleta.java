@@ -107,6 +107,22 @@ public class Boleta {
         this.tortaEspeciales = tortaEspeciales;
     }
 
+    @ManyToMany
+    @JoinTable(
+        name = "boleta_has_vela",
+        joinColumns = @JoinColumn(name = "boleta_id_detalle_boleta"),
+        inverseJoinColumns = @JoinColumn(name = "vela_id_vela")
+    )
+    private List<Vela> velas = new ArrayList<>(); // Mantén la inicialización para evitar NPE
+    
+    public List<Vela> getVelas() {
+        return velas;
+    }
+    
+    public void setVelas(List<Vela> velas) {
+        this.velas = velas;
+    }
+
     @ManyToOne
     @JoinColumn(name = "cliente_dni")  // 'dni' es la clave foránea que referencia a Cliente
     private Cliente cliente;
@@ -134,28 +150,31 @@ public class Boleta {
 
     public Boleta(Integer id_boleta, String fecha_boleta, double total_boleta, String metpago_boleta,
         String dedicatoria, List<Object> productos, Integer cantidad_bol, Cliente cliente, TipoEnvio tipoenvio) {
-    this.id_boleta = id_boleta;
-    this.fecha_boleta = fecha_boleta;
-    this.total_boleta = total_boleta;
-    this.metpago_boleta = metpago_boleta;
-    this.dedicatoria = dedicatoria;
-    // Se utiliza una lista común de tipo Object para aceptar tanto TortaClasica como TortaEspecial
-    this.tortasClasicas = new ArrayList<>();
-    this.tortaEspeciales = new ArrayList<>();
-    
-    // Aquí separamos las tortas en su lista correspondiente
-    for (Object producto : productos) {
-        if (producto instanceof TortaClasica) {
-            tortasClasicas.add((TortaClasica) producto);
-        } else if (producto instanceof TortaEspecial) {
-            tortaEspeciales.add((TortaEspecial) producto);
+        this.id_boleta = id_boleta;
+        this.fecha_boleta = fecha_boleta;
+        this.total_boleta = total_boleta;
+        this.metpago_boleta = metpago_boleta;
+        this.dedicatoria = dedicatoria;
+        // Se utiliza una lista común de tipo Object para aceptar tanto TortaClasica como TortaEspecial
+        this.tortasClasicas = new ArrayList<>();
+        this.tortaEspeciales = new ArrayList<>();
+        this.velas = new ArrayList<>();
+        
+        // Aquí separamos las tortas en su lista correspondiente
+        for (Object producto : productos) {
+            if (producto instanceof Vela) {
+                velas.add((Vela) producto);
+            }else if (producto instanceof TortaClasica) {
+                tortasClasicas.add((TortaClasica) producto);
+            } else if (producto instanceof TortaEspecial) {
+                tortaEspeciales.add((TortaEspecial) producto);
+            }
         }
-    }
     
-    this.cantidad_bol = cantidad_bol;
-    this.cliente = cliente;
-    this.tipoenvio = tipoenvio;
-}
+        this.cantidad_bol = cantidad_bol;
+        this.cliente = cliente;
+        this.tipoenvio = tipoenvio;
+    }
 
     
     public Boleta() {

@@ -29,7 +29,7 @@ public class TortaClasica implements Serializable{
     private String tamano_tc;
 
     @Column(name = "stock_tc")
-    private String stock_tc;
+    private Integer stock_tc;
 
     public String getId_tortac() {
         return id_tortac;
@@ -63,11 +63,11 @@ public class TortaClasica implements Serializable{
         this.tamano_tc = tamano_tc;
     }
 
-    public String getStock_tc() {
+    public Integer getStock_tc() {
         return stock_tc;
     }
 
-    public void setStock_tc(String stock_tc) {
+    public void setStock_tc(Integer stock_tc) {
         this.stock_tc = stock_tc;
     }
 

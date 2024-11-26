@@ -28,5 +28,10 @@ public class TortaEspecialService implements ITortaEspecialService
         System.out.println("IDs recibidos: " + ids);  // Agregar esta línea para ver los IDs
         return tortaEspecialDAO.findByIdsIn(ids);
     }
+
+    @Override
+    public void guardarTortaEspecial(TortaEspecial tortaEspecial) {
+        tortaEspecialDAO.save(tortaEspecial);
+    }
     
 }

@@ -27,6 +27,11 @@ public class TortaClaService implements ITortaClaService {
         return tortaClasicaDAO.findByIdsIn(ids);
     }
 
+    @Override
+    public void guardarTortaClasica(TortaClasica tortaClasica) {
+        tortaClasicaDAO.save(tortaClasica);
+    }
+
     
 
 

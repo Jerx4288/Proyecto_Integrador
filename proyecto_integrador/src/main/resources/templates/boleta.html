@@ -28,7 +28,7 @@
         
             <h2>Detalles de la Compra</h2>
         
-            <div th:if="${not #lists.isEmpty(tortasClasicas)}">
+            <div class="tortaCla" th:if="${not #lists.isEmpty(tortasClasicas)}">
                 <h3>Tortas Clásicas</h3>
                 <div th:each="torta : ${tortasClasicas}" class="detalle-torta">
                     <p><strong>ID:</strong> <span th:text="${torta.id_tortac}"></span></p>
@@ -39,7 +39,7 @@
                 </div>
             </div>
             
-            <div th:if="${not #lists.isEmpty(tortasEspeciales)}">
+            <div class="tortaCla" th:if="${not #lists.isEmpty(tortasEspeciales)}">
                 <h3>Tortas Especiales</h3>
                 <div th:each="torta : ${tortasEspeciales}" class="detalle-torta">
                     <p><strong>ID:</strong> <span th:text="${torta.id_tortae}"></span></p>
@@ -49,6 +49,16 @@
                     <p><strong>Precio:</strong> S/.<span th:text="${torta.precio_te}"></span></p>
                     <input type="hidden" name="tortasEspecialesIds" th:value="${torta.id_tortae}" />
 
+                </div>
+            </div>
+
+            <div class="tortaCla" th:if="${not #lists.isEmpty(velas)}">
+                <h3>Velas</h3>
+                <div th:each="vela: ${velas}" class="detalle-torta">
+                    <p><strong>ID:</strong><span th:text = "${vela.id_vela}"></span></p>
+                    <p><strong>Modelo:</strong><span th:text = "${vela.modelo_vela}"></span></p>
+                    <p><strong>Precio:</strong>S/.<span th:text = "${vela.precio_vela}"></span></p>
+                    <input type="hidden" name="velasIds" th:value="${vela.id_vela}" />
                 </div>
             </div>
             
@@ -86,6 +96,29 @@
             </div>
 
             <!-- Menú flotante para pago con tarjeta -->
+            <div id="tarjeta-info" class="tarjeta-container" style="display:none;">
+                <span class="cerrar-tarjeta" onclick="document.getElementById('tarjeta-info').style.display='none'">&times;</span>
+                <h4>Pago con Tarjeta</h4>
+                <form id="form-finalizar-compra">
+                    <label for="numero-tarjeta">Número de tarjeta:</label>
+                    <input type="text" id="numero-tarjeta" name="numero-tarjeta" placeholder="Ingrese el número de tarjeta" />
+            
+                    <label for="fecha-expiracion">Fecha de expiración:</label>
+                    <input type="month" id="fecha-expiracion" name="fecha-expiracion" />
+            
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="Ingrese el CVV" />
+            
+                    <!-- Input ocultos para almacenar los valores del pago -->
+                    <input type="hidden" id="metodo_pago" name="metodo_pago" />
+                    <input type="hidden" id="numero_tarjeta_input" name="numero_tarjeta" />
+                    <input type="hidden" id="fecha_expiracion_input" name="fecha_expiracion" />
+                    <input type="hidden" id="cvv_input" name="cvv" />
+            
+                    <!-- Botón para continuar -->
+                    <button type="button" id="continuar-pago" onclick="cerrarTarjeta()">Continuar Pago</button>
+                </form>
+            </div>
             
 
             <h3>Tipo de Entrega</h3>
@@ -117,8 +150,10 @@
                 <input type="hidden" name="fechaCompra" th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd HH:mm:ss')}" />
             </div>
             
-                    
-            <button type="submit">Confirmar Compra</button>
+            <div class="boton-finalizar">
+                <button type="submit">Confirmar Compra</button>
+            </div>
+            
             
         </div>
         
