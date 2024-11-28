@@ -11,5 +11,7 @@
         <span th:text="${mensaje_ini}"></span>
         <a th:href="@{/login/logout}" class="text_barra">Cerrar sesión</a>
     </div>
+    <p th:text="${session.rol}"></p> <!-- Esto te permitirá verificar que el rol se está recuperando correctamente -->
+
 </body>
 </html>

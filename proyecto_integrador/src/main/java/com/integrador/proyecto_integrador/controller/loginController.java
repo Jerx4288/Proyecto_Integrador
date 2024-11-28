@@ -95,11 +95,7 @@ public class loginController {
         return "redirect:/Pagina_principal";
     }
 
-    @RequestMapping("/cuenta")
-    public String rediCuenta()
-    {
-        return "redirect:/usuario/";
-    }
+
     
 
 

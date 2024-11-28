@@ -1,15 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <th:block th:include="layouts/usuarios :: cabecera_usuario"></th:block>
+    <title>Pabluki's Bakery | Perfil Cliente</title>
+    <link th:href="@{/css/estilosPerfil.css}" rel="stylesheet">
+    
 </head>
 <body>
-    <h1>Bienvenido Usuario: </h1>
-    <div th:if="${mensaje_ini != null}">
-        <span th:text="${mensaje_ini}"></span>
-        <a th:href="@{/login/logout}" class="text_barra">Cerrar sesión</a>
+    <div class="container">
+        <div class="content">
+            <div th:replace="layouts/usuarios :: datos_usuario">
+            </div>
+            <div th:replace="layouts/usuarios :: barra_usuario">
+            </div>
+            <div></div>
+            <div class="inicial">
+                <div class="page">
+                    <form action="#">
+                        <div class="izquierda">
+                            <h1>Datos Personales: </h1>
+                            
+                                <div class="input-container">
+                                    <p>Nombres: </p>
+                                    <label><i class="fa-solid fa-user"></i>Ariana Stephanie</label>
+                                </div>
+                                <div class="input-container">
+                                    <p>Apellidos: </p>
+                                    
+                                    <label><i class="fa-solid fa-user"></i>Barraza León</label>
+                                </div>
+                                <div class="input-container">
+                                    <p>Tipo de Documento: </p>
+                                    
+                                    <label><i class="fa-solid fa-address-card"></i>DNI</label>
+                                </div>
+                                <div class="input-container">
+                                    <p>Número de DNI: </p>
+                                    
+                                    <label><i class="fa-solid fa-id-card"></i>12345678</label>
+                                </div>
+                            <br><br>
+                            <p><i class="fa-solid fa-circle-exclamation"></i> Si deseas editar datos o tu contraseña, dirigete a Opciones. </p>
+                        </div>
+                        <div class="derecha">
+                            <h1>Datos de Contacto: </h1>
+                            <form>
+                                <div class="input-container">
+                                    <p>Correo: </p>
+                                
+                                    <label> <i class="fa-solid fa-envelope"></i>juan.perez@example.com</label>
+                                </div>
+                                <div class="input-container">
+                                    <p>Celular: </p>
+                                    
+                                    <label><i class="fa-solid fa-phone"></i>987654321</label>
+                                </div>
+                                <div class="input-container">
+                                    <p>Distrito: </p>
+                                    
+                                    <label><i class="fa-solid fa-location-dot"></i>Lima</label>
+                                </div>
+                                <div class="input-container">
+                                    <p>Dirección: </p>
+                                    
+                                    <label><i class="fa-solid fa-map-location-dot"></i>Dirección: Av. Siempre Viva 123</label>
+                                </div>
+                            <button>Editar Usuario</button>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
     </div>
+
+
+   
 </body>
 </html>

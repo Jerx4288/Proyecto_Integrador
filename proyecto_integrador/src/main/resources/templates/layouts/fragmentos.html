@@ -39,8 +39,10 @@
                 <div th:if="${mensaje_ini != 'Iniciar Sesion'}" id="menu-opciones" class="menu-opciones" style="display: none;">
                     <ul>
                         <li>
-                            <a th:href="@{/admin/}" th:if="${rol == 'admin'}" class="text_barra">Ir a cuenta</a>
-                            <a th:href="@{/usuario/}" th:if="${rol != 'admin'}" class="text_barra">Ir a cuenta</a>
+                            <!-- Verifica si el rol es admin -->
+                            <a th:href="@{/admin/}" th:if="${session.rol == 'admin'}" class="text_barra">Ir a cuenta</a>
+                            <!-- Si el rol no es admin, muestra el enlace a usuario -->
+                            <a th:href="@{/usuario/}" th:if="${session.rol != 'admin'}" class="text_barra">Ir a cuenta</a>
                         </li>
                         <li><a th:href="@{/login/logout}" class="text_barra">Cerrar sesión</a></li>
                     </ul>

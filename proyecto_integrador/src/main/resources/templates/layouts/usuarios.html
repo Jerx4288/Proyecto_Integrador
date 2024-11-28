@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:fragment="cabecera_usuario">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!--TITULO-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <!--TEXTOS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <!--SUBTITULOS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Didact+Gothic&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <!--ICONOS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!--ICONO-IMAGEN-->
+    <link rel="icon" href="/path/to/icon.png"> <!-- Cierra el atributo con el href correcto -->
+
+</head>
+<body>
+    <div class="container">
+        <div class="content" >
+            <div class="datos" th:fragment="datos_usuario">
+                <div class="fotorandom">
+                    <a href="panelCliente.html" class="back-button"><img th:src="@{/img/logo2.jpg}" class="logo"></a>
+                </div>
+                <div class="funciones">
+                    <a href="perfilCliente.html" class="perfil-button"><button type="submit" class="hidden"><i class="fa-solid fa-user"></i><br> Perfil</button></a>
+                    <a href="historial.html" class="perfil-button"><button type="submit" class="hidden"><i class="fa-solid fa-cart-shopping"></i><br>Historial de compras</button></a>
+                    <a href="citasp.html" class="perfil-button"><button type="submit" class="hidden"><i class="fa-solid fa-calendar-days"></i><br>Citas programadas</button></a>
+                </div>
+            </div>
+            <div class="barraOpciones" th:fragment="barra_usuario">
+                <div class="regreso">
+                    <a href="#" class="back-button">
+                        <i class="fa-solid fa-circle-left"></i>  Regresar a la página principal
+                    </a>
+                </div>
+                <div class="opciones">
+                    <div class="option">
+                    <i class="fa-solid fa-bars icon"></i>
+                    <select class="custom-select" onchange="location = this.value;">
+                        <option value="" disabled selected>Opciones</option>
+                        <option value="editarPerfilCliente.html">Editar Perfil</option>
+                        <option value="loginyregitser.html">Cerrar Sesión</option>
+                    </select>
+                    
+                </div>
+            </div>
+        </div>
+            
+            
+        </div>
+</body>
+</html>
