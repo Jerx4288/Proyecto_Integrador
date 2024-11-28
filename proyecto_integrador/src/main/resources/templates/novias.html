@@ -48,37 +48,40 @@
                     <img th:src="@{/img/novias_1.jpg}" alt="imagen_form">
                 </div>
                 <div id="formulario">
-                    <form action="/enviar" method="post">
-                        <h1>¿Estás a punto de vivir el día más especial de tu vida?</h1>
-                        <p>En Pabluki's Bakery, tenemos las tortas perfectas para que tu día especial esté lleno de sabor 
-                            y elegancia. ¿Estás planificando tu boda? ¡Nosotros nos encargamos del pastel de tus sueños! 
-                            Completa la información y nos podremos en contacto con usted a la brevedad posible.
-                        </p>
+                    <form th:action="@{/novias/guardar}" th:object="${citas}" method="post" id="citasForm" enctype="multipart/form-data">
+                        <h1>¡Prepárate para celebrar momentos inolvidables!</h1>
+                        <p>En Pabluki's Bakery, creamos tortas irresistibles que transforman fiestas en experiencias inolvidables. Desde cumpleaños vibrantes hasta bautizos encantadores, diseñamos el pastel de tus sueños con sabores exquisitos y presentaciones deslumbrantes. Completa la información y nuestro apasionado equipo te contactará rápidamente para hacer realidad tu visión y endulzar tu evento.</p>
+                    
                         <label for="nombre">Nombre y Apellidos completos:</label>
-                        <input type="text" id="nombre" name="nombre" required placeholder="Escriba Aqui">
+                        <input type="text" id="nombre" name="nombre" required placeholder="Escriba Aqui" th:field="*{nombre_c}">
+                    
                         <label for="correo">Correo Electronico:</label>
-                        <input type="text" id="correo" name="correo" required placeholder="Escriba Aqui">
+                        <input type="text" id="correo" name="correo" required placeholder="Escriba Aqui" th:field="*{correo_c}">
+                    
                         <label for="celular">Celular:</label>
-                        <input type="text" id="celular" name="celular" required placeholder="Escriba Aqui">
+                        <input type="text" id="celular" name="celular" required placeholder="Escriba Aqui" th:field="*{celular_c}" pattern="\d{9}" maxlength="9" title="Debe ingresar 9 dígitos">
+                    
                         <div class="form_int">
-                            <div> 
+                            <div>
                                 <label for="fecha">Fecha de tu reserva:</label>
-                                <input type="date" id="fecha" name="fecha" required placeholder="Escriba Aqui">
+                                <input type="date" id="fecha" name="fecha" required placeholder="Escriba Aqui" th:field="*{fecha_c}">
                             </div>
                             <div class="citaa">
-                                <label for="cita">Selecciona tu cita:</label> <br>
-                                <select id="cita" name="cita" required>
-                                <option value="08:00-10:00">8:00 AM - 10:00 AM</option>
-                                <option value="10:00-12:00">10:00 AM - 12:00 PM</option>
-                                <option value="12:00-14:00">12:00 PM - 2:00 PM</option>
-                                <option value="14:00-16:00">2:00 PM - 4:00 PM</option>
+                                <label for="cita">Selecciona tu cita:</label><br>
+                                <select id="cita" name="cita" required th:field="*{hora_c}">
+                                    <option value="08:00-10:00">8:00 AM - 10:00 AM</option>
+                                    <option value="10:00-12:00">10:00 AM - 12:00 PM</option>
+                                    <option value="12:00-14:00">12:00 PM - 2:00 PM</option>
+                                    <option value="14:00-16:00">2:00 PM - 4:00 PM</option>
                                 </select>
                             </div>
                         </div>
+                    
                         <label for="imagen">Sube una imagen de tu idea de pastel (opcional):</label>
-                        <input type="file" id="imagen" name="imagen" accept="image/png, image/jpeg">
+                        <input type="file" id="imagen_c" name="imagen_c" accept="image/png, image/jpeg">
+                    
                         <button type="submit">Enviar</button>
-                    </form> 
+                    </form>
                 </div>
             </div>
         </div>

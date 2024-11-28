@@ -1,12 +1,17 @@
 package com.integrador.proyecto_integrador.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import java.sql.Blob;
+import jakarta.persistence.Transient;
+
 
 @Entity
 @Table(name = "citas")
@@ -14,7 +19,9 @@ public class Citas {
     
     @Id
     @Column(name = "id_citas")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // O usa otro strategy adecuado
+    private Long id;
+
     
     @Column(name = "nombre_c")
     private String nombre_c;
@@ -31,20 +38,18 @@ public class Citas {
     @Column(name = "hora_c")
     private String hora_c;
 
-    @Column(name = "imagen_c")
-    private Blob imagen_c;
+     // Cambiado a MultipartFile
+    @Transient
+    private MultipartFile imagen_c;  // No es necesario almacenar el archivo en la base de datos, solo su ruta
+
+    @Column(name = "imagen_c") // Ruta del archivo que se guardará en la base de datos
+    private String imagen_c_ruta;
+
 
     @ManyToOne
     @JoinColumn(name = "cliente_dni")
     Cliente cliente;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getNombre_c() {
         return nombre_c;
@@ -86,12 +91,20 @@ public class Citas {
         this.hora_c = hora_c;
     }
 
-    public Blob getImagen_c() {
+    public MultipartFile getImagen_c() {
         return imagen_c;
     }
 
-    public void setImagen_c(Blob imagen_c) {
+    public void setImagen_c(MultipartFile imagen_c) {
         this.imagen_c = imagen_c;
+    }
+
+    public String getImagen_c_ruta() {
+        return imagen_c_ruta;
+    }
+
+    public void setImagen_c_ruta(String imagen_c_ruta) {
+        this.imagen_c_ruta = imagen_c_ruta;
     }
 
     public Cliente getCliente() {
@@ -100,6 +113,14 @@ public class Citas {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
     
     
