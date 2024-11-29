@@ -4,7 +4,8 @@
     <th:block th:include="layouts/usuarios :: cabecera_usuario"></th:block>
     <title>Pabluki's Bakery | Perfil Cliente</title>
     <link th:href="@{/css/estilosPerfil.css}" rel="stylesheet">
-    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 <body>
     <div class="container">
@@ -16,28 +17,36 @@
             <div></div>
             <div class="inicial">
                 <div class="page">
-                    <form action="#">
+                    <form th:action="@{/usuario/guardar}" th:object="${cliente}" method="post" id="usuarioForm">
                         <div class="izquierda">
                             <h1>Datos Personales: </h1>
-                            
                                 <div class="input-container">
                                     <p>Nombres: </p>
-                                    <label><i class="fa-solid fa-user"></i>Ariana Stephanie</label>
+                                    <div class="input-icon">
+                                        <i class="fa-solid fa-user"></i>
+                                        <input th:field="*{nombre}" type="text" class="form-control" placeholder="Ingrese nombre" 
+                                               id="nombre_usuario" required readonly/>
+                                      </div>
                                 </div>
                                 <div class="input-container">
                                     <p>Apellidos: </p>
-                                    
-                                    <label><i class="fa-solid fa-user"></i>Barraza León</label>
+                                    <div class="input-icon">
+                                        <i class="fa-solid fa-user"></i>
+                                        <input th:field="*{apellido}" type="text" class="form-control" placeholder="Ingrese apellidos" 
+                                               id="apellido_usuario" required readonly/>
+                                      </div>
                                 </div>
                                 <div class="input-container">
                                     <p>Tipo de Documento: </p>
-                                    
                                     <label><i class="fa-solid fa-address-card"></i>DNI</label>
                                 </div>
                                 <div class="input-container">
                                     <p>Número de DNI: </p>
-                                    
-                                    <label><i class="fa-solid fa-id-card"></i>12345678</label>
+                                    <div class="input-icon">
+                                        <i class="fa-solid fa-id-card"></i>
+                                        <input th:field="*{dni}" type="text" class="form-control" 
+                                               id="dni_usuario" required readonly/>
+                                    </div>
                                 </div>
                             <br><br>
                             <p><i class="fa-solid fa-circle-exclamation"></i> Si deseas editar datos o tu contraseña, dirigete a Opciones. </p>
@@ -47,28 +56,97 @@
                             <form>
                                 <div class="input-container">
                                     <p>Correo: </p>
-                                
-                                    <label> <i class="fa-solid fa-envelope"></i>juan.perez@example.com</label>
+                                    <div class="input-icon">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        <input th:field="*{correo}" type="email" class="form-control" placeholder="Ingrese correo"
+                                               id="coreo_usuario" required/>
+                                    </div>
                                 </div>
                                 <div class="input-container">
                                     <p>Celular: </p>
-                                    
-                                    <label><i class="fa-solid fa-phone"></i>987654321</label>
+                                    <div class="input-icon">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        <input th:field="*{telefono}" type="text" class="form-control" placeholder="Ingrese número de celular"
+                                            pattern="\d{9}" title="El número debe contener 9 dígitos" id="telefono_usuario" required/>
+                                    </div>
                                 </div>
                                 <div class="input-container">
                                     <p>Distrito: </p>
-                                    
-                                    <label><i class="fa-solid fa-location-dot"></i>Lima</label>
+                                    <div class="input-icon">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                        <select th:field="*{distrito}" class="custom-select" plarequired>
+                                            <option value="" disabled selected>Seleccione su distrito: </option>                            
+                                            <option value="ancón">Ancón</option>
+                                            <option value="ate">Ate</option>
+                                            <option value="barranco">Barranco</option>
+                                            <option value="bellavista">Bellavista</option>
+                                            <option value="breña">Breña</option>
+                                            <option value="callao">Callao</option>
+                                            <option value="carabayllo">Carabayllo</option>
+                                            <option value="carmen-de-la-legua-reynoso">Carmen de la Legua Reynoso</option>
+                                            <option value="chaclacayo">Chaclacayo</option>
+                                            <option value="chorrillos">Chorrillos</option>
+                                            <option value="cieneguilla">Cieneguilla</option>
+                                            <option value="comas">Comas</option>
+                                            <option value="el-agustino">El Agustino</option>
+                                            <option value="independencia">Independencia</option>
+                                            <option value="jesús-maría">Jesús María</option>
+                                            <option value="la-molina">La Molina</option>
+                                            <option value="la-perla">La Perla</option>
+                                            <option value="la-punta">La Punta</option>
+                                            <option value="la-victoria">La Victoria</option>
+                                            <option value="lima">Lima</option>
+                                            <option value="lince">Lince</option>
+                                            <option value="los-olivos">Los Olivos</option>
+                                            <option value="lurigancho">Lurigancho</option>
+                                            <option value="lurín">Lurín</option>
+                                            <option value="magdalena-del-mar">Magdalena del Mar</option>
+                                            <option value="miraflores">Miraflores</option>
+                                            <option value="pachacámac">Pachacámac</option>
+                                            <option value="pucusana">Pucusana</option>
+                                            <option value="pueblo-libre">Pueblo Libre</option>
+                                            <option value="puente-piedra">Puente Piedra</option>
+                                            <option value="punta-hermosa">Punta Hermosa</option>
+                                            <option value="punta-negra">Punta Negra</option>
+                                            <option value="rímac">Rímac</option>
+                                            <option value="san-bartolo">San Bartolo</option>
+                                            <option value="san-borja">San Borja</option>
+                                            <option value="san-isidro">San Isidro</option>
+                                            <option value="san-juan-de-lurigancho">San Juan de Lurigancho</option>
+                                            <option value="san-juan-de-miraflores">San Juan de Miraflores</option>
+                                            <option value="san-luis">San Luis</option>
+                                            <option value="san-martín-de-porres">San Martín de Porres</option>
+                                            <option value="san-miguel">San Miguel</option>
+                                            <option value="santa-anita">Santa Anita</option>
+                                            <option value="santa-maría-del-mar">Santa María del Mar</option>
+                                            <option value="santa-rosa">Santa Rosa</option>
+                                            <option value="santiago-de-surco">Santiago de Surco</option>
+                                            <option value="surquillo">Surquillo</option>
+                                            <option value="ventanilla">Ventanilla</option>
+                                            <option value="villa-el-salvador">Villa El Salvador</option>
+                                            <option value="villa-maría-del-triunfo">Villa María del Triunfo</option>                         
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="input-container">
                                     <p>Dirección: </p>
-                                    
-                                    <label><i class="fa-solid fa-map-location-dot"></i>Dirección: Av. Siempre Viva 123</label>
+                                    <div class="input-icon">
+                                        <i class="fa-solid fa-map-location-dot"></i>
+                                        <input th:field="*{direccion}" type="text" class="form-control" placeholder="Ingrese dirección"
+                                             id="direccion_usuario" required/>
+                                    </div>
                                 </div>
-                            <button>Editar Usuario</button>
+                                <input th:field="*{password}" type="hidden" class="form-control" placeholder="Ingrese su contraseña"
+                                id="password_usuario" required/>
+                                <div th:if="${mensaje != null}" role="alert" id="mensaje_cambio">
+                                    <strong>Mensaje!</strong> <span th:text="${mensaje}"></span>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                  </div>
+                            <button type="submit"><i class="fa-solid fa-floppy-disk"></i> Editar Usuario</button>
                             
                         </div>
                     </form>
+                    
                 </div>
             </div>
         </div>

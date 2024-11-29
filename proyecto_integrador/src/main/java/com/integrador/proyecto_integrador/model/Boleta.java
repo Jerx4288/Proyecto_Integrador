@@ -1,5 +1,6 @@
 package com.integrador.proyecto_integrador.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class Boleta {
     private Integer id_boleta;
 
     @Column(name = "fecha")
-    private String fecha_boleta;
+    private LocalDate fecha_boleta;
 
     @Column(name = "sub_total")
     private Double total_boleta;
@@ -46,11 +47,11 @@ public class Boleta {
         this.id_boleta = id_boleta;
     }
 
-    public String getFecha_boleta() {
+    public LocalDate getFecha_boleta() {
         return fecha_boleta;
     }
 
-    public void setFecha_boleta(String fecha_boleta) {
+    public void setFecha_boleta(LocalDate fecha_boleta) {
         this.fecha_boleta = fecha_boleta;
     }
 
@@ -148,7 +149,7 @@ public class Boleta {
         this.tipoenvio = tipoenvio;
     }
 
-    public Boleta(Integer id_boleta, String fecha_boleta, double total_boleta, String metpago_boleta,
+    public Boleta(Integer id_boleta, LocalDate fecha_boleta, double total_boleta, String metpago_boleta,
         String dedicatoria, List<Object> productos, Integer cantidad_bol, Cliente cliente, TipoEnvio tipoenvio) {
         this.id_boleta = id_boleta;
         this.fecha_boleta = fecha_boleta;

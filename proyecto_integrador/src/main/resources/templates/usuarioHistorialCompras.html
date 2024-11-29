@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <th:block th:include="layouts/usuarios :: cabecera_usuario"></th:block>
+    <title>Pabluki's Bakery | Perfil Cliente</title>
+    <link th:href="@{/css/estilosPerfil.css}" rel="stylesheet">
+    <link th:href="@{/css/estilosTablas.css}" rel="stylesheet">   
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div th:replace="layouts/usuarios :: datos_usuario">
+            </div>
+            <div th:replace="layouts/usuarios :: barra_usuario">
+            </div>
+            <div class="">
+                <div class="page">
+                    <div id="primeraseccion">
+                        <h1>Boletas generadas: </h1>
+                        <button class="btn btn-primary" onclick="toggleSections()">Ver Gráficos</button>
+                   </div>
+                     <div id="segundaseccion">
+                        <div id="filter-section">
+                            <form th:action="@{/usuario/historial}" method="GET">
+                                <div>
+                                    <label for="mes">Filtrar por mes:</label>
+                                    <select id="mes" name="mes" class="form-control">
+                                        <option value="">Seleccione un mes</option>
+                                        <option value="1">Enero</option>
+                                        <option value="2">Febrero</option>
+                                        <option value="3">Marzo</option>
+                                        <option value="4">Abril</option>
+                                        <option value="5">Mayo</option>
+                                        <option value="6">Junio</option>
+                                        <option value="7">Julio</option>
+                                        <option value="8">Agosto</option>
+                                        <option value="9">Septiembre</option>
+                                        <option value="10">Octubre</option>
+                                        <option value="11">Noviembre</option>
+                                        <option value="12">Diciembre</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="anio">Filtrar por año:</label>
+                                    <select id="anio" name="anio" class="form-control">
+                                        <option value="">Seleccione un año</option>
+                                        <option th:each="year : ${años}" th:value="${year}" th:text="${year}"></option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Filtrar</button>
+                            </form>
+                        </div>
+                        <button>Generar Reportes de la tabla por filtro</button>
+                        <button>Generar Reportes de boletas totales</button>
+                    </div>
+                    <div id="tercera_seccion">
+                        <table class="styled-table">
+                            <thead>
+                                <tr>
+                                    <th>ID de Boleta</th>
+                                    <th>Fecha</th>
+                                    <th>Total</th>
+                                    <th>Método de Pago</th>
+                                    <th>Dedicatoria</th>
+                                    <th>Cantidad</th>
+                                    <th>ID de Entrega Producto</th>
+                                    <th>DNI del Cliente</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="item: ${listaBoleta}">
+                                    <td th:text="${item.id_boleta}"></td>
+                                    <td th:text="${item.fecha_boleta}"></td>
+                                    <td th:text="${item.total_boleta}"></td>
+                                    <td th:text="${item.metpago_boleta}"></td>
+                                    <td th:text="${item.dedicatoria}"></td>
+                                    <td th:text="${item.cantidad_bol}"></td>
+                                    <td th:text="${item.tipoenvio.tipo_e}"></td>
+                                    <td th:text="${item.cliente.dni}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="cuarta_seccion" style="display: none;">
+                        <div id="grafico">
+                            <canvas id="graficoBarras" width="400" height="120"></canvas>
+
+                           <script th:inline="javascript">
+                            // Verifica que los datos sean correctamente inyectados
+                            var labels = JSON.parse([[${labelsJson}]]);
+                            var values = JSON.parse([[${valuesJson}]]);
+
+                            // Depuración de los datos para ver qué se está inyectando en el script
+                            console.log("Labels:", labels);
+                            console.log("Values:", values);
+
+                            if (labels.length > 0 && values.length > 0) {
+                                // Selecciona el contexto del gráfico
+                                var ctx = document.getElementById('graficoBarras').getContext('2d');
+
+                                // Crear el gráfico
+                                var chart = new Chart(ctx, {
+                                    type: 'bar',
+                                    data: {
+                                        labels: labels, // Las etiquetas de los meses
+                                        datasets: [{
+                                            label: 'Cantidad de Boletas',
+                                            data: values,  // Los valores de las boletas
+                                            backgroundColor: '#f8d3dc',
+                                            borderColor: '#e85e7c',
+                                            borderWidth: 1
+                                        }]
+                                    },
+                                    options: {
+                                        responsive: true,
+                                        scales: {
+                                            x: {
+                                                type: 'category', // Asegúrate de que las etiquetas sean categorías
+                                                ticks: {
+                                                    autoSkip: false  // Para mostrar todas las etiquetas sin que se corten
+                                                }
+                                            },
+                                            y: {
+                                                beginAtZero: true,
+                                                suggestedMax: Math.max(...values) + 5 // Iniciar desde cero
+                                            }
+                                        },
+                                        barThickness: 30, // Ajusta el grosor de las barras
+                                        categoryPercentage: 0.8, // Ajuste de las categorías
+                                        barPercentage: 0.9  // Ajuste de las barras dentro de las categorías
+                                    }
+                                });
+                            } else {
+                                console.error("Los datos no están correctos:", labels, values);
+                            }
+                        </script>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    // Obtén los datos del gráfico desde Thymeleaf
+    
+
+    function toggleSections() {
+        var terceraSeccion = document.getElementById('tercera_seccion');
+        var cuartaSeccion = document.getElementById('cuarta_seccion');
+
+        if (terceraSeccion.style.display !== 'none') {
+            terceraSeccion.style.display = 'none';  // Ocultar la tabla
+            cuartaSeccion.style.display = 'block';  // Mostrar los gráficos
+        } else {
+            terceraSeccion.style.display = 'block';
+            cuartaSeccion.style.display = 'none';
+        }
+    }
+
+    // Verifica si tienes los datos antes de crear el gráfico
+   
+</script>
+
+</html>

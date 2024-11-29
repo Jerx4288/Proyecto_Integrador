@@ -32,7 +32,7 @@ public class ClienteService implements IClienteService
             if (cliente.getDni() != null) 
             {
                 clienteDAO.save(cliente);
-                return "Cliente agregado correctamente";
+                return "Cliente actualizado correctamente";
             } else 
             {
                 return "No se agregó el cliente: el DNI no puede ser nulo o vacío";
@@ -81,6 +81,11 @@ public class ClienteService implements IClienteService
             System.err.println("Error al iniciar sesión: " + e.getMessage());
             return Optional.empty();  // Retorna vacío en caso de error
         }
+    }
+
+    @Override
+    public Cliente buscarCliente(String id) {
+        return clienteDAO.findById(id).get(); //.get convierte el Optional<T>.
     }
 
     

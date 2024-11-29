@@ -1,0 +1,137 @@
+
+.page {
+    position: relative;
+    margin-left: -1430px;  /* Esto está desplazando mucho el contenido a la izquierda */
+    margin-top: 7vw;
+    text-align: left;
+    height: 30vw;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+}
+
+.page
+{
+    flex-direction: column;
+    overflow-x: auto; 
+}
+.page h1
+{
+    font-family: 'Lobster Two';
+}
+#primeraseccion
+{
+    display: flex;
+    align-items: center;
+}
+#primeraseccion button
+{
+    margin-left: 57.5vw;
+    height: 2vw;
+    width: auto;
+    padding: 0px 1.2vw ;
+    background-color: #f8d3dc;
+    cursor: pointer;
+    font-family: "Didact Gothic", sans-serif;
+    border: transparent;
+    border-radius: 0.5vw;
+    font-size: 0.8vw;
+}
+#segundaseccion
+{
+    position: absolute;
+    top: 5vw;
+    font-family:"Didact Gothic", sans-serif;  
+}
+#segundaseccion button
+{
+    height: 2vw;
+    width: auto;
+    padding: 0px 1.2vw ;
+    background-color: #f8d3dc;
+    cursor: pointer;
+    font-family: "Didact Gothic", sans-serif;
+    border: transparent;
+    border-radius: 0.5vw;
+    font-size: 0.8vw;
+    margin-bottom: 10px;
+    margin-right: 3vw;
+    margin-left: 5.5vw;
+}
+#filter-section 
+{
+    margin-bottom: 0.1vw;
+}
+#filter-section form select
+{
+    margin-left: 1.4vw;
+    margin-right: 1vw;
+    background-color: #f3f1f1;
+    border: none;
+    width: 14vw;
+    padding: 5px 5px;
+    border-radius: 1vw;
+}
+#filter-section form button
+{
+    margin-top: -8px;
+    margin-left: 0.5vw;
+    margin-bottom: 20px;
+}
+.styled-table {
+    position: absolute;
+    top: 11vw;
+    width: 97%;
+    max-width: 100%; 
+    border-collapse: collapse;
+    margin-left: 0px;
+    font-size: 16px;
+    font-family:"Didact Gothic", sans-serif;  
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    table-layout: auto; 
+
+    margin-right: 2vw;
+}
+
+.styled-table thead tr {
+    background-color: #f8d3dc;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.styled-table th,
+.styled-table td {
+    border: 1px solid #dddddd;
+    padding: 12px 15px;
+    text-align: center;
+    word-wrap: break-word;
+    max-width: 150px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #e85e7c;
+}
+
+.styled-table tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+#grafico
+{
+    margin-top: 6vw;  /* Ajusta este valor para asegurarte que no esté fuera de vista */
+    width: 100%;
+    position: relative;
+    z-index: 100;  /* Asegúrate de que esté por encima de otros elementos */
+    overflow: visible;
+}

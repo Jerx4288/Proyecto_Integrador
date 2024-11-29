@@ -9,4 +9,6 @@ public interface IClienteService {
     public String guardarCliente(Cliente cliente);
     public Optional<Cliente> iniciarSesion(String dni, String password);
     public Optional<Administrador> iniciarSesionAdmin(String dni, String password);
+
+    public Cliente buscarCliente(String id);
 }

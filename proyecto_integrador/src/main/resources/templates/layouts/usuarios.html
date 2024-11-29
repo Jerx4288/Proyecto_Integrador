@@ -33,25 +33,26 @@
                     <a href="panelCliente.html" class="back-button"><img th:src="@{/img/logo2.jpg}" class="logo"></a>
                 </div>
                 <div class="funciones">
-                    <a href="perfilCliente.html" class="perfil-button"><button type="submit" class="hidden"><i class="fa-solid fa-user"></i><br> Perfil</button></a>
-                    <a href="historial.html" class="perfil-button"><button type="submit" class="hidden"><i class="fa-solid fa-cart-shopping"></i><br>Historial de compras</button></a>
-                    <a href="citasp.html" class="perfil-button"><button type="submit" class="hidden"><i class="fa-solid fa-calendar-days"></i><br>Citas programadas</button></a>
+                    <a th:href="@{/usuario/}" class="perfil-button"><button type="submit" class="hidden"><i class="fa-solid fa-user"></i><br> Perfil</button></a>
+                    <a th:href="@{/usuario/historial}" class="perfil-button"><button type="submit" class="hidden"><i class="fa-solid fa-cart-shopping"></i><br>Historial de compras</button></a>
+                    <a href="citas.html" class="perfil-button"><button type="submit" class="hidden"><i class="fa-solid fa-calendar-days"></i><br>Citas programadas</button></a>
                 </div>
             </div>
             <div class="barraOpciones" th:fragment="barra_usuario">
                 <div class="regreso">
-                    <a href="#" class="back-button">
+                    <a th:href="@{/Pagina_principal}" class="back-button">
                         <i class="fa-solid fa-circle-left"></i>  Regresar a la página principal
                     </a>
                 </div>
                 <div class="opciones">
                     <div class="option">
                     <i class="fa-solid fa-bars icon"></i>
-                    <select class="custom-select" onchange="location = this.value;">
+                    <select class="custom-select" onchange="location.href = this.value;">
                         <option value="" disabled selected>Opciones</option>
-                        <option value="editarPerfilCliente.html">Editar Perfil</option>
-                        <option value="loginyregitser.html">Cerrar Sesión</option>
+                        <option th:value="@{/usuario/}">Editar Perfil</option>
+                        <option th:value="@{/login/logout}">Cerrar Sesión</option>
                     </select>
+                    
                     
                 </div>
             </div>

@@ -65,7 +65,7 @@ public class loginController {
 
             String mensajeBienvenida = "Hola " + administrador.getNombre_a() + " !";
             model.addAttribute("mensaje_ini", mensajeBienvenida);
-            return "MenuPrincipal";
+            return "redirect:/admin/";
         } else {
             redirectAttributes.addFlashAttribute("mensaje", "Dni o Contraseña inválido");
             return "redirect:/login/?error=true";

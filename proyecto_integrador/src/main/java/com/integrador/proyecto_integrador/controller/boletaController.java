@@ -3,6 +3,7 @@ package com.integrador.proyecto_integrador.controller;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -234,6 +235,8 @@ public class boletaController
             System.out.println("ultimo controlador");
             System.out.println("tipo de envio = " + entrega  );
             // Dedicatoria
+            LocalDate fecha = LocalDate.parse(fechaCompra.split(" ")[0]);  // Extrae solo la fecha
+
             // Imprimir los datos recibidos para verificar
             @SuppressWarnings("unchecked")
             List<TortaClasica> tortasClasicas = (List<TortaClasica>) session.getAttribute("tortasClasicas");
@@ -336,7 +339,7 @@ public class boletaController
                     return "redirect:/boleta";
                 }
                 // Crear la boleta
-                Boleta boleta = new Boleta(null, fechaCompra, totalCompra, metodoPago, dedicatoria, productosList, cantidad, cliente, tipoEnvio);
+                Boleta boleta = new Boleta(null, fecha, totalCompra, metodoPago, dedicatoria, productosList, cantidad, cliente, tipoEnvio);
 
                 for (Object producto : productosList) {
                     if (producto instanceof Vela) {

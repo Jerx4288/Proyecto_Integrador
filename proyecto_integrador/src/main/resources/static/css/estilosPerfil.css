@@ -220,6 +220,44 @@ form
     font-size: 18px; 
 }
 
+.input-icon {
+    position: relative; /* Necesario para posicionar el ícono dentro */
+    width: fit-content; /* Ajusta el ancho al contenido */
+  }
+  
+  .input-icon i {
+    position: absolute; /* Posiciona el ícono dentro del input */
+    top: 50%; /* Centra verticalmente */
+    left: 10px; /* Ajusta la posición horizontal */
+    transform: translateY(-50%);
+    font-size: 18px; /* Tamaño del ícono */
+    color: #666565; /* Color del ícono */
+  }
+  .input-icon select
+  {
+    text-align: left !important;
+  }
+  
+
+  #mensaje_cambio
+  {
+    margin-top: 6vw;
+    font-family: 'Quicksand', sans-serif;
+
+  }
+  .input-icon input, .input-icon select {
+    font-size: 13px;
+    font-family: 'Quicksand', sans-serif;
+    color: #666565;
+    background-color: #eee;
+    padding: 10px 10px 10px 35px; /* Espacio extra a la izquierda para el ícono */
+    border-radius: 8px;
+    border: none;
+    width: 28vw; 
+    box-sizing: border-box;
+  }
+    
+
 .inicial .page .izquierda .input-container p {
     font-size: 14px;
     font-family: 'Quicksand', sans-serif;
@@ -257,14 +295,5 @@ form
 .inicial button:hover {
     opacity: 0.8;
 }
-
-
-
-
-
-
-
-
-
 
 
