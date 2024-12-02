@@ -1,5 +1,7 @@
 package com.integrador.proyecto_integrador.model.service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,6 +102,11 @@ public class CitaService implements ICitaService
     @Override
     public Citas buscarCita(Integer id) {
         return citasDAO.findById(id).get();
+    }
+
+    @Override
+    public Boolean existeCita(LocalDate fecha, LocalTime hora) {
+        return citasDAO.existsByFechaAndHora(fecha, hora);
     }
 
     

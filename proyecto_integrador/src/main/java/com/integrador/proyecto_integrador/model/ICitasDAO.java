@@ -1,5 +1,7 @@
 package com.integrador.proyecto_integrador.model;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -32,4 +34,6 @@ public interface ICitasDAO extends CrudRepository <Citas, Integer>{
     @Query("SELECT c FROM Citas c WHERE MONTH(c.fecha_c) = :mes AND YEAR(c.fecha_c) = :anio AND c.cliente.dni = :dni")
     List<Citas> findByMesAndAnioAndClienteDni(@Param("mes") Integer mes, @Param("anio") Integer anio, @Param("dni") String dni);
 
+    @Query("SELECT CASE WHEN COUNT(c) > 0 THEN true ELSE false END FROM Citas c WHERE c.fecha_c = :fecha AND c.hora_c = :hora")
+    boolean existsByFechaAndHora(@Param("fecha") LocalDate fecha, @Param("hora") LocalTime hora);
 }

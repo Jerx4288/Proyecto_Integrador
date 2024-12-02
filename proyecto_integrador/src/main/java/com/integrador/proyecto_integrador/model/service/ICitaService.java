@@ -1,5 +1,7 @@
 package com.integrador.proyecto_integrador.model.service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 
@@ -18,4 +20,5 @@ public interface ICitaService {
     public List<Citas> obtenerTodasCitas();
     public List<String> obtenerDnisClientes(); 
     public List<Citas> obtenerCitasPorAnioYCliente(Integer anio, String dniCliente);
+    public Boolean existeCita(LocalDate fecha, LocalTime hora);
 }

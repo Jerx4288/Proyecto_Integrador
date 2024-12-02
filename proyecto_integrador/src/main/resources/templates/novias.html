@@ -44,6 +44,7 @@
         
         <div id="segundo_espacio">
             <div id="cont_2">
+                
                 <div id="imagen_form">
                     <img th:src="@{/img/novias_1.jpg}" alt="imagen_form">
                 </div>
@@ -69,18 +70,20 @@
                             </div>
                             <div class="citaa">
                                 <label for="cita">Selecciona tu cita:</label><br>
-                                <select id="cita" name="cita" required th:field="*{hora_c}">
-                                    <option value="08:00-10:00">8:00 AM - 10:00 AM</option>
-                                    <option value="10:00-12:00">10:00 AM - 12:00 PM</option>
-                                    <option value="12:00-14:00">12:00 PM - 2:00 PM</option>
-                                    <option value="14:00-16:00">2:00 PM - 4:00 PM</option>
+                                <select id="cita" name="hora_c" required th:field="*{hora_c}">
+                                    <option value="08:00">8:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="14:00">2:00 PM</option>
                                 </select>
                             </div>
                         </div>
                     
                         <label for="imagen">Sube una imagen de tu idea de pastel (opcional):</label>
                         <input type="file" id="imagen_c" name="imagen_c" accept="image/png, image/jpeg">
-                    
+                        <div th:if="${mensaje != null}" class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>Mensaje!</strong> <span th:text="${mensaje}"></span>
+                          </div>
                         <button type="submit">Enviar</button>
                     </form>
                 </div>

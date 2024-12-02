@@ -1,6 +1,7 @@
 package com.integrador.proyecto_integrador.model;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -38,7 +39,7 @@ public class Citas {
     private LocalDate fecha_c;
 
     @Column(name = "hora_c")
-    private String hora_c;
+    private LocalTime hora_c;
 
      // Cambiado a MultipartFile
     @Transient
@@ -85,11 +86,11 @@ public class Citas {
         this.fecha_c = fecha_c;
     }
 
-    public String getHora_c() {
+    public LocalTime getHora_c() {
         return hora_c;
     }
 
-    public void setHora_c(String hora_c) {
+    public void setHora_c(LocalTime hora_c) {
         this.hora_c = hora_c;
     }
 

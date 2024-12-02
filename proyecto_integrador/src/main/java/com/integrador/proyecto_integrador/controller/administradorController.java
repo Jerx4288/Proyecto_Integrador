@@ -28,7 +28,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.integrador.proyecto_integrador.model.Administrador;
 import com.integrador.proyecto_integrador.model.Boleta;
 import com.integrador.proyecto_integrador.model.Citas;
-import com.integrador.proyecto_integrador.model.ICitasDAO;
 import com.integrador.proyecto_integrador.model.TortaClasica;
 import com.integrador.proyecto_integrador.model.TortaEspecial;
 import com.integrador.proyecto_integrador.model.Vela;

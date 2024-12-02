@@ -105,6 +105,11 @@ public class pediEspecialesController {
                 System.out.println("Errores en el formulario: " + result.getFieldError());
                 return "redirect:/pedidos_especiales/";
             } else {
+                boolean citaExistente = citaService.existeCita(citas.getFecha_c(), citas.getHora_c());
+                if (citaExistente) {
+                    redirectAttributes.addFlashAttribute("mensaje", "Ya existe una cita programada para ese día y hora. Por favor, elige otro momento.");
+                    return "redirect:/pedidos_especiales/"; // Redirige a la misma página con el mensaje de error
+                }
                 // Verificar si el archivo no está vacío y luego procesarlo
                 if (!imagen.isEmpty()) {
                     System.out.println("Archivo recibido: " + imagen.getOriginalFilename());
