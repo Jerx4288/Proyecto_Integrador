@@ -32,6 +32,16 @@ public class TortaClaService implements ITortaClaService {
         tortaClasicaDAO.save(tortaClasica);
     }
 
+    @Override
+    public List<TortaClasica> cargarTodasTortas() {
+        return (List<TortaClasica>) tortaClasicaDAO.findAll();
+    }
+
+    @Override
+    public TortaClasica buscarTortaClasica(String id) {
+        return tortaClasicaDAO.findById(id).get();
+    }
+
     
 
 

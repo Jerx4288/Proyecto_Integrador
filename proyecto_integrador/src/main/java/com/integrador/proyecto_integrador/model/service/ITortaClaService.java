@@ -8,4 +8,6 @@ public interface ITortaClaService {
     public List<TortaClasica> cargarCategoriasFiltradas(String nombre, String tamano);
     public List<TortaClasica> cargarTortaClasicas(List<String> ids);
     public void guardarTortaClasica(TortaClasica tortaClasica);
+    public List<TortaClasica> cargarTodasTortas();
+    public TortaClasica buscarTortaClasica(String id);
 }

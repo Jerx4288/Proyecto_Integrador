@@ -49,12 +49,16 @@ public class pediEspecialesController {
         String mensajeBienvenida;
         Object usuario = session.getAttribute("usuario");
 
+        Citas nuevaCita = new Citas();
+
         if (usuario instanceof Administrador) {
             Administrador administrador = (Administrador) usuario;
             mensajeBienvenida = "Hola " + administrador.getNombre_a() + "!";
         } else if (usuario instanceof Cliente) {
             Cliente cliente = (Cliente) usuario;
             mensajeBienvenida = "Hola " + cliente.getNombre() + "!";
+            nuevaCita.setNombre_c(cliente.getNombre()); 
+            nuevaCita.setCorreo_c(cliente.getCorreo());
         } else if (usuario != null) {
             // Si 'usuario' es un String o cualquier otro tipo
             mensajeBienvenida = "Hola " + usuario.toString() + "!";
@@ -64,7 +68,7 @@ public class pediEspecialesController {
         }
 
         model.addAttribute("mensaje_ini", mensajeBienvenida);
-        model.addAttribute("citas", new Citas());
+        model.addAttribute("citas", nuevaCita);
 
         return "personalizada";
     }

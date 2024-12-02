@@ -33,10 +33,11 @@
                     <a href="panelCliente.html" class="back-button"><img th:src="@{/img/logo2.jpg}" class="logo"></a>
                 </div>
                 <div class="funciones">
-                    <a th:href="@{/usuario/}" class="perfil-button"><button type="submit" class="hidden"><i class="fa-solid fa-user"></i><br> Perfil</button></a>
-                    <a th:href="@{/usuario/historial}" class="perfil-button"><button type="submit" class="hidden"><i class="fa-solid fa-cart-shopping"></i><br>Historial de compras</button></a>
-                    <a th:href="@{/usuario/citas}" class="perfil-button"><button type="submit" class="hidden"><i class="fa-solid fa-calendar-days"></i><br>Citas programadas</button></a>
-                </div>
+                    <a th:href="@{/admin/}" class="perfil-button"><button type="submit" class="hidden"><i class="fa-solid fa-user"></i><br> Perfil</button></a>
+                    <a th:href="@{/admin/tortas}" class="perfil-button"><button type="submit" class="hidden"><i class="fa-solid fa-cake-candles"></i><br>Inventario de Productos</button></a>
+                    <a th:href="@{/admin/boleta}" class="perfil-button"><button type="submit" class="hidden"><i class="fa-solid fa-cart-shopping"></i><br>Historial de Boletas</button></a>
+                    <a th:href="@{/admin/citass}" class="perfil-button"><button type="submit" class="hidden"><i class="fa-solid fa-calendar-days"></i><br>Citas programadas</button></a>             
+               </div>
             </div>
             <div class="barraOpciones" th:fragment="barra_usuario">
                 <div class="regreso">
@@ -49,7 +50,7 @@
                     <i class="fa-solid fa-bars icon"></i>
                     <select class="custom-select" onchange="location.href = this.value;">
                         <option value="" disabled selected>Opciones</option>
-                        <option  th:value="@{/usuario/editar}" data-action="toggle">Editar Contraseña</option>
+                        <option  th:value="@{/admin/añadir}" data-action="toggle">Añadir Administrador</option>
                         <option th:value="@{/login/logout}">Cerrar Sesión</option>
                     </select>
                     

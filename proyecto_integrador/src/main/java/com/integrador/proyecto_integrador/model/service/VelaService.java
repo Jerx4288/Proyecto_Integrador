@@ -26,5 +26,13 @@ public class VelaService implements IVelaService {
     public void guardarVela(Vela vela) {
         velaDAO.save(vela);
     }
+    @Override
+    public List<Vela> cargaTodasVelas() {
+        return (List<Vela>) velaDAO.findAll();
+    }
+    @Override
+    public Vela buscarVela(String id) {
+        return velaDAO.findById(id).get();
+    }
     
 }

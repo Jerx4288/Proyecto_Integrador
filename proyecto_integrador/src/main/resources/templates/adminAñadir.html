@@ -24,7 +24,7 @@
                                     <div class="input-icon">
                                         <i class="fa-solid fa-user"></i>
                                         <input th:field="*{nombre_a}" type="text" class="form-control" placeholder="Ingrese nombre" 
-                                               id="nombre_admin" required readonly/>
+                                               id="nombre_admin" required/>
                                       </div>
                                 </div>
                                 <div class="input-container">
@@ -32,7 +32,7 @@
                                     <div class="input-icon">
                                         <i class="fa-solid fa-user"></i>
                                         <input th:field="*{apellido_a}" type="text" class="form-control" placeholder="Ingrese apellidos" 
-                                               id="apellido_a" required readonly/>
+                                               id="apellido_a" required/>
                                       </div>
                                 </div>
                                 <div class="input-container">
@@ -44,7 +44,7 @@
                                     <div class="input-icon">
                                         <i class="fa-solid fa-id-card"></i>
                                         <input th:field="*{id_admin}" type="text" class="form-control" 
-                                               id="id_admin" required readonly/>
+                                               id="id_admin" placeholder="Número de DNI" required pattern="\d{8}" title="El DNI debe contener 8 dígitos"/>
                                     </div>
                                 </div>
                             <br><br>
@@ -76,7 +76,7 @@
                                     <strong>Mensaje!</strong> <span th:text="${mensaje}"></span>
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                   </div>
-                            <button type="submit"><i class="fa-solid fa-floppy-disk"></i> Editar Administrador</button>
+                            <button type="submit"><i class="fa-solid fa-floppy-disk"></i> Añadir Administrador</button>
                             
                         </div>
                     </form>

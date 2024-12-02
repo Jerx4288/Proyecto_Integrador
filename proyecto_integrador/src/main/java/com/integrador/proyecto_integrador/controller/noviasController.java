@@ -43,10 +43,11 @@ public class noviasController {
     private IUploadFileService uploadFileService;
 
     @RequestMapping("/")
-    private String novias(Model model, HttpSession session)
-    {
+    private String novias(Model model, HttpSession session) {
         String mensajeBienvenida;
         Object usuario = session.getAttribute("usuario");
+
+        Citas nuevaCita = new Citas();
 
         if (usuario instanceof Administrador) {
             Administrador administrador = (Administrador) usuario;
@@ -54,18 +55,19 @@ public class noviasController {
         } else if (usuario instanceof Cliente) {
             Cliente cliente = (Cliente) usuario;
             mensajeBienvenida = "Hola " + cliente.getNombre() + "!";
+            nuevaCita.setNombre_c(cliente.getNombre()); 
+            nuevaCita.setCorreo_c(cliente.getCorreo());
         } else if (usuario != null) {
-            // Si 'usuario' es un String o cualquier otro tipo
             mensajeBienvenida = "Hola " + usuario.toString() + "!";
         } else {
-            // Caso donde el usuario no está logueado
             mensajeBienvenida = "Iniciar Sesion";
         }
 
         model.addAttribute("mensaje_ini", mensajeBienvenida);
-        model.addAttribute("citas", new Citas());
+        model.addAttribute("citas", nuevaCita);
         return "novias";
     }
+
     @SuppressWarnings("null")
     @PostMapping("/guardar")
     public String guardar( Citas citas, BindingResult result, RedirectAttributes flash, 
@@ -97,7 +99,7 @@ public class noviasController {
     
             if (result.hasErrors()) {
                 System.out.println("Errores en el formulario: " + result.getFieldError());
-                return "redirect:/pedidos_especiales/";
+                return "redirect:/novias/";
             } else {
                 // Verificar si el archivo no está vacío y luego procesarlo
                 if (!imagen.isEmpty()) {
@@ -122,12 +124,12 @@ public class noviasController {
 
                 try {
                     enviarResumenCitaPorCorreo(citas.getCorreo_c(), citas, imagen);
-                    flash.addFlashAttribute("mensaje", "Cita agendada y correo enviado con éxito!");
+                    
                 } catch (MessagingException | IOException e) {
-                    flash.addFlashAttribute("mensaje", "Hubo un error al enviar el correo: " + e.getMessage());
+                    
                 }
             }
-            return "redirect:/pedidos_especiales/";
+            return "redirect:/novias/";
         } else {
             // Si no hay un cliente en sesión, redirige al login o muestra un mensaje de error
             redirectAttributes.addFlashAttribute("mensaje", "Debe iniciar sesión como cliente para registrar una cita.");

@@ -33,5 +33,15 @@ public class TortaEspecialService implements ITortaEspecialService
     public void guardarTortaEspecial(TortaEspecial tortaEspecial) {
         tortaEspecialDAO.save(tortaEspecial);
     }
+
+    @Override
+    public List<TortaEspecial> cargarTodastort() {
+        return (List<TortaEspecial>) tortaEspecialDAO.findAll();
+    }
+
+    @Override
+    public TortaEspecial buscarTortaEspecial(String id) {
+        return tortaEspecialDAO.findById(id).get();
+    }
     
 }

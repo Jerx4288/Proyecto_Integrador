@@ -7,7 +7,6 @@
     height: 30vw;
     flex-direction: column;
     display: flex;
-    justify-content: space-between;
 }
 
 .page
@@ -26,7 +25,7 @@
 }
 #primeraseccion button
 {
-    margin-left: 57.5vw;
+    margin-left: 1vw ;
     height: 2vw;
     width: auto;
     padding: 0px 1.2vw ;
@@ -37,10 +36,24 @@
     border-radius: 0.5vw;
     font-size: 0.8vw;
 }
+.cambiar
+{
+    margin-left: 34vw;
+}
+.cambiar_vela
+{
+    margin-left: 43vw;
+}
+.cambiar_vela button a, #primeraseccion button a
+{
+    text-decoration: none;
+    color: #333;
+}
 #segundaseccion
 {
     position: absolute;
     top: 5vw;
+    width: auto;
     font-family:"Didact Gothic", sans-serif;  
 }
 #segundaseccion button
@@ -80,7 +93,7 @@
 }
 .styled-table {
     position: absolute;
-    top: 11vw;
+    top: 9vw;
     width: 97%;
     max-width: 100%; 
     border-collapse: collapse;
@@ -129,7 +142,7 @@
 
 #grafico
 {
-    margin-top: 6vw; 
+    margin-top: 4vw;
     width: 100%;
     position: relative;
     z-index: 100; 
@@ -170,6 +183,14 @@
     margin-top: 1.2vw;
 }
 
+#cuarta_seccion {
+    height: 0;
+    transition: visibility 0.3s, height 0.3s;
+    margin-right: 100px;
+}
+
+
+
 .siguientelado
 {
     margin-left: 3vw;
@@ -181,4 +202,61 @@
     border-radius: 10%;
     margin-left: 5.5vw;
     border: 19px double pink ;
+}
+#form_editar button
+{
+    font-family: "Didact Gothic", sans-serif;
+    margin-left: 1.5vw ;
+    padding: 0.3vw 1.2vw ;
+    background-color: #f8d3dc;
+    border: transparent;
+    border-radius: 0.5vw;
+}
+#form_edita_tortaer button
+{
+    font-family: "Didact Gothic", sans-serif;
+    margin-left: 0.8vw ;
+    padding: 0.3vw 1.2vw ;
+    background-color: #f8d3dc;
+    border: transparent;
+    border-radius: 0.5vw;
+}
+#form_edita_tortaer input
+{
+    height: 1vw;
+    width: 5vw;
+}
+#form_edita_vela input
+{
+    margin-left: 3.8vw;
+    margin-right: 1.2vw;
+    text-align: center;
+}
+#form_edita_vela button
+{
+    font-family: "Didact Gothic", sans-serif;
+    padding: 0.3vw 1.2vw ;
+    background-color: #f8d3dc;
+    border: transparent;
+    border-radius: 0.5vw;
+}
+
+#tablaBoletaAdmin
+{
+    top: 10.4vw !important;
+}
+
+.graficoBoleta
+{
+    margin-top: 6vw !important;
+}
+
+#botonCitas
+{
+    font-family: "Didact Gothic", sans-serif;
+    padding: 0.3vw 0.7vw ;
+    background-color: #f8d3dc;
+    border: transparent;
+    margin-left: 1vw;
+    border-radius: 0.5vw;
 }

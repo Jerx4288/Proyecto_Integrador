@@ -1,0 +1,301 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    scroll-behavior: smooth;
+    user-select: none;
+    background: linear-gradient(to left, #f8c8e4, #dcf7d7);
+}
+.container {
+    display: flex; 
+    justify-content: center;
+    align-items: flex-start; 
+    flex-direction: column; 
+    padding: 47px 47px; 
+    width: auto; 
+    max-width: 100%;
+    height: 100%;
+}
+
+.content {
+    display: flex; 
+    width: 100%; 
+    background-color: white; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    height: 40vw;
+    margin-top: 1.5vw;
+    border: 1px solid #dcf7d7;
+}
+
+.datos {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    padding: 1.3vw; 
+    line-height: 2; 
+    width: 6.5vw; 
+    height: auto; 
+    background-color:#f8d3dc;
+    gap: 20px;
+}
+.fotorandom .logo {
+    width: 6vw; 
+    height: 5.5vw;
+
+}
+.datos .funciones{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:27px;
+    height: 13.5vw;
+    padding: 0.3vw 0px;
+}
+
+.datos .funciones button.hidden{
+    padding: 10px 10px;
+    font-size: 0.8vw;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    text-transform: uppercase;
+    background-color: transparent;
+    letter-spacing: 0.5px;
+    line-height: 2;
+    border: none;
+}
+form
+{
+    display: flex;
+}
+
+.datos .funciones button i {
+    font-size: 1.8em;
+    
+}
+
+.barraOpciones {
+    display: flex;
+    align-items: center;
+    padding: 1.3vw;
+    width: 100vw;
+    max-width: 100%;
+    height: 3.5vw;
+    border: 1px solid #dcf7d7;
+    background-color: #f8d3dc;
+    justify-content: space-between;
+}
+
+.barraOpciones .regreso .back-button {
+    color: #333;
+    text-decoration: none;
+    display: inline-flex; 
+    align-items: center;
+}
+
+.barraOpciones .regreso .back-button:hover,
+.barraOpciones .regreso .back-button:active {
+    opacity: 0.9;
+}
+
+.barraOpciones .regreso {
+    font-family:"Didact Gothic", sans-serif;   
+    font-size: 0.8vw;
+    margin-left: 8px;
+}
+
+.barraOpciones .regreso .back-button i {
+    font-size: 1.6em;
+    margin-right: 6px;
+}
+
+.opciones {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 62vw;
+}
+
+.opciones .icon {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: #999;
+    pointer-events: none;
+}
+
+.custom-select {
+    font-family:"Didact Gothic", sans-serif;   
+    width: 140px;
+    padding-left: 30px; /* Espacio para el ícono */
+    font-size: 13px;
+    height: 35px;
+    border-radius: 8px;
+    background-color: #eee;
+    color: #333;
+    box-sizing: border-box;
+    appearance: none; /* Elimina el estilo predeterminado */
+    text-align: center;
+   
+    align-items: center; /* Centra verticalmente el texto */
+    justify-content: center; /* Centra horizontalmente el texto */
+    border: none;
+    cursor: pointer;
+}
+
+.custom-select:hover
+{
+    border: none;
+}
+.custom-select:focus {
+    border-color: #f8d3dc;
+    box-shadow: 0 0 5px #f8d3dc; 
+}
+
+.inicial .page {
+
+    position: relative;
+    margin-left:-1420px; 
+    margin-top: 7.4vw;
+    text-align: left; 
+    width: 78vw;
+    height: 500px;
+    display: flex;
+    justify-content: space-between;  
+}
+
+.inicial .page .izquierda {
+    
+    height: auto;
+    object-fit: contain; 
+    padding: 0px 1vw;
+    width:40vw;
+    background: transparent;
+    line-height: 0.5;
+}
+.inicial h1 {
+    font-family: 'Lobster Two';
+    font-size: 35px;
+    color:#333;
+    margin-bottom: 1.6vw;
+
+}
+.inicial p{
+    font-size: 14px;
+    font-family:"Didact Gothic", sans-serif;  
+    color: #333; 
+
+}
+.inicial p i {
+    margin-right: 10px; 
+    font-size: 18px;
+}
+.inicial .page .derecha {
+   
+    width:40vw;
+    height: auto;
+    object-fit: contain; 
+    background: transparent;
+    line-height: 0.5;
+}
+.input-container i {
+    color: #666565; 
+    pointer-events: none;
+}
+.input-container label {
+    display: flex; 
+    align-items: center;
+    font-size: 13px;
+    font-family: 'Quicksand', sans-serif;
+    color: #666565;
+    background-color: #eee;
+    padding: 10px 10px; 
+    border-radius: 8px;
+    width: 70%; 
+    box-sizing: border-box; 
+}
+
+.input-container label i {
+    margin-right: 10px;
+    font-size: 18px; 
+}
+
+.input-icon {
+    position: relative; /* Necesario para posicionar el ícono dentro */
+    width: fit-content; /* Ajusta el ancho al contenido */
+  }
+  
+  .input-icon i {
+    position: absolute; /* Posiciona el ícono dentro del input */
+    top: 50%; /* Centra verticalmente */
+    left: 10px; /* Ajusta la posición horizontal */
+    transform: translateY(-50%);
+    font-size: 18px; /* Tamaño del ícono */
+    color: #666565; /* Color del ícono */
+  }
+  .input-icon select
+  {
+    text-align: left !important;
+  }
+  
+
+  #mensaje_cambio
+  {
+    margin-top: 2vw;
+    font-family: 'Quicksand', sans-serif;
+    margin-bottom: 20px;
+
+  }
+  .input-icon input, .input-icon select {
+    font-size: 13px;
+    font-family: 'Quicksand', sans-serif;
+    color: #666565;
+    background-color: #eee;
+    padding: 10px 10px 10px 35px; /* Espacio extra a la izquierda para el ícono */
+    border-radius: 8px;
+    border: none;
+    width: 28vw; 
+    box-sizing: border-box;
+  }
+    
+
+.inicial .page .izquierda .input-container p {
+    font-size: 14px;
+    font-family: 'Quicksand', sans-serif;
+    color: #333; 
+}
+.inicial .page .derecha .input-container p {
+    font-size: 14px;
+    font-family: 'Quicksand', sans-serif;
+    color: #333; 
+}
+.password-field { /* solo perfil de admin para la contra */
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    font-family: 'Quicksand', sans-serif;
+    outline: none;
+    color: #333;
+}
+.inicial button{
+    background-color: #e6829b;
+    color: #fff;
+    font-size: 12px;
+    padding: 10px 45px;
+    font-family:"Didact Gothic", sans-serif;  
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    position: absolute;
+    top: 16vw; 
+    left: 50vw; /* Ajusta según sea necesario */
+    cursor: pointer;
+}
+.inicial button:hover {
+    opacity: 0.8;
+}
+
+

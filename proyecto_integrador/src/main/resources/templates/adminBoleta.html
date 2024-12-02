@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <th:block th:include="layouts/usuarios :: cabecera_usuario"></th:block>
-    <title>Pabluki's Bakery | Perfil Cliente</title>
-    <link th:href="@{/css/estilosPerfil.css}" rel="stylesheet">
-    <link th:href="@{/css/estilosTablas.css}" rel="stylesheet">   
+    <th:block th:include="layouts/admin :: cabecera_usuario"></th:block>
+    <title>Pabluki's Bakery | Perfil Administrador</title>
+    <link th:href="@{/css/estilosAdmin.css}" rel="stylesheet">
+    <link th:href="@{/css/tablaAdmin.css}" rel="stylesheet">   
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 </head>
 <body>
     <div class="container">
         <div class="content">
-            <div th:replace="layouts/usuarios :: datos_usuario">
+            <div th:replace="layouts/admin :: datos_usuario">
             </div>
-            <div th:replace="layouts/usuarios :: barra_usuario">
+            <div th:replace="layouts/admin :: barra_usuario">
             </div>
             <div class="">
                 <div class="page">
@@ -23,7 +22,7 @@
                    </div>
                      <div id="segundaseccion">
                         <div id="filter-section">
-                            <form th:action="@{/usuario/historial}" method="GET">
+                            <form th:action="@{/admin/boleta}" method="GET">
                                 <div>
                                     <label for="mes">Filtrar por mes:</label>
                                     <select id="mes" name="mes" class="form-control">
@@ -49,14 +48,22 @@
                                         <option th:each="year : ${años}" th:value="${year}" th:text="${year}"></option>
                                     </select>
                                 </div>
+                                <div>
+                                    <label for="dni_cliente">Filtrar por DNI de Cliente:</label>
+                                    <select id="dni_cliente" name="dni_cliente" class="form-control">
+                                        <option value="">Seleccione un DNI</option>
+                                        <option th:each="dni : ${listaDniClientes}" th:value="${dni}" th:text="${dni}"></option>
+                                    </select>
+                                </div>
                                 <button type="submit" class="btn btn-primary">Filtrar</button>
                             </form>
                         </div>
+                        
                         <button>Generar Reportes de Tabla</button>
                         <button>Generar Reportes de Grafico</button>
                     </div>
                     <div id="tercera_seccion">
-                        <table class="styled-table">
+                        <table class="styled-table" id="tablaBoletaAdmin">
                             <thead>
                                 <tr>
                                     <th>ID de Boleta</th>
@@ -70,25 +77,28 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr th:each="item: ${listaBoleta}">
-                                    <td th:text="${item.id_boleta}"></td>
-                                    <td th:text="${item.fecha_boleta}"></td>
-                                    <td th:text="${item.total_boleta}"></td>
-                                    <td th:text="${item.metpago_boleta}"></td>
-                                    <td th:text="${item.dedicatoria}"></td>
-                                    <td th:text="${item.cantidad_bol}"></td>
-                                    <td th:text="${item.tipoenvio.tipo_e}"></td>
-                                    <td th:text="${item.cliente.dni}"></td>
+                                <tr th:if="${listaBoletas.isEmpty()}">
+                                  <td colspan="8">No se encontraron resultados para los filtros aplicados.</td>
                                 </tr>
-                            </tbody>
+                                <tr th:each="item: ${listaBoletas}">
+                                  <td th:text="${item.id_boleta}"></td>
+                                  <td th:text="${item.fecha_boleta}"></td>
+                                  <td th:text="${item.total_boleta}"></td>
+                                  <td th:text="${item.metpago_boleta}"></td>
+                                  <td th:text="${item.dedicatoria}"></td>
+                                  <td th:text="${item.cantidad_bol}"></td>
+                                  <td th:text="${item.tipoenvio.tipo_e}"></td>
+                                  <td th:text="${item.cliente.dni}"></td>
+                                </tr>
+                              </tbody>
+                              
                         </table>
                     </div>
                     <div id="cuarta_seccion" style="display: none;">
-                        <div id="grafico">
-                            <canvas id="graficoBarras" width="400" height="120"></canvas>
+                        <div id="grafico" class="graficoBoleta">
+                            <canvas id="graficoBarras" width="400" height="99"></canvas>
 
                            <script th:inline="javascript">
-                            // Verifica que los datos sean correctamente inyectados
                             var labels = JSON.parse(/*[[${labelsJson}]]*/ "[]");
                             var values = JSON.parse(/*[[${valuesJson}]]*/ "[]");
 
@@ -138,15 +148,12 @@
                         </script>
 
                         </div>
-                    </div>
-                    
+                    </div> 
                 </div>
             </div>
         </div>
     </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <script>
     function toggleSections() {
         var terceraSeccion = document.getElementById('tercera_seccion');
@@ -160,7 +167,5 @@
             cuartaSeccion.style.display = 'none';
         }
     }
-   
 </script>
-
 </html>

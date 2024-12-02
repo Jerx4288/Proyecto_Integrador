@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <th:block th:include="layouts/admin :: cabecera_usuario"></th:block>
+    <title>Pabluki's Bakery | Perfil Administrador</title>
+    <link th:href="@{/css/estilosAdmin.css}" rel="stylesheet">
+    <link th:href="@{/css/tablaAdmin.css}" rel="stylesheet">   
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div th:replace="layouts/admin :: datos_usuario">
+            </div>
+            <div th:replace="layouts/admin :: barra_usuario">
+            </div>
+            <div class="">
+                <div class="page">
+                    <div id="tortaCla">
+                        <div id="primeraseccion">
+                            <h1>Tortas Clasicas: </h1> 
+                            <div class="cambiar">
+                                <button ><a th:href="@{/admin/tortas}" class="btn btn-primary">Tortas Clásicas</a></button>
+                                <button ><a th:href="@{/admin/tortase}" class="btn btn-primary">Tortas Especiales</a></button>
+                                <button ><a th:href="@{/admin/velas}" class="btn btn-primary">Velas</a></button>
+                            </div>
+                            <button class="btn btn-primary" onclick="toggleSections()">Ver Gráficos</button>
+                        </div>
+                        <div id="segundaseccion">
+
+                            <button>Generar Reportes de Stock</button>
+                            <button>Generar Reportes de Grafico</button>
+                        </div>
+                        <div id="tercera_seccion">
+                            <table class="styled-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID de Torta</th>
+                                        <th>Nombre</th>
+                                        <th>Precio</th>
+                                        <th>Tamaño</th>
+                                        <th>Stock</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="item: ${listaTortac}">
+                                        <td th:text="${item.id_tortac}"></td>
+                                        <td th:text="${item.nombre_tc}"></td>
+                                        <td th:text="${item.precio_tc}"></td>
+                                        <td th:text="${item.tamano_tc}"></td>
+                                        <td>
+                                            <form th:action="@{/admin/editarTortaCla/{id}(id=${item.id_tortac})}" method="post" id="form_editar">
+                                                <input type="number" th:name="stock" th:value="${item.stock_tc}" min="0" required />
+                                                <button type="submit" class="btn btn-warning">
+                                                    <i class="fa-solid fa-pen-to-square"></i> Editar Stock
+                                                </button>
+                                            </form>                                            
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="cuarta_seccion" style="display: none;">
+                            <div id="grafico">
+                                <canvas id="graficoBarras" width="400" height="110"></canvas>
+
+                            <script th:inline="javascript">
+                                // Verifica que los datos sean correctamente inyectados
+                                var labels = JSON.parse(/*[[${labelsTortaClasica}]]*/ "[]");
+                                var values = JSON.parse(/*[[${valuesTortaClasica}]]*/ "[]");
+
+                                // Depuración de los datos para ver qué se está inyectando en el script
+                                console.log("Labels:", labels);
+                                console.log("Values:", values);
+
+                                if (labels.length > 0 && values.length > 0) {
+                                    // Selecciona el contexto del gráfico
+                                    var ctx = document.getElementById('graficoBarras').getContext('2d');
+
+                                    // Crear el gráfico
+                                    var chart = new Chart(ctx, {
+                                        type: 'bar',
+                                        data: {
+                                            labels: labels, // Las etiquetas de los meses
+                                            datasets: [{
+                                                label: 'Stock Torta Clásica',
+                                                data: values,  // Los valores de las boletas
+                                                backgroundColor: '#f8d3dc',
+                                                borderColor: '#e85e7c',
+                                                borderWidth: 1
+                                            }]
+                                        },
+                                        options: {
+                                            responsive: true,
+                                            scales: {
+                                                x: {
+                                                    type: 'category', // Asegúrate de que las etiquetas sean categorías
+                                                    ticks: {
+                                                        autoSkip: false  // Para mostrar todas las etiquetas sin que se corten
+                                                    }
+                                                },
+                                                y: {
+                                                    beginAtZero: true,
+                                                    suggestedMax: Math.max(...values) + 5 // Iniciar desde cero
+                                                }
+                                            },
+                                            barThickness: 30, // Ajusta el grosor de las barras
+                                            categoryPercentage: 0.8, // Ajuste de las categorías
+                                            barPercentage: 0.9  // Ajuste de las barras dentro de las categorías
+                                        }
+                                    });
+                                } else {
+                                    console.error("Los datos no están correctos:", labels, values);
+                                }
+                            </script>
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                    </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    function toggleSections() {
+        var terceraSeccion = document.getElementById('tercera_seccion');
+        var cuartaSeccion = document.getElementById('cuarta_seccion');
+
+        if (terceraSeccion.style.display !== 'none') {
+            terceraSeccion.style.display = 'none';  
+            cuartaSeccion.style.display = 'block';  
+        } else {
+            terceraSeccion.style.display = 'block';
+            cuartaSeccion.style.display = 'none';
+        }
+    }
+</script>
+</html>

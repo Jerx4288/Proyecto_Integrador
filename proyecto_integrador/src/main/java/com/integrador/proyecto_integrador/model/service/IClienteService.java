@@ -1,5 +1,6 @@
 package com.integrador.proyecto_integrador.model.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.integrador.proyecto_integrador.model.Administrador;
@@ -11,4 +12,6 @@ public interface IClienteService {
     public Optional<Administrador> iniciarSesionAdmin(String dni, String password);
 
     public Cliente buscarCliente(String id);
+
+    public List<String> obtenerTodosLosDnis();
 }

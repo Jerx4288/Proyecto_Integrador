@@ -8,4 +8,6 @@ public interface IVelaService {
      public List<Vela> cargarCategoriasFiltradas(String nombre);
     public List<Vela> cargarVelas(List<String> ids);
     public void guardarVela(Vela vela);
+    public List<Vela> cargaTodasVelas();
+    public Vela buscarVela(String id);
 }

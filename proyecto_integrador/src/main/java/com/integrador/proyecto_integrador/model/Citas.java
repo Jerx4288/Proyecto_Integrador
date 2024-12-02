@@ -1,5 +1,7 @@
 package com.integrador.proyecto_integrador.model;
 
+import java.time.LocalDate;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.persistence.Column;
@@ -20,7 +22,7 @@ public class Citas {
     @Id
     @Column(name = "id_citas")
     @GeneratedValue(strategy = GenerationType.IDENTITY) // O usa otro strategy adecuado
-    private Long id;
+    private Integer id;
 
     
     @Column(name = "nombre_c")
@@ -33,7 +35,7 @@ public class Citas {
     private String celular_c;
 
     @Column(name = "fecha_c")
-    private String fecha_c;
+    private LocalDate fecha_c;
 
     @Column(name = "hora_c")
     private String hora_c;
@@ -75,11 +77,11 @@ public class Citas {
         this.celular_c = celular_c;
     }
 
-    public String getFecha_c() {
+    public LocalDate getFecha_c() {
         return fecha_c;
     }
 
-    public void setFecha_c(String fecha_c) {
+    public void setFecha_c(LocalDate fecha_c) {
         this.fecha_c = fecha_c;
     }
 
@@ -115,11 +117,11 @@ public class Citas {
         this.cliente = cliente;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     

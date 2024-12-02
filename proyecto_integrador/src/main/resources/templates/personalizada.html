@@ -48,11 +48,12 @@
                         <p>En Pabluki's Bakery, creamos tortas irresistibles que transforman fiestas en experiencias inolvidables. Desde cumpleaños vibrantes hasta bautizos encantadores, diseñamos el pastel de tus sueños con sabores exquisitos y presentaciones deslumbrantes. Completa la información y nuestro apasionado equipo te contactará rápidamente para hacer realidad tu visión y endulzar tu evento.</p>
                     
                         <label for="nombre">Nombre y Apellidos completos:</label>
-                        <input type="text" id="nombre" name="nombre" required placeholder="Escriba Aqui" th:field="*{nombre_c}">
+                        <input type="text" id="nombre" name="nombre" required placeholder="Escriba Aquí" th:field="*{nombre_c}" th:attr="readonly=${citas.nombre_c != null}">
                     
                         <label for="correo">Correo Electronico:</label>
-                        <input type="text" id="correo" name="correo" required placeholder="Escriba Aqui" th:field="*{correo_c}">
-                    
+                        <input type="text" id="correo" name="correo" required placeholder="Escriba Aquí" th:field="*{correo_c}" th:attr="readonly=${citas.correo_c != null}" 
+                        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Debe ingresar un correo electrónico válido (ejemplo@dominio.com)">
+                                    
                         <label for="celular">Celular:</label>
                         <input type="text" id="celular" name="celular" required placeholder="Escriba Aqui" th:field="*{celular_c}" pattern="\d{9}" maxlength="9" title="Debe ingresar 9 dígitos">
                     

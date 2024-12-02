@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <th:block th:include="layouts/admin :: cabecera_usuario"></th:block>
+    <title>Pabluki's Bakery | Perfil Administrador</title>
+    <link th:href="@{/css/estilosAdmin.css}" rel="stylesheet">
+    <link th:href="@{/css/tablaAdmin.css}" rel="stylesheet">   
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div th:replace="layouts/admin :: datos_usuario">
+            </div>
+            <div th:replace="layouts/admin :: barra_usuario">
+            </div>
+            <div class="">
+                <div class="page">
+                    <div id="primeraseccion">
+                        <h1>Citas programadas: </h1>
+                        <button class="btn btn-primary" onclick="toggleSections()">Ver Gráficos</button>
+                   </div>
+                   <div id="segundaseccion">
+                    <div id="filter-section">
+                        <form th:action="@{/admin/citass}" method="GET">
+                            <div>
+                                <label for="mes">Filtrar por mes:</label>
+                                <select id="mes" name="mes" class="form-control">
+                                    <option value="">Seleccione un mes</option>
+                                    <option value="1">Enero</option>
+                                    <option value="2">Febrero</option>
+                                    <option value="3">Marzo</option>
+                                    <option value="4">Abril</option>
+                                    <option value="5">Mayo</option>
+                                    <option value="6">Junio</option>
+                                    <option value="7">Julio</option>
+                                    <option value="8">Agosto</option>
+                                    <option value="9">Septiembre</option>
+                                    <option value="10">Octubre</option>
+                                    <option value="11">Noviembre</option>
+                                    <option value="12">Diciembre</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="anio">Filtrar por año:</label>
+                                <select id="anio" name="anio" class="form-control">
+                                    <option value="">Seleccione un año</option>
+                                    <option th:each="year : ${años}" th:value="${year}" th:text="${year}"></option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="dni_cliente">Filtrar por DNI de Cliente:</label>
+                                <select id="dni_cliente" name="dni_cliente" class="form-control">
+                                    <option value="">Seleccione un DNI</option>
+                                    <option th:each="dni : ${listaDniClientes}" th:value="${dni}" th:text="${dni}"></option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Filtrar</button>
+                        </form>
+                    </div>
+                    
+                    <button>Generar Reportes de Tabla</button>
+                    <button>Generar Reportes de Grafico</button>
+                </div>
+                <div id="tercera_seccion">
+                    <table class="styled-table" id="tablaBoletaAdmin">
+                        <thead>
+                            <tr>
+                                <th>ID de Citas</th>
+                                <th>Nombre</th>
+                                <th>Correo</th>
+                                <th>Celular</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Imágen</th>
+                                <th>DNI del Cliente</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="item : ${listaCitas}">
+                                <td th:text="${item.id}"></td>
+                                <td th:text="${item.nombre_c}"></td>
+                                <td th:text="${item.correo_c}"></td>
+                                <td th:text="${item.celular_c}"></td>
+                                <td th:text="${item.fecha_c}"></td>
+                                <td th:text="${item.hora_c}"></td>
+                                <td>
+                                    <img th:src="@{'/uploads/' + ${item.imagen_c_ruta}}" alt="Imagen de la cita" style="width: 100px; height: auto;" />
+                                </td>
+                                <td th:text="${item.cliente.dni}"></td>
+                                <td>
+                                    <form th:action="@{/admin/eliminarCita/{id}(id=${item.id})}" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta cita?');">
+                                        <button type="submit" id="botonCitas">Eliminar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+                <div id="cuarta_seccion" style="display: none;">
+                    <div id="grafico" class="graficoBoleta">
+                        <canvas id="graficoBarras" width="400" height="99"></canvas>
+
+                       <script th:inline="javascript">
+                        var labels = JSON.parse(/*[[${labelsJson}]]*/ "[]");
+                        var values = JSON.parse(/*[[${valuesJson}]]*/ "[]");
+
+                        // Depuración de los datos para ver qué se está inyectando en el script
+                        console.log("Labels:", labels);
+                        console.log("Values:", values);
+
+                        if (labels.length > 0 && values.length > 0) {
+                            // Selecciona el contexto del gráfico
+                            var ctx = document.getElementById('graficoBarras').getContext('2d');
+
+                            // Crear el gráfico
+                            var chart = new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: labels, // Las etiquetas de los meses
+                                    datasets: [{
+                                        label: 'Cantidad de Citas',
+                                        data: values,  // Los valores de las boletas
+                                        backgroundColor: '#f8d3dc',
+                                        borderColor: '#e85e7c',
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    responsive: true,
+                                    scales: {
+                                        x: {
+                                            type: 'category', // Asegúrate de que las etiquetas sean categorías
+                                            ticks: {
+                                                autoSkip: false  // Para mostrar todas las etiquetas sin que se corten
+                                            }
+                                        },
+                                        y: {
+                                            beginAtZero: true,
+                                            suggestedMax: Math.max(...values) + 5 // Iniciar desde cero
+                                        }
+                                    },
+                                    barThickness: 30, // Ajusta el grosor de las barras
+                                    categoryPercentage: 0.8, // Ajuste de las categorías
+                                    barPercentage: 0.9  // Ajuste de las barras dentro de las categorías
+                                }
+                            });
+                        } else {
+                            console.error("Los datos no están correctos:", labels, values);
+                        }
+                    </script>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function toggleSections() {
+        var terceraSeccion = document.getElementById('tercera_seccion');
+        var cuartaSeccion = document.getElementById('cuarta_seccion');
+
+        if (terceraSeccion.style.display !== 'none') {
+            terceraSeccion.style.display = 'none';  
+            cuartaSeccion.style.display = 'block';  
+        } else {
+            terceraSeccion.style.display = 'block';
+            cuartaSeccion.style.display = 'none';
+        }
+    }
+</script>
+</html>

@@ -6,7 +6,6 @@
     <link th:href="@{/css/estilosPerfil.css}" rel="stylesheet">
     <link th:href="@{/css/estilosTablas.css}" rel="stylesheet">   
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 </head>
 <body>
     <div class="container">
@@ -18,12 +17,12 @@
             <div class="">
                 <div class="page">
                     <div id="primeraseccion">
-                        <h1>Boletas generadas: </h1>
+                        <h1>Citas agendadas: </h1>
                         <button class="btn btn-primary" onclick="toggleSections()">Ver Gráficos</button>
                    </div>
                      <div id="segundaseccion">
                         <div id="filter-section">
-                            <form th:action="@{/usuario/historial}" method="GET">
+                            <form th:action="@{/usuario/citas}" method="GET">
                                 <div>
                                     <label for="mes">Filtrar por mes:</label>
                                     <select id="mes" name="mes" class="form-control">
@@ -59,25 +58,27 @@
                         <table class="styled-table">
                             <thead>
                                 <tr>
-                                    <th>ID de Boleta</th>
+                                    <th>ID de Citas</th>
+                                    <th>Nombre</th>
+                                    <th>Correo</th>
+                                    <th>Celular</th>
                                     <th>Fecha</th>
-                                    <th>Total</th>
-                                    <th>Método de Pago</th>
-                                    <th>Dedicatoria</th>
-                                    <th>Cantidad</th>
-                                    <th>ID de Entrega Producto</th>
+                                    <th>Hora</th>
+                                    <th>Imágen</th>
                                     <th>DNI del Cliente</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr th:each="item: ${listaBoleta}">
-                                    <td th:text="${item.id_boleta}"></td>
-                                    <td th:text="${item.fecha_boleta}"></td>
-                                    <td th:text="${item.total_boleta}"></td>
-                                    <td th:text="${item.metpago_boleta}"></td>
-                                    <td th:text="${item.dedicatoria}"></td>
-                                    <td th:text="${item.cantidad_bol}"></td>
-                                    <td th:text="${item.tipoenvio.tipo_e}"></td>
+                                <tr th:each="item: ${listaCitas}">
+                                    <td th:text="${item.id}"></td>
+                                    <td th:text="${item.nombre_c}"></td>
+                                    <td th:text="${item.correo_c}"></td>
+                                    <td th:text="${item.celular_c}"></td>
+                                    <td th:text="${item.fecha_c}"></td>
+                                    <td th:text="${item.hora_c}"></td>
+                                    <td>
+                                        <img th:src="@{'/uploads/' + ${item.imagen_c_ruta}}" alt="Imagen de la cita" style="width: 100px; height: auto;" />
+                                    </td>
                                     <td th:text="${item.cliente.dni}"></td>
                                 </tr>
                             </tbody>
@@ -106,7 +107,7 @@
                                     data: {
                                         labels: labels, // Las etiquetas de los meses
                                         datasets: [{
-                                            label: 'Cantidad de Boletas',
+                                            label: 'Cantidad de Citas',
                                             data: values,  // Los valores de las boletas
                                             backgroundColor: '#f8d3dc',
                                             borderColor: '#e85e7c',
@@ -139,28 +140,29 @@
 
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
     </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <script>
+    // Obtén los datos del gráfico desde Thymeleaf
+    
+
     function toggleSections() {
         var terceraSeccion = document.getElementById('tercera_seccion');
         var cuartaSeccion = document.getElementById('cuarta_seccion');
 
         if (terceraSeccion.style.display !== 'none') {
-            terceraSeccion.style.display = 'none';  
-            cuartaSeccion.style.display = 'block';  
+            terceraSeccion.style.display = 'none';  // Ocultar la tabla
+            cuartaSeccion.style.display = 'block';  // Mostrar los gráficos
         } else {
             terceraSeccion.style.display = 'block';
             cuartaSeccion.style.display = 'none';
         }
     }
+
+    // Verifica si tienes los datos antes de crear el gráfico
    
 </script>
-
 </html>

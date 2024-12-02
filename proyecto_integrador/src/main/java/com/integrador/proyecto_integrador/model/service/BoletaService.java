@@ -16,8 +16,8 @@ public class BoletaService implements IBoletaService{
 
     @Override
     public String guardarBoleta(Boleta boleta) {
-        boletaDAO.save(boleta);  // Guarda la boleta en la base de datos
-        return "redirect:/boleta";  // Redirige a la página de boletas (o la página que necesites)
+        boletaDAO.save(boleta);
+        return "redirect:/boleta";
     }
 
     @Override
@@ -29,6 +29,36 @@ public class BoletaService implements IBoletaService{
     public List<Boleta> filtrarPorMesYAnio(String dni, Integer mes, Integer anio) 
     {
         return boletaDAO.findByDniAndMesYAnio(dni, mes, anio);
+    }
+
+    @Override
+    public List<Boleta> obtenerBoletasPorMesAnioYCliente(Integer mes, Integer anio, String dniCliente) {
+        return boletaDAO.findByMesAndAnioAndClienteDni(mes, anio, dniCliente);
+    }    
+
+    @Override
+    public List<Boleta> obtenerBoletasPorMesAnio(Integer mes, Integer anio) {
+        return boletaDAO.findByMesAndAnio(mes, anio);
+    }
+
+    @Override
+    public List<Boleta> obtenerBoletasPorCliente(String dniCliente) {
+        return boletaDAO.findByClienteDni(dniCliente);
+    }
+
+    @Override
+    public List<Boleta> obtenerTodasBoletas() {
+        return (List<Boleta>) boletaDAO.findAll();
+    }
+
+    @Override
+    public List<String> obtenerDnisClientes() {
+        return boletaDAO.findDistinctDniClientes(); 
+    }
+
+    @Override
+    public List<Boleta> obtenerBoletasPorAnioYCliente(Integer anio, String dniCliente) {
+        return boletaDAO.findByAnioAndClienteDni(anio, dniCliente);
     }
     
 }
