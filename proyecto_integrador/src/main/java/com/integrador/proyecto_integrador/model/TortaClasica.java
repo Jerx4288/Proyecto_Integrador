@@ -88,8 +88,8 @@ public class TortaClasica implements Serializable{
     
     public TortaClasica() {
     
-    }
-
+    }   
+    
     public List<Boleta> getBoletas() {
         return boletas;
     }

@@ -70,6 +70,7 @@ public class loginController {
             redirectAttributes.addFlashAttribute("mensaje", "Dni o Contraseña inválido");
             return "redirect:/login/?error=true";
         }
+        
     } else {
         System.out.println("Es usuario");
         Optional<Cliente> clienteOpt = clienteService.iniciarSesion(dni, password);

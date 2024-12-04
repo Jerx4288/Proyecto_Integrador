@@ -699,8 +699,6 @@ const productos = {
 };
 
 
-
-// Variables globales
 let precioBase = 0;
 let precioTotal = 0;
 let carrito = [];

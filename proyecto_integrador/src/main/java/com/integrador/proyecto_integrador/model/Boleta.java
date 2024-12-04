@@ -20,7 +20,7 @@ import jakarta.persistence.Table;
 public class Boleta {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //Sirve como auto incremento y identifica que ID es la clave primaria
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_detalle_boleta")
     private Integer id_boleta;
 
