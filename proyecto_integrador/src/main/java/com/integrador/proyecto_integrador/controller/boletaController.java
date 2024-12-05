@@ -390,10 +390,7 @@ public class boletaController
                 boletaService.guardarBoleta(boleta);
                 System.out.println("Boleta guardada exitosamente.");
                 enviarBoletaPorCorreo(cliente.getCorreo(), boleta);
-                //Generar PDF
-                generarPDF(boleta, response);
-                // Enviar la boleta por correo electrónico
-                
+                generarPDF(boleta, response);                
                 // Redirigir a la página de boleta
                 return "redirect:/boleta";
 

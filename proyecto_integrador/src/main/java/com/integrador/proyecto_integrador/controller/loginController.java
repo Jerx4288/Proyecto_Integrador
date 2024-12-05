@@ -55,8 +55,8 @@ public class loginController {
         System.out.println("Datos del cliente: " + dni);
     
         if ("admin".equals(rol)) {
-        System.out.println("Es admin");
-        Optional<Administrador> administradorOpt = clienteService.iniciarSesionAdmin(dni, password);
+            System.out.println("Es admin");
+            Optional<Administrador> administradorOpt = clienteService.iniciarSesionAdmin(dni, password);
 
         if (administradorOpt.isPresent()) {
             Administrador administrador = administradorOpt.get();

@@ -703,7 +703,6 @@ let precioBase = 0;
 let precioTotal = 0;
 let carrito = [];
 
-// Suponiendo que productos es un objeto con los productos y sus detalles
 if (productoId && productos[productoId]) {
     // Llenamos los datos del producto
     document.getElementById('nombre-producto').innerText = productos[productoId].nombre;
@@ -761,7 +760,7 @@ if (productoId && productos[productoId]) {
                 // Si el select es para tamaño, se actualiza el precio base
                 if (field.name === 'tamanio') {
                     precioBase = parseFloat(selectedOption.dataset.price) || 0;
-                    precioTotal = precioBase;  // Reiniciar el precio total con el precio base
+                    precioTotal = precioBase;
                 }
 
                 if (field.name === 'tipo' || field.name === 'relleno' || field.name === 'cantidad') {

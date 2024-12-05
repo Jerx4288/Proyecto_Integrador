@@ -23,9 +23,13 @@
                         </div>
                         <button class="btn btn-primary" onclick="toggleSections()">Ver Gráficos</button>
                     </div>
-                    <div id="segundaseccion">
-                        <button>Generar Reportes de Stock</button>
-                        <button>Generar Reportes de Grafico</button>
+                    <div id="segundaseccion" style="display: flex;">
+                        <form th:action="@{/admin/export-pdf/velas}" method="get">
+                            <button type="submit" class="btn btn-primary">Generar Reportes de Stock</button>
+                        </form>
+                        <form th:action="@{/admin/generate-pdf-velas}" method="get" target="_blank">
+                            <button id="guardarPdf">Generar Reportes de Grafico</button>
+                        </form>
                     </div>
                     <div id="tercera_seccion" >
                         <table class="styled-table">
@@ -54,31 +58,27 @@
                             </tbody>
                         </table>
                     </div>
-                    <!-- Cuarta sección donde se renderiza el gráfico -->
                     <div id="cuarta_seccion" style="display: none; height: auto; z-index: 100;">
                         <div id="grafico">
                             <canvas id="graficoBarras" width="400" height="110"></canvas>
                             <script th:inline="javascript">
-                                /* Los datos ya están pasados correctamente como variables JS en lugar de strings. */
 
                                 var labels = JSON.parse(/*[[${labelsVelas}]]*/ "[]");
                                 var values = JSON.parse(/*[[${valuesVelas}]]*/ "[]");
 
-                                console.log(labels);  // Verificar que las etiquetas se pasen correctamente
-                                console.log(values);  // Verificar que los valores se pasen correctamente
+                                console.log(labels);  
+                                console.log(values);  
 
                                 if (labels.length > 0 && values.length > 0) {
-                                    // Selecciona el contexto del gráfico
                                     var ctx = document.getElementById('graficoBarras').getContext('2d');
 
-                                    // Crear el gráfico
                                     var chart = new Chart(ctx, {
                                         type: 'bar',
                                         data: {
-                                            labels: labels,  // Las etiquetas de los meses
+                                            labels: labels,  
                                             datasets: [{
                                                 label: 'Stock de Velas',
-                                                data: values,  // Los valores de las velas
+                                                data: values,  
                                                 backgroundColor: '#f8d3dc',
                                                 borderColor: '#e85e7c',
                                                 borderWidth: 1
@@ -88,19 +88,19 @@
                                             responsive: true,
                                             scales: {
                                                 x: {
-                                                    type: 'category', // Asegúrate de que las etiquetas sean categorías
+                                                    type: 'category',
                                                     ticks: {
-                                                        autoSkip: false  // Para mostrar todas las etiquetas sin que se corten
+                                                        autoSkip: false 
                                                     }
                                                 },
                                                 y: {
                                                     beginAtZero: true,
-                                                    suggestedMax: Math.max(...values) + 5 // Iniciar desde cero
+                                                    suggestedMax: Math.max(...values) + 5 
                                                 }
                                             },
-                                            barThickness: 30, // Ajusta el grosor de las barras
-                                            categoryPercentage: 0.8, // Ajuste de las categorías
-                                            barPercentage: 0.9  // Ajuste de las barras dentro de las categorías
+                                            barThickness: 30, 
+                                            categoryPercentage: 0.8, 
+                                            barPercentage: 0.9 
                                         }
                                     });
                                 } else {

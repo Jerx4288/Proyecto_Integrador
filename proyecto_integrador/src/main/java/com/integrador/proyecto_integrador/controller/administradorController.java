@@ -1,5 +1,7 @@
 package com.integrador.proyecto_integrador.controller;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -8,14 +10,20 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,7 +45,17 @@ import com.integrador.proyecto_integrador.model.service.ICitaService;
 import com.integrador.proyecto_integrador.model.service.ITortaClaService;
 import com.integrador.proyecto_integrador.model.service.ITortaEspecialService;
 import com.integrador.proyecto_integrador.model.service.IVelaService;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import net.sf.jasperreports.engine.JRException;
 
 @Controller
 @RequestMapping("/admin")
@@ -101,8 +119,8 @@ public class administradorController {
 
         Map<String, Long> stockPorTortaClasica = listaTortasClasicas.stream()
         .collect(Collectors.groupingBy(
-            TortaClasica::getNombre_tc, // Agrupar por nombre de la torta
-            Collectors.summingLong(TortaClasica::getStock_tc) // Sumar stock
+            TortaClasica::getNombre_tc,
+            Collectors.summingLong(TortaClasica::getStock_tc) 
         ));
 
 
@@ -152,38 +170,68 @@ public class administradorController {
     }
 
     @RequestMapping("/editarTortaCla/{id}")
-    public String editarStock(@PathVariable("id") String id, @RequestParam("stock") Integer stock, Model model) {
+    public ResponseEntity<byte[]> editarStock(@PathVariable("id") String id, @RequestParam("stock") Integer stock, Model model) {
         TortaClasica tortaClasica = tortaClaService.buscarTortaClasica(id);
         if (tortaClasica != null) {
             tortaClasica.setStock_tc(stock); 
             tortaClaService.guardarTortaClasica(tortaClasica);
+            try {
+                byte[] pdfContent = tortaClaService.exportPDF(); 
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_PDF);
+                headers.setContentDispositionFormData("attachment", "tortaClasica_StockReport.pdf");
+    
+                return ResponseEntity.ok().headers(headers).body(pdfContent);
+            } catch (JRException | FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
         model.addAttribute("listaTortac", tortaClaService.cargarTodasTortas());
-        return "redirect:/admin/tortas";
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
     @RequestMapping("/editarTortaEs/{id}")
-    public String editarStockTorta(@PathVariable("id") String id, @RequestParam("stock") Integer stock, Model model) {
+    public ResponseEntity<byte[]> editarStockTorta(@PathVariable("id") String id, @RequestParam("stock") Integer stock, Model model) {
         TortaEspecial tortaEspecial = tortaEspecialService.buscarTortaEspecial(id);
         if (tortaEspecial != null) {
             tortaEspecial.setStock_te(stock); 
             tortaEspecialService.guardarTortaEspecial(tortaEspecial); 
+            try {
+                byte[] pdfContent = tortaEspecialService.exportPDF(); 
+
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_PDF);
+                headers.setContentDispositionFormData("attachment", "tortaEspecial_StockReport.pdf");
+                return ResponseEntity.ok().headers(headers).body(pdfContent);
+            } catch (JRException | FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
 
         model.addAttribute("listaTortae", tortaClaService.cargarTodasTortas());
-        return "redirect:/admin/tortase"; 
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
     @RequestMapping("/editarVelas/{id}")
-    public String editarStockVela(@PathVariable("id") String id, @RequestParam("stock") Integer stock, Model model) {
+    public ResponseEntity<byte[]> editarStockVela(@PathVariable("id") String id, @RequestParam("stock") Integer stock, Model model) {
         Vela vela = VelaService.buscarVela(id);
 
         if (vela != null) {
             vela.setStock_vela(stock); 
             VelaService.guardarVela(vela);
+            try {
+                byte[] pdfContent = VelaService.exportPDF(); 
+
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_PDF);
+                headers.setContentDispositionFormData("attachment", "Velas_StockReport.pdf");
+                return ResponseEntity.ok().headers(headers).body(pdfContent);
+            } catch (JRException | FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
         model.addAttribute("listaVelas", VelaService.cargaTodasVelas());
-        return "redirect:/admin/velas"; 
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
     @RequestMapping("/boleta")
@@ -217,11 +265,9 @@ public class administradorController {
                 model.addAttribute("mensaje", "No se encontraron boletas con los filtros aplicados.");
             }
 
-            // Generar datos para el gráfico
             Map<String, Long> dataGrafico = listaBoletas.stream()
             .collect(Collectors.groupingBy(boleta -> boleta.getCliente().getDni(), Collectors.counting()));
 
-            // Serializar los datos a JSON para enviarlos a la vista
             ObjectMapper mapper = new ObjectMapper();
             model.addAttribute("labelsJson", mapper.writeValueAsString(new ArrayList<>(dataGrafico.keySet())));
             model.addAttribute("valuesJson", mapper.writeValueAsString(new ArrayList<>(dataGrafico.values())));
@@ -309,7 +355,6 @@ public class administradorController {
     @ResponseBody
     public ResponseEntity<Resource> getImage(@PathVariable String filename) {
         try {
-            // Ruta a la carpeta de imágenes
             Path path = Paths.get("C:/Users/mbjhe/OneDrive/Desktop/UTP/PROYECTO_FINAL_INTEGRADOR/proyecto_integrador/uploads/" + filename);
             Resource resource = new FileSystemResource(path);
             
@@ -331,5 +376,163 @@ public class administradorController {
         String rpta = citaService.eliminarCita(id);
         System.out.println(rpta);
         return "redirect:/admin/citass"; 
+    }
+
+    @RequestMapping("/export-pdf")
+     public ResponseEntity<byte[]> exportPdf() throws JRException, FileNotFoundException {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDispositionFormData("tortaClasica_StockReport", "tortaClasica_StockReport.pdf");
+        return ResponseEntity.ok().headers(headers).body(tortaClaService.exportPDF());
+    }
+
+    @RequestMapping("/export-pdf/tortaEs")
+     public ResponseEntity<byte[]> exportPdfa() throws JRException, FileNotFoundException {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDispositionFormData("tortaEspecial_StockReport", "tortaEspecial_StockReport.pdf");
+        return ResponseEntity.ok().headers(headers).body(tortaEspecialService.exportPDF());
+    }
+
+    @RequestMapping("/export-pdf/velas")
+     public ResponseEntity<byte[]> exportPdfb() throws JRException, FileNotFoundException {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDispositionFormData("velas_StockReport", "velas_StockReport.pdf");
+        return ResponseEntity.ok().headers(headers).body(VelaService.exportPDF());
+    }
+
+    @GetMapping("/generate-pdf")
+    public void generatePdf(HttpServletResponse response) throws Exception {
+        // Obtener los datos de la base de datos
+        List<TortaEspecial> listaTortasEspeciales = tortaEspecialService.cargarTodastort();
+        Map<String, Long> stockPorTortaEspecial = listaTortasEspeciales.stream()
+                .collect(Collectors.groupingBy(
+                        TortaEspecial::getNombre_te,
+                        Collectors.summingLong(TortaEspecial::getStock_te)
+                ));
+
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        for (Map.Entry<String, Long> entry : stockPorTortaEspecial.entrySet()) {
+            dataset.addValue(entry.getValue(), "Stock", entry.getKey());
+        }
+
+        JFreeChart chart = ChartFactory.createBarChart(
+                "Stock de Tortas Especiales",
+                "Tortas", 
+                "Stock", 
+                dataset, 
+                PlotOrientation.VERTICAL, 
+                true,
+                true, 
+                false 
+        );
+
+        chart.getCategoryPlot().getRenderer().setSeriesPaint(0, new Color(248, 211, 220)); 
+
+        BufferedImage chartImage = chart.createBufferedImage(600, 400);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        javax.imageio.ImageIO.write(chartImage, "png", byteArrayOutputStream);
+        response.setHeader("Content-Disposition", "inline; filename=graficoTortaEspecial.pdf");
+        response.setContentType("application/pdf");
+        Document document = new Document(PageSize.A4);
+        PdfWriter writer = PdfWriter.getInstance(document, response.getOutputStream());
+        document.open();
+
+        Image img = Image.getInstance(byteArrayOutputStream.toByteArray());
+        img.scaleToFit(500, 300); 
+        document.add(img);
+
+        document.close();
+        writer.close();
+    }
+
+    @GetMapping("/generate-pdf_tc")
+    public void generatePdfTortas(HttpServletResponse response) throws Exception {
+        List<TortaClasica> listaTortasClasicas = tortaClaService.cargarTodasTortas();
+        Map<String, Long> stockPorTortaClasica = listaTortasClasicas.stream()
+                .collect(Collectors.groupingBy(
+                        TortaClasica::getNombre_tc, 
+                        Collectors.summingLong(TortaClasica::getStock_tc)
+                ));
+    
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        for (Map.Entry<String, Long> entry : stockPorTortaClasica.entrySet()) {
+            dataset.addValue(entry.getValue(), "Stock", entry.getKey());
+        }
+
+        JFreeChart chart = ChartFactory.createBarChart(
+                "Stock de Tortas Clásicas", 
+                "Tortas", 
+                "Stock", 
+                dataset, 
+                PlotOrientation.VERTICAL, 
+                true, 
+                true, 
+                false
+        );
+    
+        chart.getCategoryPlot().getRenderer().setSeriesPaint(0, new Color(248, 211, 220));
+    
+        BufferedImage chartImage = chart.createBufferedImage(600, 400);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        javax.imageio.ImageIO.write(chartImage, "png", byteArrayOutputStream);
+    
+        response.setHeader("Content-Disposition", "inline; filename=graficoTortaClasica.pdf");
+        response.setContentType("application/pdf");
+    
+        Document document = new Document(PageSize.A4);
+        PdfWriter writer = PdfWriter.getInstance(document, response.getOutputStream());
+        document.open();
+    
+        Image img = Image.getInstance(byteArrayOutputStream.toByteArray());
+        img.scaleToFit(500, 300); 
+        document.add(img);
+    
+        document.close();
+        writer.close();
+    }
+    @GetMapping("/generate-pdf-velas")
+    public void generatePdfVelas(HttpServletResponse response) throws Exception {
+        List<Vela> listaVelas = VelaService.cargaTodasVelas();
+        Map<String, Long> stockPorVelas = listaVelas.stream()
+                .collect(Collectors.groupingBy(
+                        Vela::getModelo_vela, 
+                        Collectors.summingLong(Vela::getStock_vela)
+                ));
+
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        for (Map.Entry<String, Long> entry : stockPorVelas.entrySet()) {
+            dataset.addValue(entry.getValue(), "Stock", entry.getKey());
+        }
+
+        JFreeChart chart = ChartFactory.createBarChart(
+                "Stock de Velas", 
+                "Modelo", 
+                "Stock", 
+                dataset, 
+                PlotOrientation.VERTICAL,
+                true, 
+                true, 
+                false 
+        );
+
+        chart.getCategoryPlot().getRenderer().setSeriesPaint(0, new Color(248, 211, 220));
+        BufferedImage chartImage = chart.createBufferedImage(600, 400);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        javax.imageio.ImageIO.write(chartImage, "png", byteArrayOutputStream);
+        response.setHeader("Content-Disposition", "inline; filename=graficoVela.pdf");
+        response.setContentType("application/pdf");
+
+        Document document = new Document(PageSize.A4);
+        PdfWriter writer = PdfWriter.getInstance(document, response.getOutputStream());
+        document.open();
+
+        Image img = Image.getInstance(byteArrayOutputStream.toByteArray());
+        img.scaleToFit(500, 300); 
+        document.add(img);
+
+        document.close();
+        writer.close();
     }
 }

@@ -107,22 +107,18 @@
                         var labels = JSON.parse(/*[[${labelsJson}]]*/ "[]");
                         var values = JSON.parse(/*[[${valuesJson}]]*/ "[]");
 
-                        // Depuración de los datos para ver qué se está inyectando en el script
                         console.log("Labels:", labels);
                         console.log("Values:", values);
 
                         if (labels.length > 0 && values.length > 0) {
-                            // Selecciona el contexto del gráfico
                             var ctx = document.getElementById('graficoBarras').getContext('2d');
-
-                            // Crear el gráfico
                             var chart = new Chart(ctx, {
                                 type: 'bar',
                                 data: {
-                                    labels: labels, // Las etiquetas de los meses
+                                    labels: labels,
                                     datasets: [{
                                         label: 'Cantidad de Citas',
-                                        data: values,  // Los valores de las boletas
+                                        data: values,  
                                         backgroundColor: '#f8d3dc',
                                         borderColor: '#e85e7c',
                                         borderWidth: 1
@@ -132,19 +128,19 @@
                                     responsive: true,
                                     scales: {
                                         x: {
-                                            type: 'category', // Asegúrate de que las etiquetas sean categorías
+                                            type: 'category',
                                             ticks: {
-                                                autoSkip: false  // Para mostrar todas las etiquetas sin que se corten
+                                                autoSkip: false  
                                             }
                                         },
                                         y: {
                                             beginAtZero: true,
-                                            suggestedMax: Math.max(...values) + 5 // Iniciar desde cero
+                                            suggestedMax: Math.max(...values) + 5 
                                         }
                                     },
-                                    barThickness: 30, // Ajusta el grosor de las barras
-                                    categoryPercentage: 0.8, // Ajuste de las categorías
-                                    barPercentage: 0.9  // Ajuste de las barras dentro de las categorías
+                                    barThickness: 30, 
+                                    categoryPercentage: 0.8, 
+                                    barPercentage: 0.9
                                 }
                             });
                         } else {

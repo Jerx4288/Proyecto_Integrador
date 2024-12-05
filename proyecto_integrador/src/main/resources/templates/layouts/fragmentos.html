@@ -18,7 +18,7 @@
             <!--ICONOS-->
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
             <!--ICONO-IMAGEN-->
-            <link rel="icon" href="/path/to/icon.png"> <!-- Cierra el atributo con el href correcto -->
+            <link rel="icon" href="/path/to/icon.png">
             
         </head>
         
@@ -29,7 +29,6 @@
         
         <div id="barrabajo" th:fragment="barrabajo">
             <div id="ini-ses">
-                <!-- Si mensaje_ini es diferente de 'Iniciar Sesion', mostramos el mensaje y el menú de opciones -->
                 <div th:if="${mensaje_ini != 'Iniciar Sesion'}">
                     <a href="javascript:void(0);" class="text_barra" onclick="toggleMenu(event)">
                         <i class="fas fa-user"></i> [[${mensaje_ini}]]
@@ -39,9 +38,7 @@
                 <div th:if="${mensaje_ini != 'Iniciar Sesion'}" id="menu-opciones" class="menu-opciones" style="display: none;">
                     <ul>
                         <li>
-                            <!-- Verifica si el rol es admin -->
                             <a th:href="@{/admin/}" th:if="${session.rol == 'admin'}" class="text_barra">Ir a cuenta</a>
-                            <!-- Si el rol no es admin, muestra el enlace a usuario -->
                             <a th:href="@{/usuario/}" th:if="${session.rol != 'admin'}" class="text_barra">Ir a cuenta</a>
                         </li>
                         <li><a th:href="@{/login/logout}" class="text_barra">Cerrar sesión</a></li>

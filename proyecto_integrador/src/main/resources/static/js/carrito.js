@@ -1,6 +1,5 @@
 function mostrarCarrito(event) {
     event.preventDefault();
-
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     const carritoTableBody = document.querySelector('#lista-carrito tbody');
     const contenidoCarrito = document.getElementById('contenido_carrito');

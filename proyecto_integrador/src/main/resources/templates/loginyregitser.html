@@ -132,7 +132,6 @@
                     <input th:field="*{password}" type="password" id="password_login" placeholder="Contraseña" required>
                 </div>
             
-                <!-- Select para indicar si es Administrador o Usuario -->
                 <div class="input-container">
                     <label for="rol_login">Rol</label>
                     <select th:field="*{rol}" id="rol_login" required>
@@ -140,7 +139,7 @@
                         <option value="admin">Administrador</option>
                     </select>
                 </div>
-                <p id="login-message" th:text="${mensaje}" th:if="${mensaje}"></p> <!-- Muestra el mensaje -->
+                <p id="login-message" th:text="${mensaje}" th:if="${mensaje}"></p>
                 <button type="submit">Ingresar</button>
             </form>
             
