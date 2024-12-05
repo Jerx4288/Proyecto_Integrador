@@ -58,8 +58,9 @@
                                 <button type="submit" class="btn btn-primary">Filtrar</button>
                             </form>
                         </div>
-                        
-                        <button>Generar Reportes de Tabla</button>
+                        <form th:action="@{/admin/export-pdf-boletaTotal}" method="get">
+                            <button type="submit" class="btn btn-primary">Generar Reportes de Stock</button>
+                        </form>
                         <button>Generar Reportes de Grafico</button>
                     </div>
                     <div id="tercera_seccion">

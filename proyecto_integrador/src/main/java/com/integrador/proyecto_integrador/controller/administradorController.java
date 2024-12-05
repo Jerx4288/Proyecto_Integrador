@@ -236,10 +236,10 @@ public class administradorController {
 
     @RequestMapping("/boleta")
     private String boleta(@RequestParam(value = "mes", required = false) Integer mes,
-                          @RequestParam(value = "anio", required = false) Integer anio,
-                          @RequestParam(value = "dni_cliente", required = false) String dniCliente,
-                          Model model) {
-    
+                        @RequestParam(value = "anio", required = false) Integer anio,
+                        @RequestParam(value = "dni_cliente", required = false) String dniCliente,
+                        Model model, HttpServletResponse response) {
+
         List<String> listaDniClientes = boletaService.obtenerDnisClientes();
         List<Boleta> listaBoletas = new ArrayList<>();
         System.out.println("Mes: " + mes);
@@ -249,24 +249,39 @@ public class administradorController {
             if (mes != null && anio != null && (dniCliente == null || dniCliente.isEmpty())) {
                 listaBoletas = boletaService.obtenerBoletasPorMesAnio(mes, anio);
                 System.out.println("Entro 3");
+
+                if (!listaBoletas.isEmpty()) {
+                    byte[] pdfContent = boletaService.exportPDF(mes, anio);
+
+                    HttpHeaders headers = new HttpHeaders();
+                    headers.setContentType(MediaType.APPLICATION_PDF);
+                    headers.setContentDispositionFormData("attachment", "Boletas_Report_" + mes + "_" + anio + ".pdf");
+
+                    response.setContentType("application/pdf");
+                    response.setHeader("Content-Disposition", "attachment; filename=Boletas_Report_" + mes + "_" + anio + ".pdf");
+                    response.getOutputStream().write(pdfContent);
+                    response.getOutputStream().flush();
+                    return null;
+                }
             } else if (anio != null && dniCliente != null && mes == null) {
                 listaBoletas = boletaService.obtenerBoletasPorAnioYCliente(anio, dniCliente);
                 System.out.println("Entro 1");
             } else if (mes != null && anio != null && dniCliente != null) {
                 listaBoletas = boletaService.obtenerBoletasPorMesAnioYCliente(mes, anio, dniCliente);
                 System.out.println("Entro 2");
-            } else if (dniCliente != null && mes == null && anio == null    ) {
+            } else if (dniCliente != null && mes == null && anio == null) {
                 listaBoletas = boletaService.obtenerBoletasPorCliente(dniCliente);
                 System.out.println("Entro 4");
             } else {
                 listaBoletas = boletaService.obtenerTodasBoletas();
             }
+
             if (listaBoletas.isEmpty()) {
                 model.addAttribute("mensaje", "No se encontraron boletas con los filtros aplicados.");
             }
 
             Map<String, Long> dataGrafico = listaBoletas.stream()
-            .collect(Collectors.groupingBy(boleta -> boleta.getCliente().getDni(), Collectors.counting()));
+                .collect(Collectors.groupingBy(boleta -> boleta.getCliente().getDni(), Collectors.counting()));
 
             ObjectMapper mapper = new ObjectMapper();
             model.addAttribute("labelsJson", mapper.writeValueAsString(new ArrayList<>(dataGrafico.keySet())));
@@ -283,6 +298,7 @@ public class administradorController {
         model.addAttribute("años", IntStream.range(2020, 2025).boxed().collect(Collectors.toList()));
         return "adminBoleta";
     }
+
     
     @RequestMapping("/citass")
     private String citas(@RequestParam(value = "mes", required = false) Integer mes,
@@ -302,6 +318,7 @@ public class administradorController {
             } else if (mes != null && anio != null) {
                 if (dniCliente == null || dniCliente.isEmpty()) {
                     listaCitas = citaService.obtenerCitasPorMesAnio(mes, anio);
+
                     System.out.println("ENTRO " + listaCitas);
                 } else {
                     listaCitas = citaService.obtenerCitasPorMesAnioYCliente(mes, anio, dniCliente);
@@ -534,5 +551,21 @@ public class administradorController {
 
         document.close();
         writer.close();
+    }
+
+    @RequestMapping("/export-pdf-boletaTotal")
+     public ResponseEntity<byte[]> exportPdfc() throws JRException, FileNotFoundException {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDispositionFormData("boleta_StockReport", "boleta_StockReport.pdf");
+        return ResponseEntity.ok().headers(headers).body(boletaService.exportPDF());
+    }
+
+    @RequestMapping("/export-pdf/cita")
+     public ResponseEntity<byte[]> exportPdfd() throws JRException, FileNotFoundException {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDispositionFormData("citas_Report", "citas_Report.pdf");
+        return ResponseEntity.ok().headers(headers).body(citaService.exportPDF());
     }
 }

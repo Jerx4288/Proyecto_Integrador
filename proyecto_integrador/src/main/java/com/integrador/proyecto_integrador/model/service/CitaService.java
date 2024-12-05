@@ -1,7 +1,9 @@
 package com.integrador.proyecto_integrador.model.service;
 
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,9 @@ import org.springframework.stereotype.Service;
 
 import com.integrador.proyecto_integrador.model.Citas;
 import com.integrador.proyecto_integrador.model.ICitasDAO;
+import com.integrador.proyecto_integrador.model.util.citaReporteGenerator;
+
+import net.sf.jasperreports.engine.JRException;
 
 @Service
 public class CitaService implements ICitaService
@@ -17,8 +22,10 @@ public class CitaService implements ICitaService
     @Autowired
     private ICitasDAO citasDAO;
 
+    @Autowired
+    private citaReporteGenerator citaReporteGenerator;
+
     @Override
-    
     public String guardarCita(Citas citas) {
         try {
             String rpta;
@@ -103,6 +110,25 @@ public class CitaService implements ICitaService
     @Override
     public Boolean existeCita(LocalDate fecha, LocalTime hora) {
         return citasDAO.existsByFechaAndHora(fecha, hora);
+    }
+
+    @Override
+    public byte[] exportPDF() throws JRException, FileNotFoundException {
+        List<Citas> citas = new ArrayList<>();
+        citasDAO.findAll().forEach(citas::add);
+        System.out.println("Tortas para reporte: " + citas);
+
+        if (citas.isEmpty()) {
+            throw new JRException("No hay datos para generar el reporte en formato PDF.");
+        }
+
+        return citaReporteGenerator.exportToPdf(citas);
+    }
+
+    @Override
+    public byte[] exportXls() throws JRException, FileNotFoundException {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'exportXls'");
     }
 
     

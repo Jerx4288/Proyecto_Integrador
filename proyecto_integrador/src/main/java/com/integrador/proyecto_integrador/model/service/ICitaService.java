@@ -1,11 +1,14 @@
 package com.integrador.proyecto_integrador.model.service;
 
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
 
 import com.integrador.proyecto_integrador.model.Citas;
+
+import net.sf.jasperreports.engine.JRException;
 
 public interface ICitaService {
     public String guardarCita(Citas citas);
@@ -21,4 +24,6 @@ public interface ICitaService {
     public List<String> obtenerDnisClientes(); 
     public List<Citas> obtenerCitasPorAnioYCliente(Integer anio, String dniCliente);
     public Boolean existeCita(LocalDate fecha, LocalTime hora);
+    public byte[] exportPDF() throws JRException, FileNotFoundException;
+    public byte[] exportXls() throws JRException, FileNotFoundException;
 }

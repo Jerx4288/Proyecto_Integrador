@@ -1,8 +1,11 @@
 package com.integrador.proyecto_integrador.model.service;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import com.integrador.proyecto_integrador.model.Boleta;
+
+import net.sf.jasperreports.engine.JRException;
 
 public interface IBoletaService {
     public String guardarBoleta(Boleta boleta);
@@ -14,4 +17,7 @@ public interface IBoletaService {
     public List<Boleta> obtenerTodasBoletas();
     public List<String> obtenerDnisClientes(); 
     public List<Boleta> obtenerBoletasPorAnioYCliente(Integer anio, String dniCliente);
+    public byte[] exportPDF(Integer mes, Integer anio) throws JRException, FileNotFoundException;
+    public byte[] exportXls() throws JRException, FileNotFoundException;
+    public byte[] exportPDF() throws JRException, FileNotFoundException;
 }
