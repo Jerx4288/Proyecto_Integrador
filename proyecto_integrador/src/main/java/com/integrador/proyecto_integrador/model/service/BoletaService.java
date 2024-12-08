@@ -86,7 +86,7 @@ public class BoletaService implements IBoletaService{
 
     @Override
     public byte[] exportXls() throws JRException, FileNotFoundException {
-        // TODO Auto-generated method stub
+        
         throw new UnsupportedOperationException("Unimplemented method 'exportXls'");
     }
 

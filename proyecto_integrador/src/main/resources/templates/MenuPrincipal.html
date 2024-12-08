@@ -6,10 +6,8 @@
         <link th:href="@{/css/pagina_principal.css}" rel="stylesheet">
     </head>
     <body>
-        <div th:replace="layouts/fragmentos :: subbarra">
-        </div>
+        <div th:replace="~{layouts/fragmentos :: subbarra}"></div>
         <div id="barrabajo" th:replace="layouts/fragmentos :: barrabajo"> 
-            
         </div>
         <header th:replace = "layouts/fragmentos :: header">
         </header>
@@ -104,7 +102,7 @@
         <a href="#top" id="arriba">Ir al Inicio</a>
         <footer id="ultima_seccion" th:replace="/layouts/fragmentos :: footer">
         </footer>
-        <script tH:src="@{/js/pagina_principal.js}"></script>
-        <script tH:src="@{/js/carrito.js}"></script>
+        <script th:src="@{/js/pagina_principal.js}"></script>
+        <script th:src="@{/js/carrito.js}"></script>
     </body>
 </html>

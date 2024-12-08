@@ -127,7 +127,7 @@ public class CitaService implements ICitaService
 
     @Override
     public byte[] exportXls() throws JRException, FileNotFoundException {
-        // TODO Auto-generated method stub
+        
         throw new UnsupportedOperationException("Unimplemented method 'exportXls'");
     }
 

@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <th:block th:include="layouts/fragmentos :: cabecera"></th:block>   
         <link th:href="@{/css/novias.css}" rel="stylesheet">
         <title>Novias | Pabluki's Bakery  </title>
     </head>
 <body>
-    <div th:replace="layouts/fragmentos :: subbarra">
-    </div>
+    <div th:replace="~{layouts/fragmentos :: subbarra}"></div>
     <div id="barrabajo" th:replace="layouts/fragmentos :: barrabajo"> 
     </div>
     <header th:replace = "layouts/fragmentos :: header">
